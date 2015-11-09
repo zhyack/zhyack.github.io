@@ -55,10 +55,14 @@
 }
 
 body {
+  background-image:url(../pics/night.jpg);
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+   background-size:100% 100%;
   background-color: #fff;
+
   padding:50px;
   font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#727272;
+  color:#ffffff;
   font-weight:400;
 }
 
@@ -77,14 +81,15 @@ h1, h2, h3 {
 
 h1 {
   font-size:28px;
+  color:#afafaf;
 }
 
 h2 {
-  color:#393939;
+  color:#afafaf;
 }
 
 h3, h4, h5, h6 {
-  color:#494949;
+  color:#8f8f8f;
 }
 
 a {
@@ -121,7 +126,7 @@ blockquote {
 
 code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-  color:#333;
+  color:#c0c;
   font-size:12px;
 }
 
@@ -244,7 +249,7 @@ footer {
   width:270px;
   float:left;
   position:fixed;
-  bottom:50px;
+  bottom:0px;
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
