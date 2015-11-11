@@ -1,31 +1,31 @@
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <!-- InstanceBeginEditable name="doctitle" -->
+    <!-- TemplateBeginEditable name="doctitle" -->
     <title>zhy's blog</title>
-    <!-- InstanceEndEditable -->
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <!-- TemplateEndEditable -->
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  <!-- InstanceBeginEditable name="head" -->
-  <!-- InstanceEndEditable -->
+  <!-- TemplateBeginEditable name="head" -->
+  <!-- TemplateEndEditable -->
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1><a href="index.html" target="_self"> &nbsp;&nbsp;&nbsp;&nbsp;Zhy's Blog~</a></h1>
-        <a href="index.html"><img src = "pics/Profile.png" width="232" height="227"></a>
+        <h1><a href="../index.html" target="_self"> &nbsp;&nbsp;&nbsp;&nbsp;Zhy's Blog~</a></h1>
+        <a href="../index.html"><img src = "../pics/Profile.png" width="232" height="227"></a>
 
 
         <p class="view"><a href="https://github.com/zhyack">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View My GitHub Profile</a></p>
 
       </header>
-      <!-- InstanceBeginEditable name="EditArea" -->
+      <!-- TemplateBeginEditable name="EditArea" -->
       <section>
         <h3><a id="recent-work/study-links" class="anchor" href="#Recent Work/Study Sites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recent Work</h3>
         <p>I.&nbsp;&nbsp;<a href = "https://www.coursera.org/learn/machine-learning/home/welcome">Machine Learning by Andrew Ng, Stanford University</a></p>
@@ -34,27 +34,24 @@
         <p>IV.&nbsp;&nbsp;<a href = "http://www.icourse163.org/course/bit-268001#/info">Programming with Python by 	Beijing Institute of Technology</a></p>
         <p>V.&nbsp;&nbsp;<a href = "https://class.coursera.org/nlp/lecture/preview">Natural Language Processing by Dan Jurafsky, Christopher Manning, Stanford University</a></p>
         <p>VI.&nbsp;&nbsp;<a href = "http://www.icourse163.org/learn/zju-232005?tid=377005#/learn/content">Probability theory and mathematical statistics by Zhejiang University</a></p>
-        <h3><a id="recent-work/study-links" class="anchor" href="#Recent Work/Study Sites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recent Posts</h3>
-        <p>2015.11.11 &gt;&gt; <a href="posts/2015_11_11_Codeforces.html">Codeforces</a></p>
-        <p><span class="pl-c1">&gt;&gt;&gt;&gt;业内知名全球性比赛及训练平台，以其高质量题目，众多用户，科学的Rating系统，趣味性的比赛形式等吸引越来越多的程序猿关注，用户的Rating可以很大程度上反映其参赛水平，可以说是业内衡量程序猿编码水平的重要参考...</span></p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
       </section>
-      <!-- InstanceEndEditable -->
+      <!-- TemplateEndEditable -->
       <footer>
-        <p><img src="pics/foot3.jpg" alt="" width="232" height="167" usemap="#Map"/>
+        <p><img src="../pics/foot3.jpg" alt="" width="232" height="167" usemap="#Map"/>
           <map name="Map">
             <area shape="poly" coords="50,17" href="#">
-            <area shape="rect" coords="46,-7,153,27" href="archive.html" target="_self" alt="archive">
-            <area shape="rect" coords="152,61,224,97" href="tags.html" target="_self" alt="tags">
-            <area shape="rect" coords="12,105,95,137" href="about.html" target="_self" alt="about">
+            <area shape="rect" coords="46,-7,153,27" href="../archive.html" target="_self" alt="archive">
+            <area shape="rect" coords="152,61,224,97" href="../tags.html" target="_self" alt="tags">
+            <area shape="rect" coords="12,105,95,137" href="../about.html" target="_self" alt="about">
           </map>
         </p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
   
   </body>
-<!-- InstanceEnd --></html>
+</html>
