@@ -41,7 +41,7 @@
       </section>
       <!-- TemplateEndEditable -->
       <footer>
-        <p><img src="../pics/foot3.jpg" alt="" width="232" height="167" usemap="#Map"/>
+        <p><img src="../pics/foot.jpg" alt="" width="232" height="167" usemap="#Map"/>
           <map name="Map">
             <area shape="poly" coords="50,17" href="#">
             <area shape="rect" coords="46,-7,153,27" href="../archive.html" target="_self" alt="archive">
