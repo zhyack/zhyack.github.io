@@ -1,0 +1,137 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog</title>
+    <!-- InstanceEndEditable -->
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="../index.html" target="_self"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zhy's Blog~</a></h1>
+        <a href="../index.html"><img src = "../pics/Profile.png" width="232" height="227"></a>
+
+
+        <p class="view"><a href="https://github.com/zhyack">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View My GitHub Profile</a></p>
+
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+        <h3><a id="recent-work/study-links" class="anchor" href="#Recent Work/Study Sites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prime Factorization</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在Codeforces上看到的一个idea，有感而发。<a href="http://codeforces.com/blog/entry/7262">the link</a></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;说到分解质因数，自然有很多种写法，比如，我们要对x分解质因数：</p>
+        <li>普通程序猿</li>
+        <pre><code>void MakePrimeChart(int n){
+	primeCnt = 0;
+	memset(isPrime,true,sizeof(isPrime));
+	isPrime[0] = isPrime[1] = false;
+	for (int i = 2;i < n;i++){
+		if (!isPrime[i]) continue;
+		primeChart[primeCnt++] = i;
+		for (int j = 2;j <= n/i;j++) isPrime[i*j] = false;
+	}
+}//just calculate sqrt(x) to make sure Split(x) works well
+
+void Split(int x){
+	int p = 0;
+	memset(split,0,sizeof(split));
+	splitCnt = 0;
+	while(x > 1 && p < primeCnt){
+		if (x%primeChart[p] == 0) 
+			split[++splitCnt][0] = primeChart[p];
+		while(x%primeChart[p] == 0) 
+			split[splitCnt][1]++,x/=primeChart[p];
+		p++;
+	}
+	if (x > 1) 
+		split[++splitCnt][0] = x,split[splitCnt][1]++;
+		//Big Prime!
+}</code></pre>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;只是先使用了普通的筛法，复杂度约是nlog(n)，当然此处的n&nbsp;=&nbsp;sqrt(x)，然后对着素数表试除一遍，也就是最差情况下有n/log(n)的素数表试除完(大质数)，以及最多log(x)个质因数，所以复杂度是n/log(n)+log(x),也就是sqrt(x)/log(sqrt(x))+log(x)，这样看来，大量的时间其实是耗在了筛法上。但筛素数是一劳永逸的，对于海量询问的情况，优化分解质因数部分就显得很有价值。</p>
+        <li>文艺程序猿</li>
+        <pre><code>bool v[MAX];
+int len, sp[MAX];
+
+void Sieve(){
+	for (int i = 2; i < MAX; i += 2)	sp[i] = 2;
+//even numbers have smallest prime factor 2
+	for (lli i = 3; i < MAX; i += 2){
+	    if (!v[i]){
+	        sp[i] = i;
+	        for (lli j = i; (j*i) < MAX; j += 2){
+	            if (!v[j*i])	
+	                v[j*i] = true, sp[j*i] = i;
+	        }
+	    }
+ }
+}
+vector <int> factorize(int k) {
+	vector <int> ans;
+	while(k>1) {
+	    ans.push_back(sp[k]);
+	    k/=sp[k];
+	}
+	return ans;
+}
+</code></pre>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;这个就是让我有感而发的<a href="http://codeforces.com/blog/entry/7262">idea</a>，记录筛的时候每个数对应的最小质因子，从而实现反向的查找，就像我们在搜索的时候记录当前状态的父节点以便最终输出方案是寻根求缘的道理一样。这样的话，之前所说sqrt(x)/log(sqrt(x))+log(x)的分解复杂度就可以降到log(x)，效果拔群。当然，如果在记录sp[k]的时候同时记录k/sp[k]的话，相当于筛法多做n个除法，但是分解质因数的时候就无需除法；这个想法在讨论中有人提出，但楼中楼做出反驳，在我看来，既然优化分解复杂度就是想要处理海量的询问，那么记录k/sp[k]的效果应该还是可以有所体现的，毕竟除法的速度远比直接索引来的慢得多。        </p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;弱弱地说一句，v数组应该是可以省掉的。。。</p>
+		<li>TOBE程序猿</li>
+        <pre><code>代码略</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;我想，会有人还在写sqrt(x)+log(x)的做法的，如果你想的并不是只有单个询问的问题的话，那我只能说：大家都是这么走过来的。</p>
+        <li>筛法的优化</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;线性筛，类似于普通筛法，复杂度O(n)</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;代码是我随便找的，但是...真的很神...待修改...</p>
+        <pre><code>const int maxn1 = 100;
+int pri[maxn1], lpri, n, nxt[maxn1], to[maxn1];
+int q[maxn1], l;
+
+int main(){
+//     solve prime in o(n)
+	for(int i = 3; i < maxn1 - 2; i += 2) nxt[i] = i + 2;
+	for(int i = maxn1 - 1; i > 3; i -= 2) to[i] = i - 2;
+	to[3] = 2; nxt[2] = 3;
+	for(int i = 3; i * i < maxn1; i = nxt[i]){
+		l = 0;
+		for(int k = i; k * i < maxn1 ; k = nxt[k]) 
+     			q[l++] = k * i;
+		for(int k = 0; k < l; k++){
+			to[nxt[q[k]]] = to[q[k]];
+			nxt[to[q[k]]] = nxt[q[k]];	  
+		}
+	}
+	for(int i = 2; i; i = nxt[i]) pri[lpri++] = i;
+	printf("%d", lpri);
+
+	return 0;
+}</code></pre>
+        <li>求所有因数</li>
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;正常大小的数因数不会很多，最无损于效率的暴力做法应该是先求出质因数分解结果，然后dfs枚举所有的组合。</p>
+         <pre><code>代码待补</code></pre>
+      </section>
+      <!-- InstanceEndEditable -->
+      <footer>
+        <p><img src="../pics/foot3.jpg" alt="" width="232" height="167" usemap="#Map"/>
+          <map name="Map">
+            <area shape="poly" coords="50,17" href="#">
+            <area shape="rect" coords="46,-7,153,27" href="../archive.html" target="_self" alt="archive">
+            <area shape="rect" coords="152,61,224,97" href="../tags.html" target="_self" alt="tags">
+            <area shape="rect" coords="12,105,95,137" href="../about.html" target="_self" alt="about">
+          </map>
+        </p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+  
+  </body>
+<!-- InstanceEnd --></html>

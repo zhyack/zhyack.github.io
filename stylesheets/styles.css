@@ -55,9 +55,9 @@
 }
 
 body {
-  background-image:url(../pics/night.jpg);
+  background-image:url(../pics/night.png);
   filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
-   background-size:100% 100%;
+   background-size:100%;
   background-color: #fff;
 
   padding:50px;
@@ -125,13 +125,12 @@ blockquote {
 
 code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-  color:#c0c;
+  color:#68F406;
   font-size:12px;
 }
 
 pre {
   padding:8px 15px;
-  background: #f8f8f8;
   border-radius:5px;
   border:1px solid #e5e5e5;
   overflow-x: auto;
@@ -251,6 +250,9 @@ footer {
   bottom:30px;
   -webkit-font-smoothing:subpixel-antialiased;
 }
+.wrapper section p {
+}
+
 
 @media print, screen and (max-width: 960px) {
 
@@ -301,7 +303,8 @@ footer {
   }
 
   pre, code {
-    word-wrap:normal;
+	word-wrap: normal;
+	color: #68F406;
   }
 }
 
