@@ -55,7 +55,7 @@
 }
 
 body {
-  background-image:url(../pics/night.png);
+  background-image:url(../pics/night.jpg);
   filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
    background-size:100%;
   background-color: #fff;
