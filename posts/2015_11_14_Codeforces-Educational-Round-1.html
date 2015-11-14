@@ -52,9 +52,9 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：算是比较直白的dp吧。横着掰有n-1种方式{(1,n-1),(2,n-2),...,(n-1,1)}，竖着掰有m-1中方式。对于每种方式，又要考虑掰出来的第一块里最终我想要多大面积的巧克力。即：设dp[i][j][k]表示i*j的巧克力，想要掰出面积k的，最少需要的体力，那么状态转移方程：</p>
         <pre><code>dp[i][j][k] = min{dp[ni][j][lk]+dp[i-ni][j][k-lk]+j*j,
                   dp[i][nj][lk]+dp[i][j-nj][k-lk]+i*i}
-              (ni=[1..i],nj=[1..j],lk=[1..k])</code></pre>
+              (ni=[1..i),nj=[1..j),lk=[0..k])</code></pre>
         
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;由于n,m<=30，k小于<=50,整体复杂度是O(n*m*k*(n+m)*k),掐指一算，感觉是要爆炸呀！考虑到对称性，dp(i,j,k)和dp(j,i,k)并没有什么区别，所以可以剩下一半时间，dp(ni,j,lk)+dp(i-ni,j,k-lk)和dp(t,j,tk)+dp(i-t,j,k-tk),t = i-ni,k = k-lk时并没有区别，所以又可以省下一半时间，这样时间是10^7级别，还可以接受。最后就是询问很多，状态有限30*30*50，预处理(打表)即可。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;由于n,m<=30，k小于<=50,整体复杂度是O(n*m*k*(n+m)*k),掐指一算，感觉是要爆炸呀！考虑到对称性，dp(i,j,k)和dp(j,i,k)并没有什么区别，所以可以省下一半时间，dp(ni,j,lk)+dp(i-ni,j,k-lk)和dp(t,j,tk)+dp(i-t,j,k-tk),t = i-ni,tk = k-lk时并没有区别，所以又可以省下一半时间，这样时间是10^7级别，还可以接受。最后就是询问很多，状态有限30*30*50，预处理(打表)即可。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598E.cpp">code</a> ps:其实不考虑对称，直接写的话貌似也没有爆炸，CF的评测机神速...</p>
         <li><h2><a href="http://codeforces.com/contest/598/problem/F">&nbsp;598F</a>        </h2>
         </li>
