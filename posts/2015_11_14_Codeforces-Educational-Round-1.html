@@ -1,0 +1,81 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog</title>
+    <!-- InstanceEndEditable -->
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="../index.html" target="_self"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zhy's Blog~</a></h1>
+        <a href="../index.html"><img src = "../pics/Profile.png" width="232" height="227"></a>
+
+
+        <p class="view"><a href="https://github.com/zhyack">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View My GitHub Profile</a></p>
+
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+        <h1><a id="recent-work/study-links" class="anchor" href="#Recent Work/Study Sites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Codeforces Educational Round #1</h1>
+        <li><a href = "http://codeforces.com/contest/598">contest link</a></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;CF的第一场“传道赛”，unrated。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题目整体偏简单，无奈计算几何霸屏，最终还是死在计算几何上。</p>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/A">&nbsp;598A</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：∑(1..n) - ∑(2^(1..k))*2，其中2^k&lt;=n&lt;=10^9;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：很直白，直接求就行了，枚举算出k，然后求和公式n*(n+1)/2以及等比数列公式2^k-1。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598A.cpp">code</a></p>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/B">&nbsp;598B</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给定一个字符串，长度不超过10000，若干操作，把位于[li,ri]的子串循环右移k位，求最终的串。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：暴力模拟，没什么好说的。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598B.cpp">code</a></p>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/C">&nbsp;598C</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给出若干平面向量，求它们之中夹角最小的两个。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：极角排序，然后相邻的向量算夹角比较。极角排序可以用atan2(x,y)直接比较，也可以用向量叉积来判断顺逆来做，但是向量叉积要记得特殊情况——叉积为0的讨论。需要注意的是如果按atan2算出的角度来比较角的大小的话，误差较大，被hack的人不少，应该按cos值来比较角度大小。这可以种计算几何都写不出来了，我是该补补计算几何了...</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598C.cpp">code</a></p>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/D">&nbsp;598D</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：迷宫，'.'可以通行，'*'不能通行，表示墙体。若干询问，求给定起点，最多可以看到多少面墙。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：dfs，bfs均可。当然传道点在于预处理，相互连通的点的结果是一样的，所以可以算出每个块的答案，面对询问的时候知道属于哪个块就行了。在一次搜索中便可以遍历这些点，我的做法是打上了标记，也可以用并查集。这种题目的代码千篇一律，个人觉得自己代码风格还可以，见链接。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598D.cpp">code</a></p>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/E">&nbsp;598E</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：对于一块n*m的巧克力，横着掰耗费体力m*m，竖着掰耗费体力n*n，如果要掰出面积为k的巧克力（不必是一整块），需要最少的体力是多少。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：算是比较直白的dp吧。横着掰有n-1种方式{(1,n-1),(2,n-2),...,(n-1,1)}，竖着掰有m-1中方式。对于每种方式，又要考虑掰出来的第一块里最终我想要多大面积的巧克力。即：设dp[i][j][k]表示i*j的巧克力，想要掰出面积k的，最少需要的体力，那么状态转移方程：</p>
+        <pre><code>dp[i][j][k] = min{dp[ni][j][lk]+dp[i-ni][j][k-lk]+j*j,
+                  dp[i][nj][lk]+dp[i][j-nj][k-lk]+i*i}
+              (ni=[1..i],nj=[1..j],lk=[1..k])</code></pre>
+        
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;由于n,m<=30，k小于<=50,整体复杂度是O(n*m*k*(n+m)*k),掐指一算，感觉是要爆炸呀！考虑到对称性，dp(i,j,k)和dp(j,i,k)并没有什么区别，所以可以剩下一半时间，dp(ni,j,lk)+dp(i-ni,j,k-lk)和dp(t,j,tk)+dp(i-t,j,k-tk),t = i-ni,k = k-lk时并没有区别，所以又可以省下一半时间，这样时间是10^7级别，还可以接受。最后就是询问很多，状态有限30*30*50，预处理(打表)即可。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598E.cpp">code</a> ps:其实不考虑对称，直接写的话貌似也没有爆炸，CF的评测机神速...</p>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/F">&nbsp;598F</a>        </h2>
+        </li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：求直线在多边形内部的面积。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：计算几何。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;code暂无，AC的人极少，原因暂时未知。</p>
+
+      </section>
+      <!-- InstanceEndEditable -->
+      <footer>
+        <p><img src="../pics/foot.jpg" alt="" width="232" height="167" usemap="#Map"/>
+          <map name="Map">
+            <area shape="poly" coords="50,17" href="#">
+            <area shape="rect" coords="46,-7,153,27" href="../archive.html" target="_self" alt="archive">
+            <area shape="rect" coords="152,61,224,97" href="../tags.html" target="_self" alt="tags">
+            <area shape="rect" coords="12,105,95,137" href="../about.html" target="_self" alt="about">
+          </map>
+        </p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+  
+  </body>
+<!-- InstanceEnd --></html>
