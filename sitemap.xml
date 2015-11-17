@@ -5,6 +5,9 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url><loc>http://zhyack.github.io/</loc></url>
 <url><loc>http://zhyack.github.io/index.html</loc></url>
+<url><loc>http://zhyack.github.io/about.html</loc></url>
+<url><loc>http://zhyack.github.io/archive.html</loc></url>
+<url><loc>http://zhyack.github.io/categories.html</loc></url>
 <url><loc>http://zhyack.github.io/posts/2015_11_16_Codeforces-Round-331.html</loc></url>
 <url><loc>http://zhyack.github.io/posts/2015_11_14_Codeforces-Educational-Round-1.html</loc></url>
 <url><loc>http://zhyack.github.io/posts/2015_11_13_Prime-Factorization.html</loc></url>
