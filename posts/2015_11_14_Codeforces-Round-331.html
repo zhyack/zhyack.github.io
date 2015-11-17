@@ -1,0 +1,112 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Round #331 (Div. 2)</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="../index.html" target="_self"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zhy's Blog~</a></h1>
+        <a href="../index.html"><img src = "../pics/Profile.jpg" width="232" height="227"></a>
+
+
+        <p class="view"><a href="https://github.com/zhyack">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View My GitHub Profile</a></p>
+
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+        <h1>Codeforces Round #331 (Div. 2)</h1>
+        <li><a href="http://codeforces.com/contest/596">contest link</a></li>
+        <p>&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;CF#331，Virtual participation，整体难度一般，题目描述略难懂，出题人叫<a href="http://codeforces.com/profile/numbertheorist17" title="Candidate Master numbertheorist17">numbertheorist17</a>，然而题目里并没有数论...</p>
+          <li>
+            <h2><a href="http://codeforces.com/contest/596/problem/A">&nbsp;596A</a></h2>
+          </li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给出一个矩形的四个顶点中的若干个，求矩形面积。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：题目已经明确说明给出的点确实在一个矩形里，所以就不用判断究竟能不能构成一个矩形了。直接求出长和宽，也就是横纵坐标的极差。如果存在某个是0的情况，说明信息不足，求不出长或宽。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/596_Round%20%23331(Div.%202)/596A.cpp">code</a></p>
+          <li>
+            <h2><a href="http://codeforces.com/contest/596/problem/B">&nbsp;596B</a></h2>
+          </li>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：通过若干操作使全0数组a变成给定的数组b。操作规则：每次使[a(i),a(i+1),...,a(n)]+1或-1。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：从a[1]开始到a[n]，依次满足，算是贪心？证明：略。 </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "https://github.com/zhyack/Codeforces/blob/master/596_Round%20%23331(Div.%202)/596B.cpp">code</a></p>
+          <li>
+            <h2><a href="http://codeforces.com/contest/596/problem/C">&nbsp;596C</a></h2>
+          </li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给出若干点{(xi,yi)}，和值的序列{w(j)}，求出一个点与序列中的值一一对应关系。如(xi,yi)对应w(j)，则w(j) = yi-xi，且满足——对于所有点(x',y')，x'&gt;=xi,y'&gt;=yi，均满足(x',y')对应的w(j')&gt;=w(j)。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：题意相当别扭，多读几遍才会发现其实题目要求还是很简单——因为点(xi,yi)必须对应序列中一个值为yi-xi的数，所以对点集(按y-x的值)和序列(按w值)都从小到大排序，即可一一对应，之后只需再检查一遍一一对应的关系——是否符合题意的两个条件。需要注意的是点集排序的时候如果y-x值相同要按左下到右上来排，而序列排序的时候如果w值相同要按对应下标的大小来排序，这样才能处理好y-x相同的点的一一对应关系；此外，还要记得采用合适的手段记录序列的下标，以及按顺序输出答案。算是个构造题，方法简单，实现起来需要一些基本功。详见代码。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/596_Round%20%23331(Div.%202)/596C.cpp">code</a></p>
+        <li>
+            <h2><a href="http://codeforces.com/contest/596/problem/D">&nbsp;596D</a></h2>
+        </li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：要砍倒n棵高为h的在一条直线上不同位置的树。每次有50%概率从左端砍，50%从右端砍，一棵树倒下时有概率p往左倒，概率(1-p)往右倒，如果倒下碰到其他的树则引发多米诺骨牌效应。问：最终所有的树都倒下时地面被树覆盖的长度的期望值。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：概率dp，区间dp，记忆化搜索。需要注意的是，举个例子，当前计算的区间的左边的树向右边倒下，那么此时如果从当前区间的左端砍树向左倒下，覆盖的有效长度不一定是h，同理其他各种类似情况需要谨慎处理。设dp[l][r][dl][dr]表示区间[l,r]左边的树是否向右倒下(dl)，右边的树是否向左倒下(dr)的状态下能够覆盖地面的长度的期望值，方程如下：</p>
+        <pre><code>
+ll = x[l]-x[l-1]-(dl?h:0);//区间左边可用长度
+rr = x[r+1]-x[r]-(dr?h:0);//区间右边可用长度
+//砍左端往左倒
+dp[l][r][dl][dr] += 0.5*p*(min(h,ll)+dpit(l+1,r,0,dr));
+//砍左端往右倒
+//tr[l]表示l向右倒不能影响到tr[l]之后的树
+//tr[l]&gt;r就意味着要一下子向右倒完了
+if (tr[l] <= r) 
+		dp[l][r][dl][dr] += 0.5*(1-p)*
+			((x[tr[l]-1]-x[l]+h)+dpit(tr[l],r,1,dr));
+else 
+	dp[l][r][dl][dr] += 0.5*(1-p)*(x[r]-x[l]+min(h,rr));
+//砍右端往左倒
+//tl[r]表示r向左倒不能影响到tl[r]之前的树
+//tl[r]&lt;l就意味着要一下子向左倒完了
+if (tl[r] >= l) 
+		dp[l][r][dl][dr] += 0.5*p*
+			((x[r]-x[tl[r]+1]+h)+dpit(l,tl[r],dl,1));
+else dp[l][r][dl][dr] += 0.5*p*(x[r]-x[l]+min(h,ll));
+//砍右端往右倒
+dp[l][r][dl][dr] += 0.5*(1-p)*(min(h,rr)+dpit(l,r-1,dl,0));</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;方程需要仔细推敲，tl，tr是预处理出来的，此外还要注意边界情况，如l == r会导出l &gt; r的状态，详见代码。</p>        
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;整体用记忆化搜索实现，因为并不是所有[l,r] 1&lt;=l,r&lt;=2000，都是需要的状态，倒下的方式的固定的，也就是说状态矩阵中真正有用的状态是稀疏的，因此使用记忆化搜索。鉴于稳定的状态最多也就n*(n+1)/2个(l&lt;=r)，所以复杂度是O(n^2)的。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/596_Round%20%23331(Div.%202)/596D.cpp">code</a></p>
+          <li>
+            <h2><a href="http://codeforces.com/contest/596/problem/E">&nbsp;596E</a></h2>
+          </li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;code</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      </section>
+      <!-- InstanceEndEditable -->
+      <footer>
+        <p><img src="../pics/foot.jpg" alt="" width="232" height="167" usemap="#Map"/>
+          <map name="Map">
+            <area shape="poly" coords="50,17" href="#">
+            <area shape="rect" coords="36,2,153,45" href="../archive.html" target="_self" alt="archive">
+            <area shape="rect" coords="89,63,229,106" href="../categories.html" target="_self" alt="tags">
+            <area shape="rect" coords="2,112,99,157" href="../about.html" target="_self" alt="about">
+          </map>
+        </p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+  
+  </body>
+<!-- InstanceEnd --></html>
