@@ -33,23 +33,27 @@
         <li><a href = "http://codeforces.com/contest/598">contest link</a></li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;CF的第一场“传道赛”，unrated。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题目整体偏简单，无奈计算几何霸屏，最终还是死在计算几何上。</p>
-        <li><h2><a href="http://codeforces.com/contest/598/problem/A">&nbsp;598A</a></h2></li>
+        <li>
+          <h2><a href="http://codeforces.com/contest/598/problem/A">&nbsp;598A-Tricky Sum</a></h2>
+        </li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：∑(1..n) - ∑(2^(1..k))*2，其中2^k&lt;=n&lt;2^(k+1)</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：很直白，直接求就行了，枚举算出k，然后求和公式n*(n+1)/2以及等比数列公式2^(k+1)-1。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598A.cpp">code</a></p>
-        <li><h2><a href="http://codeforces.com/contest/598/problem/B">&nbsp;598B</a></h2></li>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/B">&nbsp;598B-Queries on a String</a></h2></li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给定一个字符串，长度不超过10000，若干操作，把位于[li,ri]的子串循环右移k位，求最终的串。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：暴力模拟，没什么好说的。        </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598B.cpp">code</a></p>
-        <li><h2><a href="http://codeforces.com/contest/598/problem/C">&nbsp;598C</a></h2></li>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/C">&nbsp;598C-Nearest vectors</a></h2></li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给出若干平面向量，求它们之中夹角最小的两个。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：极角排序，然后相邻的向量算夹角比较。极角排序可以用atan2(x,y)直接比较，也可以用向量叉积来判断顺逆来做，但是向量叉积要记得特殊情况——叉积为0的讨论。需要注意的是如果按向量cos值比较角的大小的话会因精度误差跪掉。当然被hack的人不少，大都是直接按atan2的值来直接比较的，但是用了double，也是跪在精度上，long double可破。这种计算几何，吾等弱渣果然是不可能做出来的...</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598C.cpp">code</a></p>
-        <li><h2><a href="http://codeforces.com/contest/598/problem/D">&nbsp;598D</a></h2></li>
+        <li>
+          <h2><a href="http://codeforces.com/contest/598/problem/D">&nbsp;598D-Igor In the Museum</a></h2></li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：迷宫，'.'可以通行，'*'不能通行，表示墙体。若干询问，求给定起点，最多可以看到多少面墙。        </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：dfs，bfs均可。当然传道点在于预处理，相互连通的点的结果是一样的，所以可以算出每个块的答案，面对询问的时候知道属于哪个块就行了。在一次搜索中便可以遍历这些点，我的做法是打上了标记，也可以用并查集。这种题目的代码千篇一律，个人觉得自己代码风格还可以，见链接。        </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598D.cpp">code</a></p>
-        <li><h2><a href="http://codeforces.com/contest/598/problem/E">&nbsp;598E</a></h2></li>
+        <li>
+          <h2><a href="http://codeforces.com/contest/598/problem/E">&nbsp;598E-Chocolate Bar</a></h2></li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：对于一块n*m的巧克力，横着掰耗费体力m*m，竖着掰耗费体力n*n，如果要掰出面积为k的巧克力（不必是一整块），需要最少的体力是多少。        </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：算是比较直白的dp吧。横着掰有n-1种方式{(1,n-1),(2,n-2),...,(n-1,1)}，竖着掰有m-1中方式。对于每种方式，又要考虑掰出来的第一块里最终我想要多大面积的巧克力。即：设dp[i][j][k]表示i*j的巧克力，想要掰出面积k的，最少需要的体力，那么状态转移方程：</p>
         <pre><code>dp[i][j][k] = min{dp[ni][j][lk]+dp[i-ni][j][k-lk]+j*j,
@@ -58,7 +62,7 @@
         
         <p>&nbsp;&nbsp;&nbsp;&nbsp;由于n,m<=30，k小于<=50,整体复杂度是O(n*m*k*(n+m)*k),掐指一算，由于i和ni的关系,k和lk的关系，常数大概是1/4，算出元计算次数大概是3*10^7，感觉很危险，但是本机上一跑其实还挺快，可能是元计算都是取min，比较简单吧。可以继续优化常数——考虑到对称性，dp(i,j,k)和dp(j,i,k)并没有什么区别，所以可以省下一半时间，dp(ni,j,lk)+dp(i-ni,j,k-lk)和dp(t,j,tk)+dp(i-t,j,k-tk),t = i-ni,tk = k-lk时并没有区别，所以又可以省下一半时间，这样时间是10^6~10^7级别，还可以接受。最后就是询问很多，状态有限30*30*50，预处理(打表)即可。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/598_Educational%20Round%231/598E.cpp">code</a> ps:CF的评测机更神速...</p>
-        <li><h2><a href="http://codeforces.com/contest/598/problem/F">&nbsp;598F</a>        </h2>
+        <li><h2><a href="http://codeforces.com/contest/598/problem/F">&nbsp;598F-Cut Length</a>        </h2>
         </li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：求直线在多边形内部的面积。        </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：计算几何，不会。</p>
