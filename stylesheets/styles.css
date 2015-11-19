@@ -247,7 +247,7 @@ footer {
   width:270px;
   float:left;
   position:fixed;
-  bottom:0px;
+  bottom:30px;
   -webkit-font-smoothing:subpixel-antialiased;
 }
 .wrapper section p {
