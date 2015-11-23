@@ -1,0 +1,121 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|使用Github Pages订制个人主页经验分享</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="../index.html" target="_self"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zhy's Blog~</a></h1>
+        <a href="../index.html"><img src = "../pics/Profile.jpg" width="232" height="227"></a>
+
+
+        <p class="view"><a href="https://github.com/zhyack">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View My GitHub Profile</a></p>
+
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+        <h1>使用Github Pages订制个人主页经验</h1>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;博主本人曾经用过新浪等平台的博客，但很快都弃坑了，总结起来就是——难以排版；页面老套，风格有限，难以订制；广告飞满天，阅读体验毫无。但如果自己开服订制个人主页，又存在服务器租用、配置、维护，域名购买等各种麻烦的事情，不适合我等小白实践。如果像我一样只是寻求一个平台简单地搭一个个人博客，乱发一些文章，欢迎围观我的实践经验，更欢迎和我分享不一样的经验。<a href="mailto:zhyack@126com">(Email Me)</a></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;这篇经验包含以下内容：</p>
+        <li>使用Github Pages创建主页</li>
+        <li>同步到Github以显示主页更新</li>
+        <li>订制主页风格与维护</li>
+        <li>向Google推送你的主页</li>
+        <p>&nbsp;</p>
+        <h3>使用Github Pages创建主页</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;首先，我们需要一个Github账号。在<a href="https://github.com/">这里</a>完成注册并登录，强烈建议username简短好记，因为这个将会影响到域名。密码最好也能简短一点，因为今后要频繁输入。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="../pics/github_signup.jpg" alt="" width="199" height="177"/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;登入之后，创建一个新的仓库(Repository)。</p>
+        <p><img src="../pics/creat_repo.jpg" alt="" width="434" height="282"/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;这个页面，只有Repository name是必须填写为 用户名.github.io 的。比如之前注册的时候用户名是example的话，现在就要填写为example.github.io，这也会是之后主页的域名。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;进入你创建的仓库，注意右侧红框。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;这个时候已经可以自主建站了。如果你有坚实的建站基础，可以自行提交网站内容；入门级/怕折腾的同学可以进行如下操作。</p>
+        <p><img src="../pics/repo.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;进入Settings，选择Launch automatic page generator，根据提示自动生成网站。有多个主题可选，博主本人使用的是Minimal这个主题。</p>
+        <p><img src="../pics/autopage.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;提交以后，可以在仓库中看到多了很多文件，如index.html。等待几分钟，在浏览器中输入主页的域名，即 用户名.github.io，即可看到刚刚选择的模板生成出来的主页。到此创建主页搞定。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;除了官方模板之外，还有<a href="https://github.com/jekyll/jekyll">Jekyll</a>模板可用，如果不想完全自己订制，使用这些模板是一个不错的选择，当然对于模板怎么使用，需要自己查阅相关文档。</p>
+        <h3>同步到Github以显示主页更新</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;当然，我们目前还不能切实地编辑什么。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在<a href="http://git-scm.com/download/">Git官网</a>上下载Git并安装。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在本地创建一个文件夹存放你github的仓库。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;通过Git控制台cd进入你的git文件夹。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;输入以下命令对Git进行配置：</p>
+        <pre><code>git config --global user.name "username"
+git config --global user.email "email"</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;其中username 和 email 是你的github账号对应的信息。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;使用git clone &lt;url&gt;命令将你远在github上的仓库同步到本地。其中&lt;url&gt;指的是你对应仓库下提供的链接，如图红框。</p>
+        <p><img src="../pics/repo.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;比如，我将仓库克隆的本地的命令：</p>
+        <pre><code>git clone https://github.com/zhyack/zhyack.github.io.git</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;这样，你的整个仓库都搬到了本地，可以随意编辑。        当然，本地的编辑是不会实时同步到github的。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;当你对本地做了一定的修改，想同步到github上通过主页显示出来的时候，打开Git控制台，cd到仓库根目录，依次输入以下命令：</p>
+        <pre><code>git add .
+git commit -m &quot;info&quot;
+git push origin master</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;其中，info是你为当前版本提供的注释（提示信息），三条命令过后会弹出对话框要求你输入github的账号密码，几秒之后github上的仓库即可更新，一分钟左右主页上即可体现更新内容。        </p>
+        <h3>订制主页风格与维护</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在此模块中分享一些个人风格订制的一些经验，不断更新中...        </p>
+        <li>个性字体</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在各种模板的css文件里，大都指定其使用的字体，如：</p>
+        <p><img src="../pics/fonts.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;如果对应目录里并没有相应字体文件（文件名大小写敏感），则会使用系统默认字体。初看不明显，但是会对网页内容的爬取造成很大影响。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;对于博主本人使用的Minimal模板，并没有提供fonts文件，需要自行创建，本人从谷歌官方字体中淘来Noto-Sans系列字体并加以转换，形成可用的字体文件，诸位可到我的<a href="https://github.com/zhyack/zhyack.github.io">仓库</a>中提取。</p>
+        <li>标签栏/收藏夹小图标</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="../pics/icon.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;虽然比较细节，但希望是各位强迫症患者的福音。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;首先，找到你喜欢的图片，在网上搜到工具将其转化成ico文件。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;然后，在你的网页代码头部&lt;head&gt;标签中添加：</p>
+        <pre><code> </code>&lt;link rel=&quot;shortcut icon&quot; href=&quot;../pics/favicon.ico&quot;/&gt;<br>	&lt;link rel=&quot;bookmark&quot; href=&quot;../pics/favicon.ico&quot;/&gt;</pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;其中href指向你的ico文件保存的路径。</p>
+        <li>404页面订制</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;Github Pages的404页面制作很简单，只需自己创建一个html文件制作，然后命名为404.html，并放在仓库根目录下就好了。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;需要注意的是404页面的寻址(各种链接的路径)方式和其他页面的不同，其他页面均可用../表示根目录，而404页面不可，其中一种解决方法是将404页面的路径全部替换为网络路径，如https://zhyack.github.io/...</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;参见：<a href="https://zhyack.github.io/404.html">404 Not Found</a></p>
+        <li>待续...</li>
+        <h3>向Google推送你的主页</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;使用Github Pages搭建的主页并不能被百度爬取！！！百度不到你的Github博客，并不是因为你的主页排名不靠前，而是        github屏蔽了百度的爬虫。        如果真的想在百度上展示你的博客，github之外的服务器是必须的，具体方法自行搜索。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;虽然github允许google爬取其内容，但新的网站没有任何外部链接，很难得到google爬虫的临幸。这个时候需要我们自己做一些工作向谷歌推送我们的网站。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;使用google的<a href="https://www.google.com/webmasters/">Webmaster</a>，需要注册一个谷歌邮箱，然后根据提示加入自己的博客地址，这些步骤略过，只需按提示操作即可，最终站点根目录中会加入以下两个文件：</p>
+        <p><img src="../pics/google_file.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;其中，sitemap文件的创建可以自行搜索相应工具实现。</p>
+        <p>&nbsp;&nbsp;&nbsp;相信各位看官都可以自行完成添加站点。提交sitemap一天后，应该就可以google到自己博客的相关页面，如不能，请详细阅读相关提示（爬取错误等）。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;唯一需要提的一点，就是等待google的robot爬取自己的页面会很慢，往往需要很久才能显示，目前观察到的爬取周期是一天；所以比较好的做法是自行推送——每次更新文章后，记得添加到sitemap，然后在Webmaster中找到Google抓取方式一栏，输入想要手动推送的页面地址，抓取并呈现，然后提交至索引，即可很快看到相关页面已经可以被google搜索到了。</p>
+        <p><img src="../pics/webmaster.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;如果提交至索引时显示部分完成，则很有可能仍然google不到你的页面，那就是因为网站页面中存在错误(如404错误)，不能被索引。比如，我上图中出现的问题就是Minimal模板的fonts文件不存在，导致文本都识别不出来。错误详情可以点击查看。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;其他使用细节有待各位自行体验了~</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        
+
+      </section>
+      <!-- InstanceEndEditable -->
+      <footer>
+        <p><img src="../pics/foot.jpg" alt="" width="232" height="167" usemap="#Map"/>
+          <map name="Map">
+            <area shape="poly" coords="50,17" href="#">
+            <area shape="rect" coords="36,2,153,45" href="../archive.html" target="_self" alt="archive">
+            <area shape="rect" coords="89,63,229,106" href="../categories.html" target="_self" alt="tags">
+            <area shape="rect" coords="2,112,99,157" href="../about.html" target="_self" alt="about">
+          </map>
+        </p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+  
+  </body>
+<!-- InstanceEnd --></html>
