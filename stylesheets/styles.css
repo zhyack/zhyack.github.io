@@ -66,6 +66,8 @@ body {
   font-weight:400;
 }
 
+
+
 h1, h2, h3, h4, h5, h6 {
   color:#222;
   margin:0 0 20px;
@@ -98,7 +100,8 @@ a {
 }
 
 a:hover {
-  color:#069;
+	color: #069;
+	font-weight: 400;
 }
 
 a small {
@@ -137,8 +140,9 @@ pre {
 }
 
 table {
-  width:100%;
-  border-collapse:collapse;
+	width: 100%;
+	font-weight: 400;
+	font-size: 24px;
 }
 
 th, td {
@@ -161,7 +165,7 @@ img {
 }
 
 header {
-  width:270px;
+  width:225px;
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
@@ -227,7 +231,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:550px;
   float:right;
   padding-bottom:50px;
 }
@@ -328,4 +332,26 @@ footer {
     font-size:12pt;
     color:#444;
   }
+}
+
+.topiccenter{
+	font-family:"Noto Sans Bold Italic";
+	color: #8000ff;
+	font-size: 20px;
+	text-align: center;
+	font-weight:700;
+}
+.topicleft{
+	font-family:"Noto Sans Bold Italic";
+	color:#8000ff;
+	font-size:20px;
+	text-align:left;
+	font-weight:700;
+}
+.topicright{
+	font-family:"Noto Sans Bold Italic";
+	color:#8000ff;
+	font-size:20px;
+	text-align:right;
+	font-weight:700;
 }
