@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>zhy's blog|使用Github Pages订制个人主页经验分享</title>
+    <title>zhy's blog|使用Github Pages定制个人主页经验分享</title>
     <!-- InstanceEndEditable -->
     <link rel="shortcut icon" href="../pics/favicon.ico"/>
 	<link rel="bookmark" href="../pics/favicon.ico"/>
@@ -29,12 +29,12 @@
       </header>
       <!-- InstanceBeginEditable name="EditArea" -->
       <section>
-        <h1>使用Github Pages订制个人主页经验</h1>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;博主本人曾经用过新浪等平台的博客，但很快都弃坑了，总结起来就是——难以排版；页面老套，风格有限，难以订制；广告飞满天，阅读体验毫无。但如果自己开服订制个人主页，又存在服务器租用、配置、维护，域名购买等各种麻烦的事情，不适合我等小白实践。如果像我一样只是寻求一个平台简单地搭一个个人博客，乱发一些文章，欢迎围观我的实践经验，更欢迎和我分享不一样的经验。<a href="mailto:zhyack@126com">(Email Me)</a></p>
+        <h1>使用Github Pages定制个人主页经验</h1>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;博主本人曾经用过新浪等平台的博客，但很快都弃坑了，总结起来就是——难以排版；页面老套，风格有限，难以定制；广告飞满天，阅读体验毫无。但如果自己开服定制个人主页，又存在服务器租用、配置、维护，域名购买等各种麻烦的事情，不适合我等小白实践。如果像我一样只是寻求一个平台简单地搭一个个人博客，乱发一些文章，欢迎围观我的实践经验，更欢迎和我分享不一样的经验。<a href="mailto:zhyack@126com">(Email Me)</a></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;这篇经验包含以下内容：</p>
         <li>使用Github Pages创建主页</li>
         <li>同步到Github以显示主页更新</li>
-        <li>订制主页风格与维护</li>
+        <li>定制主页风格与维护</li>
         <li>向Google推送你的主页</li>
         <p>&nbsp;</p>
         <h3>使用Github Pages创建主页</h3>
@@ -49,7 +49,7 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp;进入Settings，选择Launch automatic page generator，根据提示自动生成网站。有多个主题可选，博主本人使用的是Minimal这个主题。</p>
         <p><img src="../pics/autopage.jpg" alt=""/></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;提交以后，可以在仓库中看到多了很多文件，如index.html。等待几分钟，在浏览器中输入主页的域名，即 用户名.github.io，即可看到刚刚选择的模板生成出来的主页。到此创建主页搞定。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;除了官方模板之外，还有<a href="https://github.com/jekyll/jekyll">Jekyll</a>模板可用，如果不想完全自己订制，使用这些模板是一个不错的选择，当然对于模板怎么使用，需要自己查阅相关文档。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;除了官方模板之外，还有<a href="https://github.com/jekyll/jekyll">Jekyll</a>模板可用，如果不想完全自己定制，使用这些模板是一个不错的选择，当然对于模板怎么使用，需要自己查阅相关文档。</p>
         <h3>同步到Github以显示主页更新</h3>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;当然，我们目前还不能切实地编辑什么。        </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;在<a href="http://git-scm.com/download/">Git官网</a>上下载Git并安装。</p>
@@ -69,8 +69,8 @@ git config --global user.email "email"</code></pre>
 git commit -m &quot;info&quot;
 git push origin master</code></pre>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;其中，info是你为当前版本提供的注释（提示信息），三条命令过后会弹出对话框要求你输入github的账号密码，几秒之后github上的仓库即可更新，一分钟左右主页上即可体现更新内容。        </p>
-        <h3>订制主页风格与维护</h3>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;在此模块中分享一些个人风格订制的一些经验，不断更新中...        </p>
+        <h3>定制主页风格与维护</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在此模块中分享一些个人风格定制的一些经验，不断更新中...        </p>
         <li>个性字体</li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;在各种模板的css文件里，大都指定其使用的字体，如：</p>
         <p><img src="../pics/fonts.jpg" alt=""/></p>
@@ -83,7 +83,7 @@ git push origin master</code></pre>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;然后，在你的网页代码头部&lt;head&gt;标签中添加：</p>
         <pre><code> </code>&lt;link rel=&quot;shortcut icon&quot; href=&quot;../pics/favicon.ico&quot;/&gt;<br>	&lt;link rel=&quot;bookmark&quot; href=&quot;../pics/favicon.ico&quot;/&gt;</pre>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;其中href指向你的ico文件保存的路径。</p>
-        <li>404页面订制</li>
+        <li>404页面定制</li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;Github Pages的404页面制作很简单，只需自己创建一个html文件制作，然后命名为404.html，并放在仓库根目录下就好了。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;需要注意的是404页面的寻址(各种链接的路径)方式和其他页面的不同，其他页面均可用../表示根目录，而404页面不可，其中一种解决方法是将404页面的路径全部替换为网络路径，如https://zhyack.github.io/...</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;参见：<a href="https://zhyack.github.io/404.html">404 Not Found</a></p>
