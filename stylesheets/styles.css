@@ -335,23 +335,9 @@ footer {
 }
 
 .topiccenter{
-	font-family:"Noto Sans Bold Italic";
+	font-family:"Noto Sans";
 	color: #8000ff;
-	font-size: 20px;
+	font-size: 26px;
 	text-align: center;
-	font-weight:700;
-}
-.topicleft{
-	font-family:"Noto Sans Bold Italic";
-	color:#8000ff;
-	font-size:20px;
-	text-align:left;
-	font-weight:700;
-}
-.topicright{
-	font-family:"Noto Sans Bold Italic";
-	color:#8000ff;
-	font-size:20px;
-	text-align:right;
 	font-weight:700;
 }

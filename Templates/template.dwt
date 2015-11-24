@@ -31,9 +31,9 @@
             <tr>
               <td height="150">
               <a href="../archive.html"><div class="topiccenter">Archive</div></a>
-              <a href="../categories.html"><div class="topicright">Categories</div></a>
-              <a href="../about.html"><div class="topicleft">About</div></a>
-              <div><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
               </td>  
             </tr>
           </tbody>
@@ -43,17 +43,21 @@
       <!-- TemplateBeginEditable name="EditArea" -->
       <section>
         <h1>Recent Work</h1>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <li></li>
+        <pre><code></code></pre>
       </section>
       <!-- TemplateEndEditable -->
     </div>
