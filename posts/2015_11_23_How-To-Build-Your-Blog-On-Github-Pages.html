@@ -20,8 +20,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 align="center"><a href="../index.html" target="_self">Zhy's Blog~</a></h1>
-        <p align="center"><a href="../index.html"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+        <h1 align="center"><a href="../" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="../"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
 
 
         <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
@@ -100,7 +100,23 @@ git push origin master</code></pre>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;Github Pages的404页面制作很简单，只需自己创建一个html文件制作，然后命名为404.html，并放在仓库根目录下就好了。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;需要注意的是404页面的寻址(各种链接的路径)方式和其他页面的不同，其他页面均可用../表示根目录，而404页面不可，其中一种解决方法是将404页面的路径全部替换为网络路径，如https://zhyack.github.io/...</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;参见：<a href="https://zhyack.github.io/404.html">404 Not Found</a></p>
+        <li>添加站长统计</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;推荐<a href="http://www.cnzz.com/">CNZZ</a>的吧，统计的数据基本没有缺漏，而且还有各种形式的数据分析，添加到站点上也很容易。 </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;登陆到<a href="http://www.cnzz.com/">CNZZ</a>创建账号并按提示添加站点，CNZZ便会提供给你一系列站长统计的代码，复制粘贴到html页面body内容结束前的任一位置均可，生成的页面上就会出现相应的小图标（比如本站的左下角）或文字链接，只有添加上这些代码的页面才会有统计信息。注意生成的代码是唯一的，不要在网上粘贴别人的代码。</p>
+        <li>添加评论功能</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;和站长统计添加的方式差不多，推荐<a href="https://disqus.com/">Disqus</a><a href="https://disqus.com/"></a>。同样是注册账号，根据提示操作生成代码并粘贴到网页相应位置。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;需要提醒的是，生成代码的页面很难找，在右下角灰色的链接：</p>
+        <p><img src="../pics/disqus.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;点击这个链接，然后Start Using Engage，把站点信息填好之后，找到Installing Disqus，平台选择Universal的：</p>
+        <p><img src="../pics/disqus_platform.jpg" alt=""/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;之后可以在<a href="https://disqus.com/admin/">这个页面</a>管理你的网站评论功能。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;还需要提醒的是，IE浏览器打不开disqus的一些页面，最好用Google内核的浏览器；尝试在本地预览评论功能的效果是徒劳的，上传到Github上在网页上显示才会加载出来评论模块。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;Disqus效果做的很棒；记得在设置里设置允许访客评论的功能，这样大家就不必为了简单问个问题或者褒贬一下而麻烦去注册disqus账号了。</p>
+        <li>站内图片处理</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;个性化设置，添加了大量图片？网页打开相当慢？多图预警？</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;首先jpg格式的图片普遍压缩效果比较好；如果有进一步需要，推荐<a href="http://www.tuhaokuai.com/">图好快</a>，简单实用的在线图片压缩网站，质量损失较小，图片压缩效果明显。选择普通+缩放100%即可达到很好效果。</p>
         <li>待续...</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <h3>向Google推送你的主页</h3>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;使用Github Pages搭建的主页并不能被百度爬取！！！百度不到你的Github博客，并不是因为你的主页排名不靠前，而是        github屏蔽了百度的爬虫。        如果真的想在百度上展示你的博客，github之外的服务器是必须的，具体方法自行搜索。        </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;虽然github允许google爬取其内容，但新的网站没有任何外部链接，很难得到google爬虫的临幸。这个时候需要我们自己做一些工作向谷歌推送我们的网站。        </p>
