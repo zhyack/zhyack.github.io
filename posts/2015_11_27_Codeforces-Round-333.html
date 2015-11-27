@@ -1,0 +1,132 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Round #333</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="../" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="../"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+        <h1>Codeforces Round #333</h1>
+        <ul>
+          <li><a href="http://codeforces.com/contest/602">contest link</a></li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;CF#333，Virtual participation，题目偏难，但质量很高，有时间要考虑把没做的题补一下...</p>
+        <ul>
+          <li>
+            <h2><a href="http://codeforces.com/contest/602/problem/A">&nbsp;602A-Two Bases</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给出两个进制下的两个数，比较大小。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：进制都转换到10进制即可。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/602_Round%20%23333(Div.%202)/602A.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href="http://codeforces.com/contest/602/problem/B">&nbsp;602B-Approximating a Constant Range</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：求一个序列里极差不超过1的连续子序列的最长长度。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：当然题目里给出了特殊条件，|<em>a</em><em>i</em> + 1 - <em>a</em><em>i</em>| ≤ 1还有<em>M</em> - <em>m</em> ≤ 1。使得可以使用比较针对的方法来做这道题，具体方法也比较简单，不必细说了。&nbsp;&nbsp;&nbsp;&nbsp;通用的算法应该是单调队列，当然维护单调队列的同时要记录队列中各项的对应位置以方便我们知道当前最长区间的左边界——从队列头弹出的项对应的下标+1。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "https://github.com/zhyack/Codeforces/blob/master/602_Round%20%23333(Div.%202)/602B.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href=http://codeforces.com/contest/602/problem/C>602C-The Two Routes</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：n个城镇，两两之间由公路/铁路连通，每条路径上的时间花费均为1，求从1号城镇出发，分别通过公路和铁路到达n号城镇，且中途不相遇的最短时间。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：竟然以为是N^2个状态的基于SPFA/BFS的DP，想了各种姿势都觉得要爆炸，结果突然发现——两两相通...相通...通...&nbsp;&nbsp;&nbsp;&nbsp;既然这样，也就是说1到n有一条边，不是铁路就是公路，如果1到n是铁路，那就是说铁路1小时就到了，根本不会和公路发生任何交集，这个时候只用求出1到n走公路的最短路即可；反之亦然。BFS/Dijkstra/SPFA甚至Floyd都可以做。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/602_Round%20%23333(Div.%202)/602C.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href="http://codeforces.com/contest/602/problem/D">&nbsp;602D-Lipshitz Sequence</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：难以概括，还是自行读题吧。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先，一个区间内的点对之间最大的斜率一定出自相邻的点对，具体参见下图，不做过多证明：</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这时可以转化为n-1个斜率的问题，每个斜率值的影响范围决定了它在最终的计算中共计算了多少次——比如样例1的(9,1)点对，也就是斜率为8，它的影响范围是向左4个斜率，向右6个斜率，如果没有区间[l,r]限制，它能影响的区间个数是4*6 = 24个，也就是说[l,r]=[1,n]的时候8这个数值要算24次。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进一步解释样例1的第二个query，[l,r] = [3,8]：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        斜率序列是[7 8 2 1 2]，所以：</p>
+        <pre><code>	  ans = 7*1*1 + 8*</code>2*4 + 2*1*3 + 1*1*1 + 2*2*1</pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        这样应该就比较清楚了，也就是 值*向左延伸个数*向右延伸个数，延伸的条件是延伸区间的值都小于等于当前值。 当然，对于值相同的时候，延伸还是不延伸是一个问题——考虑到不重不漏，可以采用值相同的时候只向左延伸或者只向右延伸。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这样的话，我们需要预处理出来每个值的影响区间，共需两遍扫描，一次从左向右，扫出右边界；一次从右向左，扫出左边界。具体实现要使用栈，每次压栈之前要去掉栈顶比当前值小的项，因为它们不再可能影响这个方向上以后的区间；被弹出的项要记录弹出时候扫描到的位置，即为其影响范围的边界，具体参见代码。当然这个处理可以针对每个query的区间来做，也可以全局做一遍，然后计算的时候考虑query的区间边界。我的代码是全局预处理的。        </p>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/602_Round%20%23333(Div.%202)/602D.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href="http://codeforces.com/contest/602/problem/E">&nbsp;602E-Kleofáš and the n-thlon</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;code</p>
+        <p>&nbsp;</p>
+      </section>
+      <!-- InstanceEndEditable -->    
+            <section>
+        <div id="disqus_thread"></div>
+        <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+      </section>  
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
