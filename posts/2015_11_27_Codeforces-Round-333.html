@@ -80,7 +80,7 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：难以概括，还是自行读题吧。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先，一个区间内的点对之间最大的斜率一定出自相邻的点对，具体参见下图，不做过多证明：</p>
-        <p>&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="../pics/CF333D.jpg" alt="" width="394" height="282"/></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这时可以转化为n-1个斜率的问题，每个斜率值的影响范围决定了它在最终的计算中共计算了多少次——比如样例1的(9,1)点对，也就是斜率为8，它的影响范围是向左4个斜率，向右6个斜率，如果没有区间[l,r]限制，它能影响的区间个数是4*6 = 24个，也就是说[l,r]=[1,n]的时候8这个数值要算24次。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进一步解释样例1的第二个query，[l,r] = [3,8]：</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
