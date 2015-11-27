@@ -16,7 +16,7 @@
     <![endif]-->
     <script type="text/javascript">
 		var targetProtocol = "https:";
-		if (window.location.protocol != targetProtocol)
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
 		 window.location.href = targetProtocol +
 		 window.location.href.substring(window.location.protocol.length);
 	</script>
@@ -122,6 +122,14 @@ git push origin master</code></pre>
         <li>站内图片处理</li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;个性化设置，添加了大量图片？网页打开相当慢？多图预警？</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;首先jpg格式的图片普遍压缩效果比较好；如果有进一步需要，推荐<a href="http://www.tuhaokuai.com/">图好快</a>，简单实用的在线图片压缩网站，质量损失较小，图片压缩效果明显。选择普通+缩放100%即可达到很好效果。</p>
+        <li>协议统一</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;搭建博客一段时间之后发现使用各种工具都会面临协议不统一导致的各种问题。如Google Webmaster上会把http协议的和https协议的网页当作不同的页面，disqus甚至会把'http://../index.html'，'http://../'，'https://../index.html'，'https://../'这些全都作为不同的页面，其中最主要的问题还是http和https的问题，导致通过不同协议浏览你的博客的人看到的评论是不同的...处理这个问题的方式也比较简单——当这个页面被http协议访问时，强制重定向为https协议即可。这个功能使用js即可实现。将下面的代码粘贴到所有页面的head标签中即可。</p>
+        <pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+	var targetProtocol = &quot;https:&quot;;
+	if (window.location.protocol != &quot;file:&quot; &amp;&amp; window.location.protocol != targetProtocol
+	window.location.href = targetProtocol + window.location.href.substring(window.location.protocol.length);
+&lt;/script&gt;        </pre>
         <li>待续...</li>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <h3>向Google推送你的主页</h3>
