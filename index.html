@@ -14,6 +14,13 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != targetProtocol)
+		 window.location.href = targetProtocol +
+		 window.location.href.substring(window.location.protocol.length);
+	</script>
+
   <!-- InstanceBeginEditable name="head" -->
   <!-- InstanceEndEditable -->
 </head>
@@ -70,17 +77,16 @@
         
       </section>
       <!-- InstanceEndEditable -->
-	  <!-- InstanceBeginEditable name="disqus" -->
-      <section>
-        <div id="disqus_thread"></div>
-        <script>
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
         /**
         * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
         * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
         */
         var disqus_config = function () {
-        this.page.url = 'https://zhyack.github.io/'; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'https://zhyack.github.io/index.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
 		
         (function() { // DON'T EDIT BELOW THIS LINE
@@ -92,11 +98,11 @@
         (d.head || d.body).appendChild(s);
         })();
         </script>
-        <noscript>
-          Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-          </noscript>
-      </section>
-      <!-- InstanceEndEditable --></div>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
     <script src="javascripts/scale.fix.js"></script>
 </body>
 <!-- InstanceEnd --></html>
