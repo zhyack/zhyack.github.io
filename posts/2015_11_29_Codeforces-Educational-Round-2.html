@@ -1,0 +1,172 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Educational Round #2</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		 window.location.href = targetProtocol +
+		 window.location.href.substring(window.location.protocol.length);
+	</script>
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="../index.html" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="../index.html"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+        <h1>Codeforces Educational Round #2</h1>
+        <li><a href = "http://codeforces.com/contest/600">contest link</a></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;CF的第二场“Hacker大赛”，被Hack两发，华丽落榜，unrated。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题目整体还是简单基础，计算几何又来虐精度刷存在感...水题无爱，计算几何无爱，重点说说E题。</p>
+        <li>
+          <h2><a href="http://codeforces.com/contest/600/problem/A">&nbsp;600A-Extract Numbers</a></h2>
+        </li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：分离出字符串中的非负整数，非负整数的定义是</p>
+        <pre><code>0|[1..9][0..9]*</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：简单自动机的实现。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/600_Educational%20Round%232/600A.cpp">code</a></p>
+        <li><h2><a href="http://codeforces.com/contest/600/problem/B">&nbsp;600B-Queries about less or equal elements</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：找到序列中小于等于某数的项的个数。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：C++ STL的 <a href="http://www.cplusplus.com/reference/algorithm/upper_bound/">upper_bound()</a>，注意upper_bound返回的是一个对应位置的指针，减去数组的指针得到下标。用二分自己实现也很简单。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "https://github.com/zhyack/Codeforces/blob/master/600_Educational%20Round%232/600B.cpp">code</a></p>
+        <li><h2><a href="http://codeforces.com/contest/600/problem/C">&nbsp;600C-Make Palindrome</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：给出一些字符，求修改最少的字符使之可以形成回文串，且回文串尽量字典序最小的方案。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：因为都是小写字母，总共也就26个字符。统计所有字母出现个数，从a向z扫，如果某个字母是单数个，就从z向a找出第一个是单数的，后者修改为前者既是最佳方案。因为假如总共有k个字母的个数是奇数个，那么最少修改次数一定是k/2，这是显而易见的。然后把字典序较大的字符修改为尽可能小的也是贪心最优的。这题竟然错到了输出环节，被人Hack了一发，也是醉了...</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/600_Educational%20Round%232/600C.cpp">code</a></p>
+        <li>
+          <h2><a href="http://codeforces.com/contest/600/problem/D">&nbsp;600D-Area of Two Circles' Intersection</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：两圆交面积。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：中学数学...又是精度？官方<a href="http://codeforces.com/blog/entry/21827">Editorial</a>讲的挺好，不提了。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;code</p>
+        <li>
+          <h2><a href="http://codeforces.com/contest/600/problem/E">&nbsp;600E-Lomsat gelral</a></h2></li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：一棵树，每个节点都有一种颜色。一个节点的“主导色”定义为——这个节点为root的子树中，出现最多的颜色（如有多个，则为其和）。求每个节点的“主导色”。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先说说暴力的做法，复杂度是O(n^2*logn)的。应该一下子就能想到吧：</p>
+        <pre><code>
+ void dfs(int x){
+	visited[x] = true;
+	maxcnt[x] = 1;
+	ans[x] = c[x];
+	for (vector<int>::iterator it = edges[x].begin();it != edges[x].end();it++){
+		if (visited[*it]) continue;
+		int y = *it;
+		dfs(y);
+		int mx = mapnum[x], my = mapnum[y];
+		for (map&lt;int,int&gt;::iterator mit = mcnt[my].begin(); mit != mcnt[my].end(); mit++){
+			mcnt[mx][mit->first] += mit->second;
+			if (mcnt[mx][mit->first] > maxcnt[x]){
+				maxcnt[x] = mcnt[mx][mit->first];
+				ans[x] = mit->first;
+			}
+			else if (mcnt[mx][mit->first] == maxcnt[x]) ans[x] += mit->first;
+		}
+	}
+}       
+        </code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比赛的时候并没有想出来还能怎么优化，但看到题解感觉被亮瞎了。所谓的优化，只是在每次合并的时候遍历小的map，合并到较大的map，复杂度竟然就变成了O(n*logn*logn)。先上代码：</p>
+        <pre><code>
+void dfs(int x){
+	visited[x] = true;
+	maxcnt[x] = 1;
+	ans[x] = c[x];
+	for (vector<int>::iterator it = edges[x].begin();it != edges[x].end();it++){
+		if (visited[*it]) continue;
+		int y = *it;
+		dfs(y);
+//&lt;&lt;&lt;&lt;
+		if (mcnt[mapnum[x]].size() < mcnt[mapnum[y]].size())
+			swap(mapnum[x],mapnum[y]),ans[x] = ans[y],maxcnt[x] = maxcnt[y];
+//&gt;&gt;&gt;&gt;
+		int mx = mapnum[x], my = mapnum[y];
+		for (map&lt;int,int&gt;::iterator mit = mcnt[my].begin(); mit != mcnt[my].end(); mit++){
+			mcnt[mx][mit->first] += mit->second;
+			if (mcnt[mx][mit->first] > maxcnt[x]){
+				maxcnt[x] = mcnt[mx][mit->first];
+				ans[x] = mit->first;
+			}
+			else if (mcnt[mx][mit->first] == maxcnt[x]) ans[x] += mit->first;
+		}
+	}
+}
+        </code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先，实现方法上——思路很巧妙，map并没有固定到某一个节点上，而是节点记录指向某个map的索引，交换map时只需要交换索引即可；但要记得同时将其他状态也进行传递。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后，复杂度——每次合并的复杂度由较小map的size决定。考虑根节点1的合并复杂度，假设其孩子的子树含有的节点数分别为a1,a2,a3...ak； 那么根节点1上的总合并复杂度是<pre><code>O = 1+max(1+a1,a2)+max(1+a1+a2,a3)+...+max(1+a1+a2+...+a(k-1),ak)</code></pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均每次合并的复杂度是O/k，使之最大的方式当然是使max无效的序列——a2 == a1+1，a3 = a2+a1+1...，即O最大是1+∑a，同时1+∑a只是根和第一层的节点数于是O&lt;=n，O/k&lt;=n/k,(当然此处的k&gt;=2，k==1是O恒为1)。即得出结论，给定节点数的限制n，在当前层平均每次合并的复杂度和子节点个数成反比，也就是说子节点数越少，平均复杂度越大，即k=2时是复杂度最大的情况。同理可以迭代到更深的层中，得到复杂度最大的树结构如下：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../pics/Lomsat gelral.jpg" alt="" width="279" height="203"/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基本就是一棵完全二叉树了，节点数依次平分，每层的复杂度都是O(n)，共logn层，故全局合并复杂度(指所有的合并遍历的较小map中结点的总数)是O(n*logn)，当然每次合并的时候还是要查较大map的，所以总体复杂度是O(n*logn*logn)。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不能保证以上说明（非证明）是正确的，但应该能说明一些问题，比官方Editorial解释的更详尽一点吧。数学不过关，算导看不动，感觉上只能解释到这儿了。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思想很神奇，效果拔群，以后遇到类似的题可以往更深层理解一点。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/600_Educational%20Round%232/600E.cpp">code</a></p>
+        <li><h2><a href="http://codeforces.com/contest/600/problem/F">&nbsp;600F-Edge coloring of bipartite graph</a>        </h2>
+        </li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;code</p>
+
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+        </noscript>
+      </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
