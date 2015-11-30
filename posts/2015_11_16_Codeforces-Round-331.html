@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
     <!-- InstanceBeginEditable name="doctitle" -->
     <title>zhy's blog|Codeforces Round #331 (Div. 2)</title>
     <!-- InstanceEndEditable -->
@@ -10,16 +16,11 @@
 	<link rel="bookmark" href="../pics/favicon.ico"/>
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script type="text/javascript">
-		var targetProtocol = "https:";
-		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
-		 window.location.href = targetProtocol +
-		 window.location.href.substring(window.location.protocol.length);
-	</script>
 
   <!-- InstanceBeginEditable name="head" -->
   <!-- InstanceEndEditable -->
