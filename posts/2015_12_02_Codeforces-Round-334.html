@@ -1,0 +1,186 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Round #334</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="../index.html" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="../index.html"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+        <h1>Codeforces Round #334</h1>
+        <ul>
+          <li><a href="http://codeforces.com/contest/604">contest link</a></li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;CF#334，终于正式参赛了一回(<a href="http://codeforces.com/profile/zhy">zhy</a>)。难度一般，WA到爆炸，还好最后竟然还涨了几十分=_=，不至于太伤心→_→论刷低分号涨自信的重要性。</p>
+        <ul>
+          <li>
+          <h2><a href="http://codeforces.com/contest/604/problem/A">&nbsp;604A-Uncowed Forces</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：类似于codeforces的算分机制，给出解题和hack情况，求最终得分。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法： 公式都写的明明白白，不知道system test错掉的哥们是怎么搞的。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/604_Round%20%23334(Div.%202)/604A.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href="http://codeforces.com/contest/604/problem/B">&nbsp;604B-More Cowbell</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：N个物品，体积从小到大，一个背包中最多装两个物品，求用K个背包装所有物品，背包容量至少是多少。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贪心可解——设有n个物品是两两凑对的，那么这n个物品一定是体积最小的n个，且两两配对的方式是(1,n),(2,n-1)...剩下来的物品每个消耗一个背包。所以分配方案很明显n/2+N-n = K，求出n即可，接下来自行求最大值，复杂度O(N)。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二分答案可解——在[sn,sn+s(n-1)]这个区间内二分枚举最终的答案，然后O(N)地验证。至于验证细节，就是遵循能多装一个就再塞进去一个尽可能大的，还是有贪心的思想的，复杂度O(NlogN)。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贪心的优势在于这个题目里体积大小是排好序的，如果没有排序，那么和二分的复杂度并没有什么区别。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "https://github.com/zhyack/Codeforces/blob/master/604_Round%20%23334(Div.%202)/604B.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href=http://codeforces.com/contest/604/problem/C>604C-Alternative Thinking</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：01串，可选一段进行取反，求取反之后01间隔出现的子序列最长能有多长。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：看到很多dp的解法，不谈。考虑如下算法：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从左向右找到第一个00或11，靠右的位置为l；从右向左找到第一个00或11，靠左的位置为r；[l,r]取反，扫描一遍统计01子序列长度。复杂度O(N)</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简单解释一下：</p>
+        <pre><code>
+也就是这几种情况：
+***000***
+***111***
+***00***11***
+***11***00***
+***00***00***
+***11***11***
+</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以最后一个为例：
+		左边的11表明——到第一个1的时候，最长的子序列肯定落脚到1（尾是1，但不一定是第一个1）；
+		所以此时将第二个1变为0是变废为宝的；同理右边的11也是如此，让第四个1之前一定落脚为0；
+		除了第二个和第三个1以外，取反的子串内部可取的01序列式不会受到任何影响的,
+		取反而已，无非是0101变成1010，但起点由第二个1取反后的0决定，终点由第三个1取反后的0决定。
+		当然，由于不影响内部，这个串当然是越长越好。所以l,r的取法如上所述。     
+		能够这样操作的串结果会比原串增加2。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但这样是不全面的，博主本人也在此WA到死：</p>
+        <pre><code>
+需要注意这种情况：
+***00***
+***11***
+这里省略的串都是0101这样的，也就是说只有一组00或11，这个时候r = l-1
+之前的算法没有处理这种情况，但考虑110,100,100101010这几个例子，都可以变为
+101，101，101010101使结果增加1。   
+虽然取反的长度都不一样，但都是相当于r = N-1。</code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以原算法只需加上if（r&lt;l） r = N-1;即可。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/604_Round%20%23334(Div.%202)/604C.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href="http://codeforces.com/contest/604/problem/D">&nbsp;604D-Moodular Arithmetic</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：求满足f(kx mod p) 同余 k*f(x) mod p的f映射的个数。其中f的定义域和值域都是0..p-1的整数，p是奇素数,k &lt;p。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：博主数学渣，然而这个数论竟然还是一眼就有思路，所以应该还是比较简单的数论题吧。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先，p是奇素数，k&lt;p，于是决定了x和kx mod p的关系一定是一一对应的。从而其中一定有若干个环，比如：</p>
+        <pre><code>
+p = 5,k = 4
+x -> kx mod p
+0 -> 0
+1 -> 4
+2 -> 3
+3 -> 2
+4 -> 1
+共三个环{0},{1,4},{2,3}。
+     </code>
+</pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以注意到环内的依赖关系，如f(1)=k*f(4)mod p，而f(4) = k*f(1)%p。很巧的是，k*f(x)%p和上面的情况如出一辙，也是有何kx%p一样的三个环，因此，f有以下几种情况。</p>
+        <pre><code>
+f(0) = 0;
+f(1) = 1,f(4) = (4) 或 f(1) = 4,f(4) = 1 或 f(1) = 2, f(4) = 3 或 f(1) = 3,f(4) = 2 或 f(1) = f(4) = 0;
+f(2) = 1,f(3) = (4) 或 f(2) = 4,f(3) = 1 或 f(2) = 2, f(3) = 3 或 f(2) = 3,f(3) = 2 或 f(2) = f(3) = 0;
+共1*5*5 = 25种组合。  </code></pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;于是，问题的解法就比较清晰了——dfs统计出kx%p的所有环，形成数组loocnt，其中loopcnt[i]表示长为i的环有多少个，然后基本的公式就是：        </p>
+        <pre><code>ans = ∏(i*loopcnt[i]+1)^loopcnt[i];</code>
+
+此处未计算f(0)，因为正常情况下f(0) = 0，只有一种情况，无需考虑。</pre>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然还有一些事必须要考虑清楚：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = 0的时候，公式只能限制f(0) = 0，其他都没有限制，所以此时ans = p^(p-1)。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = 1的时候，公式什么也限制不了，ans = p^p，不过之前的公式也是可以算的，只不过要考虑f(0)的取值可能性为p种，而不是1种了。        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/604_Round%20%23334(Div.%202)/604D.cpp">code</a></p>
+        <ul>
+          <li>
+            <h2><a href="http://codeforces.com/contest/604/problem/E">&nbsp;604E-Lieges of Legendre</a></h2>
+          </li>
+        </ul>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;code</p>
+        <p>&nbsp;</p>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+        </noscript>
+      </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
