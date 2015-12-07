@@ -215,8 +215,8 @@ header ul a:active {
 }
 
 strong {
-  color:#222;
-  font-weight:700;
+	color: #F5F500;
+	font-weight: 700;
 }
 
 header ul li + li + li {
@@ -227,7 +227,7 @@ header ul li + li + li {
 header ul a strong {
   font-size:14px;
   display:block;
-  color:#222;
+  color: #F5F500;
 }
 
 section {

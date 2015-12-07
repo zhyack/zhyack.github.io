@@ -51,7 +51,145 @@
       <!-- InstanceBeginEditable name="EditArea" -->
       <section>
 <h1>Markdown学习笔记</h1>
-<h2>编辑器</h2>
+<p>　　HTML是一种发布格式，Markdown是一种书写格式。</p>
+<h3>特殊字符</h3>
+<p>　　<code>&lt;&gt;&amp;</code> → &lt;&gt;&amp;<br>
+　　<code>&amp;lt;&amp;gt;&amp;amp;</code> → &lt;&gt;&amp;<br>
+　　<code>&amp;amp;lt;</code> → &amp;lt;<br>
+　　方便了&lt;,&gt;,&amp;的输入，空格还是要&amp;nbsp;来输入。</p>
+<h3>换行和缩进</h3>
+<p>　　换行时输入两个连续空格和一个换行，Markdown将自动将其转为&lt;/br&gt;<br>
+　　缩进不能使用空格或制表符缩进，可以使用两个中文全角的空格来对齐，不过切换起来还是比较麻烦。</p>
+<h3>标题</h3>
+<hr>
+<pre><code>#HeadTest
+##HeadTest
+###HeadTest
+####HeadTest
+#####HeadTest
+######HeadTest
+</code></pre>
+
+<h1>HeadTest</h1>
+<h2>HeadTest</h2>
+<h3>HeadTest</h3>
+<h4>HeadTest</h4>
+<h5>HeadTest</h5>
+<h6>HeadTest</h6>
+<pre><code>HeadTest
+=
+HeadTest
+-
+HeadTest
+</code></pre>
+
+<h1>HeadTest</h1>
+<h2>HeadTest</h2>
+<p>HeadTest  
+</p>
+<hr>
+<h3>引用</h3>
+<pre><code>&gt; here quote from link1
+&gt; &gt; link1 quote from link2
+&gt; ####markdown head
+</code></pre>
+
+<blockquote>
+<p>here quote from link1</p>
+<blockquote>
+<p>link1 quote from link2</p>
+</blockquote>
+<h4>markdown head</h4>
+</blockquote>
+<h3>列表</h3>
+<pre><code>* l1
+* l2
++ l3
+- l4
+3. ol1  
+7. ol2
+1. ol3
+
+***
+3. ol1
+7. ol2
+1. ol3
+
+        codehere
+12. 34*1 = 12.34
+
+12\. 34*1 = 12.34
+</code></pre>
+
+<ul>
+<li>l1</li>
+<li>l2</li>
+<li>l3</li>
+<li>l4  
+</li>
+<li>ol1</li>
+<li>ol2</li>
+<li>ol3</li>
+</ul>
+<hr>
+<ol>
+<li>ol1</li>
+<li>ol2</li>
+<li>
+<p>ol3 </p>
+<pre><code>codehere
+</code></pre>
+
+</li>
+<li>
+<p>34*1 = 12.34  
+</p>
+</li>
+</ol>
+<p>12. 34*1 = 12.34</p>
+<h3>Code</h3>
+<pre><code>`codelines`
+
+(TAB)codeblocks
+</code></pre>
+
+<p><code>codelines</code>  
+</p>
+<pre><code>codeblocks
+</code></pre>
+
+<h3>粗体、斜体</h3>
+<pre><code>*italic*
+**strong**
+_italic_
+__strong__
+</code></pre>
+
+<p><em>italic</em><br>
+<strong>strong</strong><br>
+<em>italic</em><br>
+<strong>strong</strong>  
+</p>
+<h3>链接、图片</h3>
+<pre><code>[zhy's blog](https://zhyack.giithub.io/)  
+![zhy's profile](https://zhyack.github.io/pics/Profile.jpg)
+</code></pre>
+
+<p><a href="https://zhyack.giithub.io/" target="_blank">zhy's blog</a><br>
+<img src="https://zhyack.github.io/pics/Profile.jpg" alt="zhy's profile"><br>
+仅提供简单的链接和图片功能，其他属性的设置仍需&lt;a&gt;、&lt;img&gt;等标签</p>
+<h3>分割线</h3>
+<pre><code>***
+---
+* * *
+- - -
+</code></pre>
+
+<hr>
+<hr>
+<hr>
+<hr>
+<h3>编辑器</h3>
 <p>　　Windows下推荐<a href="http://markdownpad.com/" target="_blank">MarkdownPad 2</a>，Linux下推荐ReText，都是能够即时显示效果的。<br>
 　　其中MarkdownPad 2 Pro部分需要付费，使用以下License即可：</p>
 <pre><code>Email Address:
