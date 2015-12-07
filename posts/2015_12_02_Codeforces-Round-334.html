@@ -149,9 +149,12 @@ f(2) = 1,f(3) = (4) 或 f(2) = 4,f(3) = 1 或 f(2) = 2, f(3) = 3 或 f(2) = 3,f(
             <h2><a href="http://codeforces.com/contest/604/problem/E">&nbsp;604E-Lieges of Legendre</a></h2>
           </li>
         </ul>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;code</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;题意：两人互取石子，N堆。对于每堆，有两种操作可选。1.每次操作可以取一个；2.如果当前堆是偶数个石子n，可以将其折半后复制为K份，也就是K堆n/2个石子。不能操作者为输。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;解法：比较传统的博弈论题目，利用SG函数解决。先推算前几个sg值观察规律。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假如K是偶数，那么可以注意到第2种方法得到的子问题一定是先手输，有因前几个sg值分别为feven = {0,1,2,0,1}，此时对于f[i]，如果i是奇数，影响它的只有f[i-1]，而如果i是偶数，影响它的是f[i-1]和一个必定会得到的0，所以依次推下去会发现sg值就是0,1,0,1...这样反复进行下去了。这是K为偶数时操作2的性质导致。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K为奇数是时，影响f[i]的因素就没有那么单纯了，如果i是奇数，当然还是只有第一种操作可选，即只受f[i-1]影响；如果i是偶数，那么f[i]由f[i-1]和f[i/2]来决定。又由于fodd={0,1,0,1,2,0,2,0,1,0...}，可见i&gt;=4时，奇数的sg值都是0，偶数都&gt;0，可以通过数学归纳法证明。当然，偶数的sg值不一定是1。因为奇数的sg值都是0，所以求解偶数的sg值时只要递归求解f(n/2)就行了。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n堆分开求sg值，然后通过异或操作求解最终的sg值。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/zhyack/Codeforces/blob/master/604_Round%20%23334(Div.%202)/604E.cpp">code</a></p>
       </section>
       <!-- InstanceEndEditable -->
 	  <section>
