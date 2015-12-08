@@ -7,7 +7,8 @@
 * Make templates.
 * Add 404,sitemap,etc.
 * Add CNZZ,disqus,mathjax.
-* Push posts to google.
+* Push posts to google.  
+
 ## Flow
 1. Edit posts on MarkdownPad/Dreamweaver.
 2. Change index,categories,archive accordingly.
