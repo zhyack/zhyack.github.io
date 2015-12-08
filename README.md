@@ -14,7 +14,8 @@
 3. Add new posts to sitemap.
 4. Push all to github-pages.
 5. Pust posts to google on google-webmaster.
-6. Check posts and search them on google.
+6. Check posts and search them on google.  
+
 ## Sitemap
 > index.html  
 > categories.html  
