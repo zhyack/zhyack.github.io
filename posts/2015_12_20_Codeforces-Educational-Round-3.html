@@ -1,0 +1,146 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Educational Round #3</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces Educational Round #3</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/609" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　这次倒是没什么hack点了，水题上演了一场排序大战，从D题开始教做码农...  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/609/problem/A" target="_blank">609A-USB Flash Drives</a></h2>
+<p>题意：<br>
+　　一个可拆分的文件往若干个U盘中放，最少用几个U盘。 　　<br>
+解法：<br>
+　　随便拆分，当然是尽可能放大容量U盘里，要不你让那些拿着1TU盘的少年们去哪里找装X的自信。　　
+　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/609_Educational%20Round%233/609A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/609/problem/B" target="_blank">609B-The Best Gift</a></h2>
+<p>题意：<br>
+　　m种物品，每样若干个（带序号），求从中挑出两个有多少种组合方式。　　<br>
+解法：<br>
+　　连long long 都不坑，不解释。  　　
+  　　
+  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/609_Educational%20Round%233/609B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/609/problem/C" target="_blank">609C-Load Balancing</a></h2>
+<p>题意：<br>
+　　物品体积均为1的负载均衡，每次可以调整一个物品的位置，问最少操作几次。　<br>
+解法：<br>
+　　设物品总数为sum，那么负载均衡的方案一定是<code>sum%N * (sum/N+1)</code> + <code>(N-sum%N) * sum/N</code> 　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/609_Educational%20Round%233/609C.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/609/problem/D" target="_blank">609D-Gadgets for dollars and pounds</a></h2>
+<p>题意：<br>
+　　小明有S块钱，但他要代购，只能兑换成美元买米国的东西，或英镑买腐国的东西，汇率每天都在变，但他想买的东西在这可以预见的N天内在本地都是价钱不变的。问小明为了满足买买买的欲望，想从自己的购物清单M个物品中<strong>尽早</strong>买入K个的方案。　<br>
+解法：<br>
+　　假设我们在前day天买入K个物品——1.一定会要挑这day天最便宜的买；2.一定挑美元最便宜的时候买米国的东西，挑英镑最便宜的时候买腐国的东西——所以我们要知道的信息有，前day天美元英镑最便宜的分别是那一天，然后对应这两个值去挑选最便宜的物品集中在这两天买。贪心思路很直接，需要注意的只是一定要确定美元和英镑的汇率后才考虑物品的价格；还有就是挑最便宜的物品时可以分成米国和腐国两类分别排序，同一类的系数是一样的，所以乘完系数大小关系也不会变。<br>
+　　当然的day有N个值可以选择，但注意到如果day = d时存在购买方案，那就代表着day &gt; d时一定存在购买方案，即某种意义上的单调性，所以可以二分枚举day。
+ 　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/609_Educational%20Round%233/609D.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/609/problem/E" target="_blank">609E-Minimum spanning tree for each edge</a></h2>
+<p>题意：<br>
+　　对于图中所有的边，输出图中包含这条边的最小生成树的值。<br>
+解法：<br>
+　　包含某条边(u,v)的话，只要将其原本在全局MST中的u-&gt;v这条路上的最长边舍弃即可，因为最长边本来就是Kruskal中连接u，v的最后加入的一条割边，且是所有能将u，v割开的值最大的，把它替换掉对全局的增量最小。<br>
+　　具体求法需要借助lca...<br>
+　　未完待续...　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/609_Educational%20Round%233/609E.cpp" target="_blank">code</a></p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
