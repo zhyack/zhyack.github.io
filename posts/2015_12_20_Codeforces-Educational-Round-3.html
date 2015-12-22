@@ -109,8 +109,9 @@
 　　对于图中所有的边，输出图中包含这条边的最小生成树的值。<br>
 解法：<br>
 　　包含某条边(u,v)的话，只要将其原本在全局MST中的u-&gt;v这条路上的最长边舍弃即可，因为最长边本来就是Kruskal中连接u，v的最后加入的一条割边，且是所有能将u，v割开的值最大的，把它替换掉对全局的增量最小。<br>
-　　具体求法需要借助lca...<br>
-　　未完待续...　　
+　　具体求法需要借助倍增LCA，关于倍增法求LCA的笔记在此更新<a href="https://zhyack.github.io/posts/2015_12_22_LCA-Binary-Lifting-Note.html" target="_blank">link</a>。<br>
+　　当然，此题中不仅仅是求LCA，而说u-&gt;v的这条路径上的最大权值的边，又有<code>u-&gt;v == u-&gt;lca(u,v)-&gt;v</code>，所以我们要做的就是求出<code>u-&gt;lca(u,v)</code>上的最大权值和<code>v-&gt;lca(u,v)</code>的最大权值。于是就和我们用倍增法求LCA的做法一样——设heavy[i][j]表示i节点往上跳2^j步这条路上的最大权值，很明显<code>heavy[i][j] = max(heavy[i][j-1],heavy[father[i][j-1]][j-1])</code>，其中heavy[i][0]就是i节点与其父节点的边权。而在寻找LCA操作的同时，我们只需每跳一步都求一下当前权值和跳过去的路径的max即可，详见代码。<br>
+　　最后注意坑long long。
   　　<br>
   <a href="https://github.com/zhyack/Codeforces/blob/master/609_Educational%20Round%233/609E.cpp" target="_blank">code</a></p></li></ul>
       </section>
