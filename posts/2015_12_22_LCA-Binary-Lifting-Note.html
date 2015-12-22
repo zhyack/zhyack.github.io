@@ -1,0 +1,149 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|倍增法求LCA</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>倍增法求LCA</h1>
+<p>　　要说搞了这么久比赛还没学过倍增LCA，实在是惭愧。这次驱动我这个懒癌患者学习一下倍增LCA的是这道题——<a href="http://codeforces.com/contest/609/problem/E" target="_blank">CF609E-Minimum spanning tree for each edge</a>。说起来有时候学习的动力就是这么产生的——Idea我有，工具不会用。</p>
+<h2>LCA</h2>
+<h4>入门</h4>
+<p>　　先来扯一扯概念——LCA（Lowest Common Ancestor）,最近公共祖先。在一棵有根树中，节点v到根root的路径上所有的节点都叫v的“祖先”，LCA(u,v) 即两个点u,v，距离它们最近的公共祖先，也就是树中“最低”（深度最高，离root最远）的公共祖先。</p>
+<h4>用途</h4>
+<ul>
+<li>LCA &amp; RMQ</li>
+<li>树上任意两点间的距离/边权和</li>
+<li>树上任意两点间的边权最大值</li>
+<li>etc.</li>
+</ul>
+<h4>算法</h4>
+<p>　　求LCA有多种算法：  
+</p>
+<ul>
+<li>Tarjan——离线算法，必须事先知道所有的询问，O(N)。</li>
+<li>ST——LCA转RMQ，在线算法，当然对于比赛题目来说并没有什么区别，O(NlogN)。</li>
+<li>倍增LCA——利用树深倍增，优点是不仅能知道LCA是谁，还能在O(logN)的复杂度内知道整个树上任意路径的状态，这是前两种算法所不能做到的，整体O(NlogN)。</li>
+</ul>
+<h2>倍增LCA</h2>
+<ul>
+<li>记录各节点i的深度depth[i]。dfs一遍即可O(N)。  
+</li>
+</ul>
+<pre><code>
+void dfs(int x,int d){
+	depth[x] = d;
+	visited[x] = true;
+	for (vector<int>::iterator it = edge[x].begin();it != edge[x].end();it++)
+		if (!visited[*it]) dfs(*it,d+1);
+}
+</int></code></pre>
+<ul>
+<li>预处理出倍增数组，father[i][j]表示节点i往上(往根的方向)跳2^j步的祖先标号。-1表示不存在，也就是跳过根了。father[i][0]是节点i的父节点标号。</li>
+</ul>
+<pre><code>
+void lcabinarylifting(int n){
+	for (int j = 1;j &lt; MAXB;j++)
+		for (int i = 1;i &lt;= n;i++)
+			if (~father[i][j-1])
+				father[i][j] = father[father[i][j-1]][j-1];
+}
+</code></pre>
+<ul>
+<li>对于点对(u,v)，设depth[u]&gt;depth[v]，此时将u往上跳到和v在同一深度（此处请仔细揣摩代码）。u,v在同一深度时有两种情况——1.v本来就是u的祖先，此时u,v相同，lca(u,v) = v；2.v不是u的祖先，此时u和v距离其lca(u,v)的距离相同，一起往上跳（trick和之前的u上跳的代码一样，请仔细揣摩），停下来的位置即是lca(u,v)子节点上。</li>
+</ul>
+<pre><code>
+int findlca(int u,int v){
+	if (depth[u] &lt; depth[v]) swap(u,v);
+	for (int b = MAXB-1;b &gt;= 0;b--)
+		if (depth[father[u][b]] &gt;= depth[v])
+			u = father[u][b];
+	if (u == v) return u;
+	for (int b = MAXB-1;b &gt;= 0;b--)
+		if (father[u][b] != father[v][b])
+			u = father[u][b],v = father[v][b];
+	return father[u][0];
+}
+</code></pre>
+<h3>测试题目</h3>
+<p><a href="http://poj.org/problem?id=1330" target="_blank">POJ1330</a> 模板题，可供测试各种LCA算法。<br>
+<a href="https://github.com/zhyack/Non-classified-Code/blob/master/POJ1330.cpp" target="_blank">code</a> 倍增求LCA参考代码。  
+</p>
+<p><a href="http://codeforces.com/contest/609/problem/E" target="_blank">CF609E</a> 倍增LCA求任意两点路径上的最大边权。<br>
+<a href="https://zhyack.github.io/posts/2015_12_20_Codeforces-Educational-Round-3.html" target="_blank">blog entry</a> 题解链接。</p>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
