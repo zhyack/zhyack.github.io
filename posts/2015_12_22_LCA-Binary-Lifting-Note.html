@@ -79,7 +79,7 @@
 void dfs(int x,int d){
 	depth[x] = d;
 	visited[x] = true;
-	for (vector<int>::iterator it = edge[x].begin();it != edge[x].end();it++)
+	for (vector&lt;int>::iterator it = edge[x].begin();it != edge[x].end();it++)
 		if (!visited[*it]) dfs(*it,d+1);
 }
 </int></code></pre>
