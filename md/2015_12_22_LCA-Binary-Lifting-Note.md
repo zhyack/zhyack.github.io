@@ -56,7 +56,7 @@ int findlca(int u,int v){
 
 ###测试题目
 [POJ1330](http://poj.org/problem?id=1330) 模板题，可供测试各种LCA算法。  
-[code](https://github.com/zhyack/Non-classified-Code/blob/master/POJ1330.cpp) 倍增求LCA参考代码。  
+[code](https://github.com/zhyack/Non-classified-Codes/blob/master/POJ1330.cpp) 倍增求LCA参考代码。  
   
 [CF609E](http://codeforces.com/contest/609/problem/E) 倍增LCA求任意两点路径上的最大边权。  
 [blog entry](https://zhyack.github.io/posts/2015_12_20_Codeforces-Educational-Round-3.html) 题解链接。
