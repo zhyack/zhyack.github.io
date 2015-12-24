@@ -51,12 +51,13 @@
       <!-- InstanceBeginEditable name="EditArea" -->
       <script language="javascript">
 	  function switchdisplay(id1,id2){
-		  	var show=getElementById(id2);
-			var hide=getElementById(id1);
+		  	var show=document.getElementById(id2);
+			var hide=document.getElementById(id1);
 			show.style.display='block';
-			hide.style.display='hidden';
+			hide.style.display='none';
+			show.scrollIntoView();
 	  }
-	  </script>>
+	  </script>
       <section>
         <h2>Recent Work</h2>
         <li><a href = "https://class.coursera.org/nlpintro-001">Introduction to Natural Language Processing by Dragomir R. Radev, Michigan University</a></li>
@@ -82,7 +83,7 @@
         <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;HTML是一种发布格式，Markdown是一种书写格式...</span></p>
         <li>2015.12.05 &gt;&gt; <a href="posts/2015_12_05_Machine-Learning-On-Coursera.html">Machine Learning (Coursera)</a></li>
         <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;课程小结...</span></p>
-        <div onMouseClick='switchdisplay("hotposts","allposts")'><a href="#AllP">Show all...</a></div>
+        <div onMouseDown='switchdisplay("hotposts","allposts")'><a href="#">Show all...</a></div>
       </section>
         <section id = "allposts" style = "display:none;">
         <h2 name="AllP">ALL Posts</h2>
@@ -120,7 +121,7 @@
         <p class="pl-en">&gt;&gt;&gt;&gt;&nbsp;&nbsp;今天把这门课结了，简单做个总结....</p>
         <li>2015.11.11 &gt;&gt; <a href="posts/2015_11_11_Codeforces.html">Codeforces</a></li>
         <p><span class="pl-en">&gt;&gt;&gt;&gt;&nbsp;&nbsp;业内知名全球性比赛及训练平台...</span></p>
-        <div onMouseClick='switchdisplay("allposts","hotposts")'><a href="#RecP">Show less...</a></div>   
+        <div onMouseDown='switchdisplay("allposts","hotposts")'><a href="#">Show less...</a></div>   
       </section>
       <!-- InstanceEndEditable -->
 	  <section>
