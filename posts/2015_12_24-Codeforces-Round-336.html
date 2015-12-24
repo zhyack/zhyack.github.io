@@ -1,0 +1,148 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces Round #336</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/608" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　CF#336，题目较简单，个人感觉A-D没什么亮点，E题没看太懂= =。作死熬夜玩了一场，还是低分的小号(<a href="http://codeforces.com/profile/zhy" target="_blank">zhy</a>)做的，涨了一些rating，不过rank 81才涨这么点分，真的是没有以前好上分了,估计想追上大号(<a href="http://codeforces.com/profile/Des_Payfor" target="_blank">Des_Payfor</a>)还得再来一场rank前百的，争取GoodBye 2015上‘低分’大号。  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/608/problem/A" target="_blank">608A-Saitama Destroys Hotel</a></h2>
+<p>题意：<br>
+　　电梯从M层下到0层，给出N个人所在楼层，到达电梯口的时间，电梯每下一层需要1的时间，求电梯带上所有人下到0层所用时间。 　　<br>
+解法：<br>
+　　熟悉的电梯水题，电梯容量无限...对于第i个人来说，最早的到达0层的时间其实就是fi+ti，求一下max{fi+ti,M}就ok了，不过模拟一下过程也不费劲。  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/608_Round%20%23336(Div.%202)/608A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/608/problem/B" target="_blank">608B-Hamming Distance Sum</a></h2>
+<p>题意：<br>
+　　Hamming距离，也就是按位异或值的和。求串a对应串b中所有长尾|a|的子串的Hamming距离和。<br>
+解法：<br>
+　　误入歧途，做完D才想到怎么做这题...不要企图整串算值，可以按位考虑。a[i]能对答案的贡献，其实就是<code>a[i]</code>与<code>b[i],b[i+1]...b[i+ |b|-|a| ]</code>这些值异或的和，因为a[i]一位一位后移，总体能对应上的也就是b的这些位置。<br>
+　　要求a[i]对答案的贡献，也就是如果<code>a[i]=='0'</code>那就要找<code>b[i],b[i+1]...b[i+ |b|-|a| ]</code>这些位置中'1'的个数，反之亦然。求个数的话，前缀和就可以搞定了——ones[i]表示<code>b[1]...b[i]</code>中'1'的个数(这里位置从1开始记)，求<code>b[i],b[i+1]...b[i+ |b|-|a| ]</code>中'1'的个数就是<code>ones[i+ |b|-|a|]-ones[i-1]</code>，zeros也同样处理。<br>
+　　还有要吐槽的，这题怎么大家都long long了 →_→ 一定是pretest太强...
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/608_Round%20%23336(Div.%202)/608B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/608/problem/C" target="_blank">608C-Chain Reaction</a></h2>
+<p>题意：<br>
+　　N个新标，第i个信标位置a[i]，能量b[i]，从右向左放置，如果当前信标位置a[i]被其右边的信标能量范围覆盖[ a[i+1]-b[i+1] , a[i+1] ]，那么当前信标失效。现在，我们可以在最右侧任何位置添加一个能量范围任意大的信标，问最少能有几个信标失效。<br>
+解法：<br>
+　　很直观的dp，dp[i]表示第i个信标存活的情况下，前i个信标最多能有几个有效的。那么有转移方程<code>dp[i] = dp[j]+1</code>，其中j是不受i的能量影响的最靠右的信标，当然，如果j不存在，dp[j]应当替换为0。具体找j的方法就是二分查找，由于题目保证一个位置最多一个信标，所以lower_bound和upper_bound都可以啦。
+　　最后需要提醒的是，题目里可没有说给出的信标是按位置排好序的，然而做完这题我第一时间锁住题目，竟然从头到尾没有找到忘记sort的-_-||，现在的参赛者们都这么警惕了吗...
+  　　
+  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/608_Round%20%23336(Div.%202)/608C.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/608/problem/D" target="_blank">608D-Zuma</a></h2>
+<p>题意：<br>
+　　对于一个序列，每次操作可以消掉一个回文串，问最少多少次操作消掉全部序列。<br>
+解法：<br>
+　　这种题十有八九就是区间dp，再看看范围N&lt;=500，那就确信是N^3的区间dp了。<br>
+　　<code>dp[i][j]</code>表示[i,j]这个区间的序列最少多少操作能消掉，那么分解成子问题就是把序列切成2段，一段[i,p]是与i这个位置一起消掉的序列，其中<code>c[p]==c[i]</code>（因为如果<code>c[p]!=c[i]</code>，那么一定可以转化为<code>dp[i,p']+dp[p'+1,p]+dp[p+1,j] &gt;= dp[i,p']+dp[p'+1][j]</code>,其中<code>p'&lt;p且c[p']==c[i]</code>)；另一段是[p+1,j]，一定是之前求过的子问题。<br>
+　　需要注意各种边界情况，比如，<code>i==p</code> 、 <code>p==j</code> 等。还有dp[i,p]这一段，如果<code>i+1==p</code>，也就是i和p之间没有回文子串，那么dp[i][p] = 1，否则dp[i][p] = dp[i+1][p-1]，因为内部如果已经有串的话，消掉(c[i],c[p])这个回文对，应该是“顺便”消掉的，可以自行理解一下最后一个样例。<br>
+　　当然还有——如果对区间dp不熟悉的话，请参考代码，前两维并不是枚举左右边界，而是要枚举区间长度和左/右边界，这样才能一点一点拓宽区间。 　　　
+  <a href="https://github.com/zhyack/Codeforces/blob/master/608_Round%20%23336(Div.%202)/608D.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/608/problem/E" target="_blank">608E-Marbles</a></h2>
+<p>题意：<br>
+　　待续吧... 　　<br>
+解法：<br>
+  　　
+  　　
+  　　
+  　　<br>
+  code</p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
