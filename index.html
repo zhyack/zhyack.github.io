@@ -49,6 +49,14 @@
         </div>
       </header>
       <!-- InstanceBeginEditable name="EditArea" -->
+      <script language="javascript">
+	  function switchdisplay(id1,id2){
+		  	var show=getElementById(id2);
+			var hide=getElementById(id1);
+			show.style.display='block';
+			hide.style.display='hidden';
+	  }
+	  </script>>
       <section>
         <h2>Recent Work</h2>
         <li><a href = "https://class.coursera.org/nlpintro-001">Introduction to Natural Language Processing by Dragomir R. Radev, Michigan University</a></li>
@@ -57,8 +65,27 @@
         <li><a href="https://www.coursera.org/learn/recommender-systems/">
         Introduction to Recommender Systems
       by Joseph Konstan, University of Minnesota</a></li>
-        <p>&nbsp;</p>
-        <h2>Recent Posts        </h2>
+      </section>
+      <section id="hotposts" style="display:block;">
+        <h2 name="RecP">Recent Posts</h2>
+        <li>2015.12.24 &gt;&gt; <a href="posts/2015_12_24-Codeforces-Round-336.html">Codeforces Round #336</a></li>
+        <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;CF#336，题目较简单，个人感觉A-D没什么亮点，E题没看太懂= =... </span></p>
+        <li>2015.12.22 &gt;&gt; <a href="posts/2015_12_22_LCA-Binary-Lifting-Note.html">倍增法求LCA</a></li>
+        <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;说起来有时候学习的动力就是这么产生的——Idea我有，工具不会用... </span></p>
+        <li>2015.12.20 &gt;&gt; <a href="posts/2015_12_20_Codeforces-Educational-Round-3.html">Codeforces Educational Round #3</a></li>
+        <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;这次倒是没什么hack点了，水题上演了一场排序大战，从D题开始教做码农... </span></p>
+        <li>2015.12.16 &gt;&gt; <a href="posts/2015_12_16_Codeforces-Round-335.html">Codeforces Round #335</a></li>
+        <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;CF#335，Virtual participation，题目简单，只有E题让人眼前一亮...</span></p>
+        <li>2015.12.02 &gt;&gt; <a href="posts/2015_12_02_Codeforces-Round-334.html">Codeforces Round #334</a></li>
+        <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;CF#334，终于正式参赛了一回(zhy)。难度一般，WA到爆炸，还好最后竟然还涨了几十分=_=，不至于太伤心→_→论刷低分号涨自信的重要性...</span></p>
+        <li>2015.12.07 &gt;&gt; <a href="posts/2015_12_07_Markdown-Note.html">Markdown 学习笔记</a></li>
+        <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;HTML是一种发布格式，Markdown是一种书写格式...</span></p>
+        <li>2015.12.05 &gt;&gt; <a href="posts/2015_12_05_Machine-Learning-On-Coursera.html">Machine Learning (Coursera)</a></li>
+        <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;课程小结...</span></p>
+        <div onMouseClick='switchdisplay("hotposts","allposts")'><a href="#AllP">Show all...</a></div>
+      </section>
+        <section id = "allposts" style = "display:none;">
+        <h2 name="AllP">ALL Posts</h2>
         <li>2015.12.24 &gt;&gt; <a href="posts/2015_12_24-Codeforces-Round-336.html">Codeforces Round #336</a></li>
         <p><span class="pl-en">&gt;&gt;&gt;&gt;</span>&nbsp;<span class="pl-en">&nbsp;CF#336，题目较简单，个人感觉A-D没什么亮点，E题没看太懂= =... </span></p>
         <li>2015.12.22 &gt;&gt; <a href="posts/2015_12_22_LCA-Binary-Lifting-Note.html">倍增法求LCA</a></li>
@@ -93,7 +120,7 @@
         <p class="pl-en">&gt;&gt;&gt;&gt;&nbsp;&nbsp;今天把这门课结了，简单做个总结....</p>
         <li>2015.11.11 &gt;&gt; <a href="posts/2015_11_11_Codeforces.html">Codeforces</a></li>
         <p><span class="pl-en">&gt;&gt;&gt;&gt;&nbsp;&nbsp;业内知名全球性比赛及训练平台...</span></p>
-        
+        <div onMouseClick='switchdisplay("allposts","hotposts")'><a href="#RecP">Show less...</a></div>   
       </section>
       <!-- InstanceEndEditable -->
 	  <section>
