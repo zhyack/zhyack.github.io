@@ -4,7 +4,7 @@
   
 
 　　CF#337，难度一般，质量颇低，堪称无聊。我也是没有见过评分这么低的比赛了。  
-　　![CF#337_vote](../pics/CF#337_vote.jpg)  
+　　![CF#337_vote](../pics/CF337_vote.jpg)  
 　　小号([zhy](http://codeforces.com/profile/zhy))刷分，结果坑在D题上，rank 102，rating+70，还是没能追上大号([Des_Payfor](http://codeforces.com/profile/Des_Payfor))，但是Good Bye 2015还是决定用大号做了。    
 
 - ##[610A-Pasha and Stick](http://codeforces.com/contest/610/problem/A)  
