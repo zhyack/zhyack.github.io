@@ -1,0 +1,131 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Round #337 (Div. 2)</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces Round #337 (Div. 2)</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/610" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　CF#337，难度一般，质量颇低，堪称无聊。我也是没有见过评分这么低的比赛了。<br>
+　　<img src="../pics/CF#337_vote.jpg" alt="CF#337_vote"><br>
+　　小号(<a href="http://codeforces.com/profile/zhy" target="_blank">zhy</a>)刷分，结果坑在D题上，rank 102，rating+70，还是没能追上大号(<a href="http://codeforces.com/profile/Des_Payfor" target="_blank">Des_Payfor</a>)，但是Good Bye 2015还是决定用大号做了。    
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/610/problem/A" target="_blank">610A-Pasha and Stick</a></h2>
+<p>题意：<br>
+　　一根长度为n的棍子，分成四段，要组成一个长方形，但非正方形，问有多少种组合。 　　<br>
+解法：<br>
+　　首先，n为奇数，答案是0；n为偶数需要考虑n/2，也就是<code>长+宽</code>是奇数还是偶数，如果是偶数那就要排除<code>(n/4,n/4,n/4,n/4)</code>的情况。所以如果n/2是奇数，<code>ans = n/2/2</code>，否则<code>ans = (n/2-1)/2</code>，然后汇总一下就是<code>ans = (n/2-1)/2</code>了。  <br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/610_Round%20%23337(Div.%202)/610A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/610/problem/B" target="_blank">610B-Vika and Squares</a></h2>
+<p>题意：<br>
+　　一个序列，从某个地方开始，依次循环向右走，走过的地方值都-1，遇到值为0的就停止，问最多能走多少步。 　　<br>
+解法：<br>
+　　其实就是求循环序列中值都大于最小值的最长子串的长度l。比如<code>2,4,2,3,3</code>就是<code>3,3</code>最长，l = 2;<code>10,10,10,1,10,10</code>就是<code>10,10,10,10,10</code>最长，l = 5。然后<code>ans = minval*n+l</code>。需要注意的是long long。　　
+  　　
+  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/610_Round%20%23337(Div.%202)/610B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/610/problem/C" target="_blank">610C-Harmony Analysis</a></h2>
+<p>题意：<br>
+　　构造出一种2^k个长为2^k的01串，要求它们两两之间按位异或的0和1个数一样（也就是相同的位和不同的位个数一样）。 　　<br>
+解法：<br>
+　　个人以为这种题是最不应该出现在比赛中的题了，真的是做出来都没有丝毫成就感。非要说思路，只能说<code>2^k * 2^k</code>的矩阵可以拆成<code>2^(k-1) * 2^(k-1) *4</code>。所以——呵呵，看看样例就能发现规律了。　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/610_Round%20%23337(Div.%202)/610C.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/610/problem/D" target="_blank">610D-Vika and Segments</a></h2>
+<p>题意：<br>
+　　求n个矩形在坐标系中覆盖的面积。 　　<br>
+解法：<br>
+　　这种题是另一种不应该出现在比赛中的题——多少年前的模板题了...线段树+离散化+扫描线——博主懒癌又犯了，跪舔两年前的烂代码去了，结果Re到死。看来年轻时写的代码还是不靠谱呀...<br>
+　　不知道这个经典模板题的同学们可以参考<a href="http://poj.org/problem?id=1389" target="_blank">POJ1389</a>。　　<br>
+  code</p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>

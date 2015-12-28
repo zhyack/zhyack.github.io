@@ -1,0 +1,139 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Educational Round #4</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces Educational Round #4</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/612" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　隐约感到了一大波低质量比赛在接近...  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/612/problem/A" target="_blank">612A-The Text Splitting</a></h2>
+<p>题意：<br>
+　　给一个长为n字符串，要求恰好拆成长为p或q的若干子串。 　　<br>
+解法：<br>
+　　其实就是n = xp+yq嘛，范围还这么小，枚举x求y，都是整数即可。　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/612_Educational%20Round%234/612A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/612/problem/B" target="_blank">612B-HDD is Outdated Technology</a></h2>
+<p>题意：<br>
+　　硬盘n个扇区，各有标号1~n，从第i个移动到第j个需要<code>abs(i-j)</code>的时间，问按顺序遍历标号为1，2，3,..,n的扇区需要多长时间。　<br>
+解法：<br>
+　　记一下各标号的位置，扫一遍。  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/612_Educational%20Round%234/612B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/612/problem/C" target="_blank">612C-Replace To Make Regular Bracket Sequence</a></h2>
+<p>题意：<br>
+　　括号序列可能包含'{' , '}' , '(' , ')' , '[' , ']' , '&lt;' , '&gt;'这几种括号，任意的左括号都可以和右括号匹配，但是如果他们不是同一类型的就要花费一个单位的代价，问整体括号匹配的最小代价。　<br>
+解法：<br>
+　　只需要注意到这一点——每个右括号所能匹配的左括号是唯一的。所以按经典的括号匹配做，如果发现栈顶的左括号类型不一样那就ans++。 　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/612_Educational%20Round%234/612C.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/612/problem/D" target="_blank">612D-The Union of k-Segments</a></h2>
+<p>题意：<br>
+　　有n个区间，可能相互有重叠部分，问坐标轴上被重叠了k次的区间。　<br>
+解法：<br>
+　　裸的线段树，树状数组也可，当然还是要离散化一下。区间更新，单点询问。每次把区间[li,ri]都加1，最后扫描一遍各个点，看值是否大于等于k。需要注意的是这种情况——[1,3],[3,3],k=2,答案应该是[3,3]，这个要看边界处理的手法了，可参考我的代码。复杂度O(nlogn)。<br>
+　　当然，这道题有更简单的做法，离散化之后排序，然后从左往右做类似于扫描线的事情，可以完美解决问题。复杂度还是O(nlogn)的，但编起来很容易了，边界也好处理。
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/612_Educational%20Round%234/612D.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/612/problem/E" target="_blank">612E-Square Root of Permutation</a></h2>
+<p>题意：<br>
+　　排列q的平方p的定义是p[i] = q[q[i]]。现给出p，问q是什么。  <br>
+解法：<br>
+　　这题想了很久都没思路，结果看别人的做法是像找规律一样，真是醉了...
+code</p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
