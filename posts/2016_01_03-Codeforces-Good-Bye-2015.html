@@ -55,18 +55,19 @@
 <li><a href="http://codeforces.com/contest/611" target="_blank">contest link</a>  
 </li>
 </ul>
-<p>　　2015最后一场CF，Div.1，Div.2混战，题目个人感觉不太对胃口，偏难了吧。　　
-　</p>
-<p>　　拿大号(<a href="http://codeforces.com/profile/Des_Payfor" target="_blank">Des_Payfor</a>)怒跪一场，不过还好不太遗憾，D题虽然没交上，但最终还是TLE的，是在下输了...<br>
-  根据这两年参加年终大战的经验→_→混战容易涨分...</p>
+<p>　　2015最后一场CF，Div.1，Div.2混战，题目个人感觉不太对胃口，偏难了吧。<br>
+　　拿大号(<a href="http://codeforces.com/profile/Des_Payfor" target="_blank">Des_Payfor</a>)怒跪一场，不过还好不太遗憾，D题虽然没交上，但最终还是TLE的，是在下输了...<br>
+　　根据这两年参加年终大战的经验→_→混战容易涨分...
+　　  
+</p>
 <ul>
-  <li>
+<li>
 <h2><a href="http://codeforces.com/contest/611/problem/A" target="_blank">611A-New Year and Days</a></h2>
 <p>题意：<br>
 　　翻阅日历，求2016年周X有几个，或求X号有几个。　<br>
 解法：<br>
 　　本应该是个很简单的题，可能参赛的压力都比较大，博主7分钟交了3次才过pretests，而这个时候竟然才只有一小部分人过了pretests，汗(-__-)||。<br>
-　　需要注意的是——2016是<strong>闰年</strong>，所以2月29天，一年366天。<code>366%7=2</code>，所以只有周五(<code>2016.01.01</code>，和周六<code>2016.01.02</code>)比其他周X多一天；X号就可以随便求了，注意<code>2016.02.29</code>即可。<br>
+　　需要注意的是——2016是<strong>闰年</strong>，所以2月29天，一年366天。<code>366%7=2</code>，所以只有周五(<code>2016.01.01</code>)和周六(<code>2016.01.02</code>)比其他周X多一天；X号就可以随便求了，注意<code>2016.02.29</code>即可。<br>
 　　抱着试一试赚回脑残罚时的态度看了一遍Room里的情况，竟然收获不小，各种没有注意闰年的或者是注意闰年还打表打错的，甚至还有一个多小时交的还搞不明白输入的...　　
   　　
   　　
@@ -79,7 +80,7 @@
 <p>题意：<br>
 　　[a,b]范围内二进制表示中只有一个非前导0的数的个数。 　　<br>
 解法：<br>
-　　10^18，稳稳的64位整数以内，也就是说二进制位也就64个，枚举一下符合条件的数——二进制几位，哪一位是0，并检查是不是在[a,b]中即可。　　
+　　10^18，稳稳的64位整数以内，也就是说二进制位也就64个，枚举一下符合条件的数——二进制几位，哪一位是0，并检查是不是在[a,b]中即可。<br>
   　　
   <a href="https://github.com/zhyack/Codeforces/blob/master/611_Good%20Bye%202015/611B.cpp" target="_blank">code</a>  
 </p>
@@ -101,7 +102,7 @@
 		else tmp[i][j] = tmp[i][j-1];　　
 </code></pre>
 <p>　　然后有了tmp[i][j]，就可以得到<code>heng[i][j] = heng[i-1][j]+tmp[i][j]</code>。<br>
-　　对于2 * 1的骨牌的处理类似，可得到一个shu[i][j]的前缀和矩阵。<br>
+　　对于2 * 1的骨牌的处理类似，可得到一个shu[i][j]的前缀和矩阵，这些预处理的复杂度均为O(N^2)。<br>
 　　此时考虑如果求矩阵[(a,b),(c,d)]内的1 * 2骨牌位置数，要注意矩阵的第一列不在考虑范围内，因为我们之前求出的heng[i][j]其实是说1 * 2的骨牌落脚点在(i,j)，但在[(a,b),(c,d)]内，落脚点不可能是第一列[(a,b),(c,b)]，可参考下图。对于2 * 1的情况的求解，则是不能考虑第一行。<br>
 　　<img src="../pics/CFGB2015C1.jpg">  
 </p>
@@ -116,9 +117,9 @@
 <p>题意：<br>
 　　将一个数字串切成若干段，使之呈一个严格上升的序列。 　　<br>
 解法：<br>
-　　显然dp，方程<code>dp[i][j] = ∑dp[i][k]，k&lt;j&lt;=i, s[k..j-1] &lt; s[j..i]</code>，dp[i][j]表示前i个数字以[j..i]为最后一段的情况数。当然，显然如果枚举k的话这个做法是O(N^3)的，必然超时。有若干策略（雾）（利用前缀和）可以将其优化成O(N^2)或者O(NlogN)的（博主下面提供的TLE的代码是O(NlogN)的做法，但是常数可能导致了TLE，仍需优化，仅供参考吧）。<br>
-　　然后还有一个问题，就是比较字符串的时候如果O(N)的比较会使本来O(N^2)的算法还要×这个复杂度，所以就有了做另一个dp的预处理，使比较字符串的工作将为O(1)的操作，详见代码。 <br>
-　　详细题解等博主哪天想AC这道题的时候再说吧（懒癌卧床中，勿扰~）。 <br>
+　　显然dp，方程<code>dp[i][j] = ∑dp[i][k]，k&lt;j&lt;=i, s[k..j-1] &lt; s[j..i]</code>，dp[i][j]表示前i个数字以[j..i]为最后一段的情况数。当然，显然如果枚举k的话这个做法是O(N^3)的，必然超时。有若干策略（雾）（利用前缀和）可以将其优化成O(N^2)或者O(N^2 * logN)的（博主下面提供的TLE的代码是O(N^2 * logN)的做法，虽然出题人说这个复杂度可以，但是可能是我的写法的常数导致了TLE，仍需优化，仅供参考吧）。<br>
+　　然后还有一个问题，就是比较字符串的时候需要快速处理，所以就有了做另一个dp的预处理，使比较字符串的工作将为O(1)的操作，详见代码。 <br>
+　　目前还是移步<a href="http://codeforces.com/blog/entry/22441" target="_blank">官方题解</a>吧。详细题解等博主哪天想AC这道题的时候再说吧（懒癌卧床中，勿扰~）。 <br>
   <a href="https://github.com/zhyack/Codeforces/blob/master/611_Good%20Bye%202015/611D(TLE).cpp" target="_blank">code</a>  
 </p>
 </li>
