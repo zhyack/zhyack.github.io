@@ -1,0 +1,165 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Good Bye 2015</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces Good Bye <strong>2015</strong></h1>
+<ul>
+<li><a href="http://codeforces.com/contest/611" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　2015最后一场CF，Div.1，Div.2混战，题目个人感觉不太对胃口，偏难了吧。　　
+　</p>
+<p>　　拿大号(<a href="http://codeforces.com/profile/Des_Payfor" target="_blank">Des_Payfor</a>)怒跪一场，不过还好不太遗憾，D题虽然没交上，但最终还是TLE的，是在下输了...<br>
+  根据这两年参加年终大战的经验→_→混战容易涨分...</p>
+<ul>
+  <li>
+<h2><a href="http://codeforces.com/contest/611/problem/A" target="_blank">611A-New Year and Days</a></h2>
+<p>题意：<br>
+　　翻阅日历，求2016年周X有几个，或求X号有几个。　<br>
+解法：<br>
+　　本应该是个很简单的题，可能参赛的压力都比较大，博主7分钟交了3次才过pretests，而这个时候竟然才只有一小部分人过了pretests，汗(-__-)||。<br>
+　　需要注意的是——2016是<strong>闰年</strong>，所以2月29天，一年366天。<code>366%7=2</code>，所以只有周五(<code>2016.01.01</code>，和周六<code>2016.01.02</code>)比其他周X多一天；X号就可以随便求了，注意<code>2016.02.29</code>即可。<br>
+　　抱着试一试赚回脑残罚时的态度看了一遍Room里的情况，竟然收获不小，各种没有注意闰年的或者是注意闰年还打表打错的，甚至还有一个多小时交的还搞不明白输入的...　　
+  　　
+  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/611_Good%20Bye%202015/611A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/611/problem/B" target="_blank">611B-New Year and Old Property</a></h2>
+<p>题意：<br>
+　　[a,b]范围内二进制表示中只有一个非前导0的数的个数。 　　<br>
+解法：<br>
+　　10^18，稳稳的64位整数以内，也就是说二进制位也就64个，枚举一下符合条件的数——二进制几位，哪一位是0，并检查是不是在[a,b]中即可。　　
+  　　
+  <a href="https://github.com/zhyack/Codeforces/blob/master/611_Good%20Bye%202015/611B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/611/problem/C" target="_blank">611C-New Year and Domino</a></h2>
+<p>题意：<br>
+　　骨牌的规格是1 * 2或者2 * 1的，q次询问——[(r1i,c1i),(r2i,c2i)]的区块内能放一个骨牌的位置数。 　　<br>
+解法：<br>
+　　二维前缀和的应用。不过由于横竖摆放的性质不同，需要分开处理。<br>
+　　首先，求1 * 2 的骨牌的前缀和矩阵heng[i][j] (1&lt;=i&lt;=h,1&lt;=j&lt;=w)表示[(1,1),(i,j)]这个矩阵内能放的1 * 2的骨牌数量。 <br>
+　　要求二维的前缀和，就要先把一维的处理出来，设tmp[i][j] 表示第i行前j个格子，也就是[(i,1),(i,j)]能放下的1 * 2的骨牌数量，这就是普通的前缀和，用以下代码即可轻松求出，非要说是dp我也没什么好争辩的。  
+</p>
+</li>
+</ul>
+<pre><code>for (int i = 1;i &lt;= N;i++)  
+	for (int j = 1;j &lt;= M;j++)  
+		if (g[i][j] == '.' &amp;&amp; g[i][j-1] == '.') tmp[i][j] = tmp[i][j-1]+1;  
+		else tmp[i][j] = tmp[i][j-1];　　
+</code></pre>
+<p>　　然后有了tmp[i][j]，就可以得到<code>heng[i][j] = heng[i-1][j]+tmp[i][j]</code>。<br>
+　　对于2 * 1的骨牌的处理类似，可得到一个shu[i][j]的前缀和矩阵。<br>
+　　此时考虑如果求矩阵[(a,b),(c,d)]内的1 * 2骨牌位置数，要注意矩阵的第一列不在考虑范围内，因为我们之前求出的heng[i][j]其实是说1 * 2的骨牌落脚点在(i,j)，但在[(a,b),(c,d)]内，落脚点不可能是第一列[(a,b),(c,b)]，可参考下图。对于2 * 1的情况的求解，则是不能考虑第一行。<br>
+　　<img src="../pics/CFGB2015C1.jpg">  
+</p>
+<p>　　利用前缀和在O(1)时间内求出对区间[(a,b),(c,d)]的询问，先考虑1 * 2的骨牌，首先<code>b++</code>去掉第一列，然后由容斥原理——<code>ans += heng[c][d]-heng[a-1][d]-heng[c][b-1]+heng[a-1][b-1]</code>；同理求2 * 1的情况，先<code>a++</code>去掉第一行，然后<code>ans += shu[c][d]-shu[a-1][d]-shu[c][b-1]+shu[a-1][b-1]</code>，参考下图。  
+</p>
+<p>　　<img src="../pics/CFGB2015C2.jpg"><br>
+　　<a href="https://github.com/zhyack/Codeforces/blob/master/611_Good%20Bye%202015/611C.cpp" target="_blank">code</a>  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/611/problem/D" target="_blank">611D-New Year and Ancient Prophecy</a></h2>
+<p>题意：<br>
+　　将一个数字串切成若干段，使之呈一个严格上升的序列。 　　<br>
+解法：<br>
+　　显然dp，方程<code>dp[i][j] = ∑dp[i][k]，k&lt;j&lt;=i, s[k..j-1] &lt; s[j..i]</code>，dp[i][j]表示前i个数字以[j..i]为最后一段的情况数。当然，显然如果枚举k的话这个做法是O(N^3)的，必然超时。有若干策略（雾）（利用前缀和）可以将其优化成O(N^2)或者O(NlogN)的（博主下面提供的TLE的代码是O(NlogN)的做法，但是常数可能导致了TLE，仍需优化，仅供参考吧）。<br>
+　　然后还有一个问题，就是比较字符串的时候如果O(N)的比较会使本来O(N^2)的算法还要×这个复杂度，所以就有了做另一个dp的预处理，使比较字符串的工作将为O(1)的操作，详见代码。 <br>
+　　详细题解等博主哪天想AC这道题的时候再说吧（懒癌卧床中，勿扰~）。 <br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/611_Good%20Bye%202015/611D(TLE).cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/611/problem/E" target="_blank">611E-New Year and Three Musketeers</a></h2>
+<p>题意：  待续待续
+   　　<br>
+解法：<br>
+  　　
+  　　
+  　　
+  　　<br>
+  code</p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
