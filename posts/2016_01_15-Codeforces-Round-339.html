@@ -1,0 +1,120 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Round #339 (Div. 2)</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+<section>
+<h1>Codeforces Round #339 (Div. 2)</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/614" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　CF#339 (Div. 2) ，真的是只做了Div.2的题。难度难以评价，质量呵呵，Div. 1部分可能会有比较好的题目，但除了那道万恶的几何其他都没看题。鉴于Div. 1一题没做，可以考虑virtual一发试试。低分号(<a href="http://codeforces.com/profile/Des_Payfor" target="_blank">Des_Payfor</a>)参赛，最大收获是终于体验了一把Room毒瘤的快感，把整个Room的A题稳稳控住，hack掉了13发，甚至凭借hack加分莫名其妙混了+74的rating，感觉整个人都萌萌哒→_→。<br>
+　　扯淡完毕，如果A题一直跪的话请继续看，其他情况可以右上角了~  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/614/problem/A" target="_blank">614A-Link/Cut Tree</a></h2>
+<p>题意：<br>
+　　与树链剖分并没有任何卵关系，就是求[l,r]中的k的整数幂。　<br>
+解法：<br>
+　　就算是最小的 k = 2 的时候也只是2^64 &gt;&gt; 1e18了，所以理论上来讲最多枚举60+次了，问题出在喜闻乐见的整数溢出。<br>
+　　设a是我们的枚举的中间结果，也就是k的整数次幂。有以下几种情况：<br>
+　　I. 用while(a &lt;= r)来判断枚举过程是否终止的。 这是最蠢的错法，试想k = 1e9，k^2还可以在范围内，k^3呢？ 所以试试这组数据<code>1 1000000000000000000 1000000000</code> 或者这组 <code>1 1000000000000000000 128</code> ； 什么？ 你说你过了这两组数据？ 那大概你用的是 unsigned long long吧，恰好躲过去而已，再试试这组数据<code>1 1000000000000000000 256</code>。错的原因是溢出导致a &lt;= r一直成立，于是乎TLE了。<br>
+　　II. 用while(a &lt;= r &amp;&amp; a &gt; 0)判断枚举过程是否终止的。 这些同学们考虑到了long long 溢出变成负数，但是要知道并不是溢出一定会变成负数呀，试试这个<code>1 1000000000000000000 370</code>。溢出为正数且在[l,r]范围内，唉...<br>
+　　III. 用for (i = 1;i &lt; somenum;i++)控制枚举次数的。注意到了TLE的问题，但是逃不了WA。同上，溢出为正数且在[l,r]范围内。<br>
+　　---------------分割线-------------------<br>
+　　说了这么多错误的做法，再说几种正确的过题姿势吧：<br>
+　　I. while(a &lt;= r/K)或类似，控制上界。<br>
+　　II. 使用double运算，可以忽略上界的影响。<br>
+　　III.　python大法好。(Room里有一哥们用的python，怎么看都是错的，结果我在本地敲了个差不多的代码才发现，python的int溢出时会自动变成浮点数存储，怎么看这道题都是为python设计的...)  <br>
+　　ps: 虽然比赛题目质量不怎么样，但是这题确实搞的挺欢乐的...被hack了若干次的同学们也无需放在心上，这场确实结果与实力无关。  <br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/614_Round%20%23339(Div.%202)/614A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/614/problem/B" target="_blank">614B-Gena's Code</a></h2>
+<p>题意：<br>
+　　题意说的好玄乎，结果就是求若干个数的乘积...而且最多只有一个数不是<code>0 | 1(0|1)*</code>。 　　<br>
+解法：<br>
+　　没什么好说的，pretest很强，几乎只有TLE没有测出来了。<br>
+　　要注意的是——有0输出0，没有特殊数的话记得输出前缀是'1'，其他情况就是输出特殊数之后，再输出符合上述正则表达式的的数的所有'0'。　　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/614_Round%20%23339(Div.%202)/614B.cpp" target="_blank">code</a></p></li></ul>
+  </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
