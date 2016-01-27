@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Problems-zhy</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Diner！Diner！Diner！</h1>
+<ul>
+<li>题目描述<br />
+大王派我来巡山哟，巡完南山巡北山哟~<br />
+小Z坐拥N个山头，坐镇于S号山头（最高峰），而他的副手小B则负责每天巡山照看各个山头。由于最近小B愈发懒散，今天小Z交给她一项任务让她去锻炼锻炼，从S号山头出发，去P(P!=S)号山头巡逻后回到S号山头汇报。不完成任务，就不能吃晚饭！！！<br />
+翻山越岭何其艰难，小B表示她这一路最多只能经过K个山头(包括开始和结束的两次必然经过的S山头)。于是她找到你，请你帮她算出她能不能完成任务，如果可以，给出她这一天至少走多少路才可以完成任务。</li>
+<li>输入描述<br />
+第1行：五个整数<code>N,M,S,P,K</code>，其中M表示山路条数，其他如上所述。<code>2&lt;=N&lt;=500</code>，<code>1&lt;=M&lt;=N*(N-1)/2</code>，<code>1&lt;=S,P&lt;=N</code>，<code>S!=P</code>，<code>3&lt;=K&lt;=1000000</code>。<br />
+第2~M+1行：每行三个整数，表示一条山路连接的两个山头<code>x[i]</code>和<code>y[i]</code>，和山路长度<code>z[i]</code>。<code>1&lt;=x[i],y[i]&lt;=N</code> , <code>0&lt;z[i]&lt;10000</code>。<br />
+*注：输入保证没有自环、重边，但不保证所有山头都连通；一个山头可以经过多次。  </li>
+<li>输出描述<br />
+如果不能完成任务，则输出-1，否则输出一个正整数L，表示小B至少要走过的山路总长度。</li>
+<li>样例输入<br />
+5 3 1 3 4<br />
+1 2 3<br />
+1 3 2<br />
+3 2 1  </li>
+<li>样例输出<br />
+4  </li>
+<li>样例解释<br />
+1 -&gt; 3 -&gt; 1</li>
+</ul>
+<h1>Gold Miner - Z</h1>
+<ul>
+<li>题目描述<br />
+小B最近迷上了黄金矿工，玩到了炉火纯青的地步，可以做到百发百中。但小B的朋友小Z很是不满，觉得她迷上这种游戏简直是侮辱智商，于是决定阻止她。<br />
+小Z将黄金矿工这个游戏稍作修改，改名为黄金矿工-Z，然后交给了小B去玩。<br />
+小B观察到这个游戏里关卡布局并不是像原版那样固定的，但每个关卡中都只有黄金和钻石，而且没有时间限制！<br />
+So easy~ 顺利地将几大块黄金收入囊中后，小B毫不犹豫地将魔爪伸向了钻石——Booooom! Game Over~<br />
+小B感到了深深的恶意→_→，但她智商有限，只能向你求助，请你帮忙计算出小B在给定关卡中最多能得多少分。</li>
+<li>输入描述<br />
+第1行：一个整数N,表示关卡中共有的物品（黄金/钻石）个数。<code>0&lt;=N&lt;=100000</code>。<br />
+第2行：N个整数，第i个整数<code>score[i]</code>表示第i个物品的分数，如果第i个物品是钻石，则<code>score[i]=0</code>,否则<code>0&lt;score[i]&lt;=100000</code>。<br />
+第3行: 一个整数M，表示对物品之间阻挡关系的描述信息个数。<br />
+第4~M+3行：每行两个整数<code>x[i]</code>，<code>y[i]</code>，表示第<code>x[i]</code>个物品阻挡在第<code>y[i]</code>个物品之前，换句话说，如果小B想要拿到第<code>y[i]</code>个物品，那么她一定要先拿到第<code>x[i]</code>个物品。<code>1&lt;=x[i],y[i]&lt;=N</code> , <code>x[i]!=y[i]</code>（这M条信息中没有直接涉及或间接涉及的物品关系均认为是无阻挡关系）</li>
+<li>输出描述<br />
+一个整数S，代表小B这一关能获得的最多分数（包括GameOver和正常结束关卡）。</li>
+<li>
+<p>样例输入<br />
+7<br />
+1 0 3 6 2 1000 3<br />
+6<br />
+2 6<br />
+1 6<br />
+1 3<br />
+1 4<br />
+3 4<br />
+3 7  
+</p>
+</li>
+<li>
+<p>样例输出<br />
+15</p>
+</li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
