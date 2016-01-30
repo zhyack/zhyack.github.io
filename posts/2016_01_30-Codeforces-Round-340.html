@@ -1,0 +1,135 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Round #340 (Div. 2)</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces Round #340 (Div. 2)</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/617" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　CF#340，题目较简单，坑多。小号(<a href="http://codeforces.com/profile/zhy" target="_blank">zhy</a>)踩雷，最近第一次跪得这么惨，总结一下——尝试先开了C导致心态不稳，重点还是So weak~  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/617/problem/A" target="_blank">617A-Elephant</a></h2>
+<p>题意：<br>
+　　从0走到x，每次只能+1~5，问最少多少步。<br>
+解法：<br>
+　　贪心地——能走+5就走+5，最后一步如果不足+5再微调，其实就是+5走<code>x/5</code>步，如果剩下的还有，就再走个+(<code>x%5</code>)。
+  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/617_Round%20%23340(Div.%202)/617A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/617/problem/B" target="_blank">617B-Chocolate</a></h2>
+<p>题意：<br>
+　　把01序列分成若干段，保证每段中有且仅有一个1，问有多少种分法。<br>
+解法：<br>
+　　前缀0和后缀0都是没用的，肯定会跟着第一个1和最后一个1，其他的每两个1之间0的个数其实就是这两个1之间能划分的方案数，统计一下各个0串的长度，相乘即为答案。<br>
+　　注意全0的情况，还有<code>1001001001001...</code>这种情况，会产生超过32位整型的答案。
+  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/617_Round%20%23340(Div.%202)/617B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/617/problem/C" target="_blank">617C-Watering Flowers</a></h2>
+<p>题意：<br>
+　　给出两个圆心的位置，以及平面上的N个点的位置，要求两个圆覆盖所有的点，求最小的<code>r1^2+r2^2</code>。<br>
+解法：<br>
+　　要明确，r1和r2一定是相应圆心到某点的距离——因为再长了也并没有什么乱用。所以r1和r2都有<strong>N+1</strong>中选择，注意存在<code>r1,r2 = 0</code>的情况。所以就是求出所有的r1,r2取值(到N个点距离)，排序后，两个指针一个r1从小到大，一个r2从大到小，时刻满足恰好覆盖所有的点，找出 <code>r1^2+r2^2</code> 最小值即可，具体操作细节见代码。　　
+  　　
+  　　<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/617_Round%20%23340(Div.%202)/617C.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/617/problem/D" target="_blank">617D-Polyline</a></h2>
+<p>题意：<br>
+　　给出3个点，只能用平行于坐标轴的折线来连接，问折线至少几段。<br>
+解法：<br>
+　　刷新世界观，这是D题难度？虽然比较坑...<br>
+　　<code>x1 = x2 = x3</code> 或 <code>y1 = y2 = y3</code> —— 1条直线即可。<br>
+　　一条边平行于坐标轴，且这条边的一端是直角或钝角，也就是说第三个点在这条边“外侧” —— 2条折线即可。直角或钝角判断可以用 <code>a^2+b^2 &lt;= c^2</code>，也可以通过坐标写出复杂的布尔表达式，见代码。<br>
+　　其他情况 —— 3条折线。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/617_Round%20%23340(Div.%202)/617D.cpp" target="_blank">code</a></p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>

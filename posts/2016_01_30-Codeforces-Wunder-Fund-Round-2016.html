@@ -1,0 +1,130 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces #Wunder Fund Round 2016 (Div. 1 + Div. 2 combined)</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces #Wunder Fund Round 2016 (Div. 1 + Div. 2 combined)</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/618" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>　　Wunder Fund Round 2016，题目难度一般，还是比较坑。小号(<a href="http://codeforces.com/profile/zhy" target="_blank">zhy</a>)继续踩雷，跪得比上一场还惨，不过服了，是在下输了。  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/618/problem/A" target="_blank">618A-Slime Combining</a></h2>
+<p>题意：<br>
+　　每次往序列尾部添加一个1，如果序列尾部两个数相同均为x，就合并为一个x+1。<br>
+解法：<br>
+　　模拟，如题意所述。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/618_Wunder%20Fund%20Round%202016/618A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/618/problem/B" target="_blank">618B-Guess the Permutation</a></h2>
+<p>题意：<br>
+　　给出矩阵a， <code>a[i][j] = min{p[i],p[j]}</code>， <code>a[i][i] = 0</code>，求排列p。<br>
+解法：<br>
+　　数一数一行出现最多的数出现了几次，计为m，那么对应的<code>p[i]=N-m</code>。特殊的是，m等于1的时候可能是<code>p[i] = N-1</code>，也可能是<code>p[i] = N</code>。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/618_Wunder%20Fund%20Round%202016/618B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/618/problem/C" target="_blank">618C-Constellation</a></h2>
+<p>题意：<br>
+　　给N个点，求三个点组成的三角形，满足其他N-3个点均不在此三角形上或内部。<br>
+解法：<br>
+　　难得尝试一下计算几何，又坑精度...精度务必设小，实测atan2求角度精度设到1e20能过...<br>
+　　具体操作——找左下角的点，以此点为原点，极角排序(atan2+距离)，排序后锁定前两个点为所求三角形的一条边，只需找到第三个点，与这两点不在一条直线上，且尽量靠前。正确性可以反证——如果存在反例，那么反例的第三个点一定极角较小或距离较短，与排序处理结果相悖。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/618_Wunder%20Fund%20Round%202016/618C.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/618/problem/D" target="_blank">618D-Hamiltonian Spanning Tree</a></h2>
+<p>题意：<br>
+　　完全图G中有N个点，所有的边长为Y，现选出一生成树，树上边长均变为X，求一条哈密尔顿路径的最小值。<br>
+解法：<br>
+　　X&gt;=Y的时候：当然是避免树上的边咯，然而树上的边才N-1条，最多也就封死一个点。所以先检查是否有哪个点的度是N-1，有的话即被封死，答案是<code>(N-2)*Y+X</code>；否则原边一定是可以找到一条哈密尔顿路径的，答案是<code>(N-1)*Y</code>。<br>
+　　X&lt;Y的时候：要尽量选择树上的边，沿着树上的路径走，走到绝路时才考虑走一个边权为Y的路从而可以切换到树上的另外一条没走过的路径。所以——要求出这棵树最少可以划分成几条路径。<br>
+　　树形dp，<code>dp[i][1]</code>表示节点i及其子树最少划分几条路径，且节点i可以与父节点连接成一条路径；<code>dp[i][0]</code>表示节点i及其子树最少划分几条路径，且节点i不与父节点连接成一条路径。显然<code>dp[i][1] &gt;= dp[i][0]</code>。<br>
+　　如果 i 的子节点 j 中存在一个可以与之相连的，也就是<code>dp[j][1]&lt;=dp[j][0]</code>，那么节点 i 就可以顺其自然的连上 j ，此时<code>dp[i][1] = ∑min(dp[j][0],dp[j][1])</code>；否则<code>dp[i][1] = ∑min(dp[j][0],dp[j][1])+1</code>。 如果 i 的子节点 j 中存在两个可以与之相连的，那就可以两段通过节点 i 连成一段，比<code>dp[i][1]</code>还少了一段，只是这时节点 i 在段中间，不能在与其父节点相连，此时<code>dp[i][0] = dp[i][1]-1</code>；否则<code>dp[i][0] = dp[i][1]</code>。<br>
+　　求出树上最少的分段数 n ，答案即为<code>(n-1)*X+(N-n)*Y</code>。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/618_Wunder%20Fund%20Round%202016/618D.cpp" target="_blank">code</a></p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
