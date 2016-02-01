@@ -1,7 +1,7 @@
 <section>
 #Codeforces Round #341 (Div. 2)
 - [contest link](http://codeforces.com/contest/621)  
-  
+  	
 
 　　CF#341，难度一般，全是数学题！！！<img src="../emojis/joy.png" alt="joy_with_tears" height="30"><br>  
 　　最近对于这种非常规的出题方式实在是感到很无力，不过比赛时确实是智商感人，什么都想不到。涉及的数学知识不难，D题比较坑，其他题都是会者不难。  
