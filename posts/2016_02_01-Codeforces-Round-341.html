@@ -54,7 +54,7 @@
 <li><a href="http://codeforces.com/contest/621" target="_blank">contest link</a>  
 </li>
 </ul>
-<p>　　CF#341，难度一般，全是数学题！！！:joy: <br>
+<p>　　CF#341，难度一般，全是数学题！！！ :joy: <br>
 　　最近对于这种非常规的出题方式实在是感到很无力，不过比赛时确实是智商感人，什么都想不到。涉及的数学知识不难，D题比较坑，其他题都是会者不难。  
 </p>
 <ul>
@@ -102,7 +102,7 @@
 解法：<br>
 　　废话不多说，基本上就是对每个式子求两遍log，然后就能把数值控制在可接受范围内。需要注意的是：比如第一个式子两次log之后是<code>z*log(y)+log(log(x))</code>，如果<code>x&lt;=1</code>的话<code>log(x)&lt;=0</code>，<code>log(log(x))</code>就呵呵了，所以需要注意各种<code>&lt;=1</code>的情况。<br>
 　　还好情况不算很复杂，因为如果<code>x&lt;=1,y&lt;=1,z&lt;=1</code>，还log什么，直接pow算不就得了。否则只要存在任一x或y或z大于1，比如<code>x&gt;1，y&lt;=1，z&lt;=1</code>，那么x为底的式子一定是值大于1的，而y,z对应的式子都是小于等于1的，所以y，z的式子都不予考虑，其他类似情况如法炮制。具体操作见代码。<br>
-　　不过话说我之前把各种<code>&lt;=1</code>写成<code>&lt;1</code>竟然也过了，log(0)，嗯<img src="../emojis/anguished.png" alt="anguished" height="30" >...
+　　不过话说我之前把各种<code>&lt;=1</code>写成<code>&lt;1</code>竟然也过了，log(0)，嗯 :anguished: ...
   　　
   　　
   　　<br>
