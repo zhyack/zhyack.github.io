@@ -1,0 +1,130 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|在静态博客中添加Emoji表情组</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>在静态博客中添加Emoji表情组</h1>
+<p>　　随着站点一点点地搭建起来，博主所期望的站点功能也是越来越完善。如今网络语言中各路表情被广泛使用，能达到“一图胜千言”的效果。博文中虽然不要求那么丰富的表情元素，但基础的小表情组应当是必需的，比如，Emoji表情组—— :joy: 。  
+</p>
+<ul>
+<li>Emoji表情包<br>
+　　Github上很多emoji相关项目中都存有完整的表情包，推荐<a href="https://github.com/arvida/emoji-cheat-sheet.com/tree/master/public/graphics/emojis" target="_blank">EMOJI CHEAT SHEET</a>——881个表情，5.55MB，相当清晰，以表情内容命名，方便查找引用。更重要的是其<a href="http://www.emoji-cheat-sheet.com/" target="_blank">主页</a>提供了emoji速查表，初期能让使用相当便利。<br>
+　　把整个包下载之后，挑出表情包的文件夹(emojis/)放入自己静态博客项目中，例如本博客放在了<code>../pics/emojis/</code>（从<a href="https://github.com/zhyack/zhyack.github.io" target="_blank">我的github项目</a>中抽取emojis包也是可以的）。  
+</li>
+<li>表情的使用<br>
+　　当然有了表情图片我们是可以直接按普通图片用的，但会存在一些问题——图片大小需要调整；对齐需要调整；路径太长，大量引用时很不方便。于是需要一种能方便快捷输入编辑这些图片的方法。<br>
+　　思考对这些图片的使用时代码的共同点——标签，样式，路径...除了名字外其他全都相同，可以统一设置。所以我们需要一种能够将其名字作为关键字替换成相应代码的工具，自己实现起来还是要费一番功夫的，还好已有前辈提供了开源的工具——<a href="https://github.com/Ranks/emojify.js" target="_blank">emojify.js</a>。</li>
+<li>emojify.js<br>
+　　1.在其项目中提取emojify.js或emojify.min.js，放入自己项目中。<br>
+　　2.在自己网站的css文件，例如style.css中添加emoji的样式。<br>
+　　3.在使用emoji的网页之前添加对emojify.js的脚本引用，而且还要添加一段激活emojify的脚本代码。<br>
+　　4.使用时务必注意冒号前后的空格，比如<code>:joy:</code>是不会显示图片的，html中写成<code>(空格):joy:(空格)</code>即可显示为 :joy: ，本地用浏览器测试或提交到网站查看效果。</li>
+</ul>
+<pre><code>style.css中追加：
+	.emoji {
+	width: 1.5em;
+	height: 1.5em;
+	display: inline-block;
+	margin-bottom: -0.25em;
+	}
+html中前添加：
+    &lt; script src="../javascripts/emojify.min.js"&gt;
+    &lt; script src="../javascripts/emojify.run.js"&gt;
+**ps注意粘贴时去点script前的空格。
+其中emojify.run.js是自己创建的js文件，代码为：
+emojify.setConfig({
+	emojify_tag_type : 'section',           // Only run emojify.js on this element
+	only_crawl_id    : null,            // Use to restrict where emojify.js applies
+	img_dir          : '../pics/emojis',  // Directory for emoji images
+	ignored_tags     : {                // Ignore the following tags
+		'SCRIPT'  : 1,
+		'TEXTAREA': 1,
+		'A'       : 1,
+		'PRE'     : 1,
+		'CODE'    : 1
+	}
+});
+emojify.run();
+按自己情况修改上述代码中的emojify_tag_type和img_dir。
+如果不想另外创建js文件，也可以直接在html中对应位置放上上述代码。
+</code></pre>
+<p>　　</p>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/emojify.min.js"></script>
+    <script src="../javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
