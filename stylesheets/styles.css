@@ -341,3 +341,9 @@ footer {
 	text-align: center;
 	font-weight:700;
 }
+.emoji {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-bottom: -0.25em;
+}
