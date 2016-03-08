@@ -1,0 +1,165 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|MathJax 公式编辑学习笔记</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://zhyack.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>MathJax 公式编辑学习笔记</h1>
+<p>为什么用MathJax，我只放一张图：<br>
+<img src="../pics/formula-exa.png" alt="公式编辑器-example"><br>
+使用MathJax，公式就可以在页面中这样显示：<br>
+\(a^2 + b^2 = c^2\)<br>
+公式显示风格完全是可以订制的。具体安装配置见文末。</p>
+<h2>基本用法</h2>
+<ul>
+<li>独占一行，居中显示的公式——<code>\[YOURFORMULA\]</code>或<code>$$YOURFORMULA$$</code>。如：
+\[MYFORMULA+-*/\]</li>
+<li>嵌入式的公式——<code>\(YOURFORMULA\)</code>。如 \(MYFORMULA+-*/\)</li>
+</ul>
+<h2>符号</h2>
+<ul>
+<li>可直接使用的符号： <code>\\(+\quad -\quad =\quad !\quad /\quad (\quad )\quad [\quad ]\quad &lt;\quad &gt;\quad |\quad '\quad :\quad [a..z]\quad [A..Z]\quad [0..9]\quad ,\quad .\\)</code>\(+\quad -\quad =\quad !\quad /\quad (\quad )\quad [\quad ]\quad &lt;\quad &gt;\quad |\quad '\quad :\quad [a..z]\quad [A..Z]\quad [0..9]\quad ,\quad .\)</li>
+<li>
+其他常用符号：
+<ul>
+<li>希腊字母：  <code>\\(\alpha\quad\beta\quad\gamma\quad\pi\quad\phi\quad\varphi\quad\theta\\)</code>\(\alpha\quad\beta\quad\gamma\quad\pi\quad\phi\quad\varphi\quad\theta\)  <code>\\(\Gamma\quad\Pi\quad\Phi\quad\Theta\\)</code>\(\Gamma\quad\Pi\quad\Phi\quad\Theta\)</li>
+<li>函数符号：<code>\\(\cos\quad\sin\quad\tan\quad\exp\quad\\)</code>  \(\cos\quad\sin\quad\tan\quad\exp\quad\)</li>
+<li>运算符号：<code>\\(\lim\quad\bmod\quad\pmod x\quad\equiv\quad \times \quad  \sqrt \quad  \sum\_{i=1}^{10} xi \quad \displaystyle\sum\_{i=1}^{10} xi \quad \int\_0^\infty \quad  \\)</code> \(\lim\quad\bmod\quad\pmod x\quad\equiv\quad \times \quad  \sqrt \quad  \sum_{i=1}^{10} xi \quad \displaystyle\sum_{i=1}^{10} xi \quad \int_0^\infty \quad  \) <br>
+<code>\\(\oplus\quad  \odot\quad  \cup\\quad  \cap\quad  \vee\quad  \wedge\quad  \iiint\quad  \oint\quad  \prod\quad  \int\limits\_a^b\quad \sum\_{\substack{0&lt;i&lt;m \\\\ 0&lt;j&lt;n}&lt;!----&gt;}P(i,j)\\)</code>  \(\oplus\quad  \odot\quad  \cup\quad  \cap\quad  \vee\quad  \wedge\quad  \iiint\quad  \oint\quad  \prod\quad  \int\limits_a^b\quad \sum_{\substack{0&lt;i&lt;m \\ 0&lt;j&lt;n}<!---->}P(i,j)\)</li>
+<li>集合符号：<code>\\(\in\quad \notin \quad \\)</code>\(\in\quad \notin \quad \)  
+</li>
+<li>上标下标：<code>\\(x\_i\quad x\_{i+1}\quad x^2\quad x^{i+1}\quad x\_{i+1}^{j*2}\quad x| \_{x=2}\\)</code>  \(x_i\quad x_{i+1}\quad x^2\quad x^{i+1}\quad x_{i+1}^{j*2}\quad x| _{x=2}\)  
+</li>
+<li>括号： <code>\\((a)\quad [b]\quad \{c\}\quad \langle d \rangle \quad  \lfloor e \rfloor \quad  \lceil f \rceil \quad \left(\frac{a \over b}{c+d}  \right) \quad (\big)\Big(\bigg)\Bigg()\quad   \begin{cases}1\\\\2\\\\3\\\\ \end{cases} \\)</code>  \((a)\quad [b]\quad {c}\quad \langle d \rangle \quad  \lfloor e \rfloor \quad  \lceil f \rceil \quad \left(\frac{a \over b}{c+d}  \right) \quad (\big)\Big(\bigg)\Bigg()\quad   \begin{cases}1\\2\\3\\ \end{cases} \)  
+</li>
+<li>分数： <code>\\(\frac{\frac{2a}{b^2}}{c+d}\quad {a \over b+c} \quad ^4/\_5 \quad \\)</code>  \(\frac{\frac{2a}{b^2}}{c+d}\quad {a \over b+c} \quad ^4/_5 \quad \)  
+</li>
+<li>组合数： <code>\\({n \choose k}\quad \binom{n}{k}\\)</code>  \({n \choose k}\quad \binom{n}{k}\)   
+</li>
+<li>矩阵： <code>\\[\begin{matrix}1 &amp; 2 \\\\ 3 &amp; 4 \end{matrix} \times \begin{matrix}1 &amp; 2 \\\\ 3 &amp; 4 \end{matrix} = \begin{matrix}? &amp; ? \\\\ ? &amp; ? \end{matrix}\\]</code>  \[\begin{matrix}1 &amp; 2 \\ 3 &amp; 4 \end{matrix} \times \begin{matrix}1 &amp; 2 \\ 3 &amp; 4 \end{matrix} = \begin{matrix}? &amp; ? \\ ? &amp; ? \end{matrix}\]  <code>\\(\begin{smallmatrix}1 &amp; 2 \\\\ 3 &amp; 4 \end{smallmatrix} \times \begin{smallmatrix}1 &amp; 2 \\\\ 3 &amp; 4 \end{smallmatrix} = \begin{smallmatrix}? &amp; ? \\\\ ? &amp; ? \end{smallmatrix}\\)</code>\(\begin{smallmatrix}1 &amp; 2 \\ 3 &amp; 4 \end{smallmatrix} \times \begin{smallmatrix}1 &amp; 2 \\ 3 &amp; 4 \end{smallmatrix} = \begin{smallmatrix}? &amp; ? \\ ? &amp; ? \end{smallmatrix}\)  
+</li>
+<li>其他：<code>\\(\pm\quad \mp\quad \dots \quad \infty \quad \boldsymbol{\alpha} \quad vs \quad \alpha \quad \color{red}{i'm\quad red}\\)</code>  \(\pm\quad \mp\quad \dots \quad \infty \quad \boldsymbol{\alpha} \quad vs \quad \alpha \quad \color{red}{i'm\quad red}\)   
+</li>
+</ul>
+</li>
+</ul>
+<h2>安装与配置</h2>
+<p>这里的配置依照的是本博客的搭建需求，原理很简单，自取所需。  
+</p>
+<ul>
+<li>最省事的配置方法——把下面的代码放在所需的html的&lt;head&gt;标签中</li>
+</ul>
+<pre>&lt;script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'&gt;&lt;/script&gt;
+</pre>
+<ul>
+<li>由于cdn速度感人，博主自行从<a href="https://github.com/mathjax/MathJax" target="_blank">官方</a>clone下来了MathJax包，放在自己的站内，速度就快多了，所以可以这样——把下面的代码放在所需的html的&lt;head&gt;标签中</li>
+</ul>
+<pre>&lt;script src='https://zhyack.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'&gt;&lt;/script&gt;
+</pre>
+<ul>
+<li>当然订制起来也很简单，比如——我的博客是偏暗色的背景，所以可以通过下面的代码将其公式字体设置为亮色——在mathjax的config文件夹下default.js中修改：</li>
+</ul>
+<pre>	styles: {
+			  ".MathJax .merror": {
+			    color:   "#FFFFFF",
+			    "font-style": "normal",
+			    "font-size":  "100%"
+			  }
+	}
+</pre>
+<ul>
+<li>每个页面上加段脚本代码也是可以临时设置的——把下面的代码放在所需的html的&lt;head&gt;标签中</li>
+</ul>
+<pre>&lt;script type="text/x-mathjax-config"&gt;
+  MathJax.Hub.Config({
+    styles: {
+		  ".MathJax .merror": {
+		    color:   "#FFFFFF",
+		    "font-style": "normal",
+		    "font-size":  "100%"
+		  }
+		
+		}
+  });
+&lt;/script&gt;
+</pre>
+<ul>
+<li>最后提一下——MarkdownPad2中也可以相应的配置——Tools-Options-Advanced-HTML Head Editor中添加&lt;head&gt;标签，然后预览为html时可以达到同样的效果。从某种意义上来说，确实可以部分取代LaTex了，然而Markdown的<strong>\  _  *</strong>这几个符号的输入很不友好，给写公式带了一定的影响。</li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/emojify.min.js"></script>
+    <script src="../javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
