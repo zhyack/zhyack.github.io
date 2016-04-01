@@ -1,0 +1,163 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Codeforces Round #346 (Div. 2)</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='../mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Codeforces Round #346&nbsp;(Div. 2)</h1>
+<ul>
+<li><a href="http://codeforces.com/contest/659" target="_blank">contest link</a>  
+</li>
+</ul>
+<p>CF#346，难度偏简单，题目读起来比较费劲，毕竟不是Russian-English Speaker...<br>
+好久没做题了的说...这周做了345和346两场，感觉题目都不算难，至少不是像过年那段时间那样神坑。正好在其他地方被虐了来做比赛找自信，论消遣的正确姿势。<br>
+另外最近消停了挺久了，看了看访客统计还是有持续的访问，感人肺腑。  
+</p>
+<ul>
+<li>
+<h2><a href="http://codeforces.com/contest/659/problem/A" target="_blank">659A-Round House</a></h2>
+<p>题意：<br>
+在一个圈上顺时针或逆时针走若干步之后在哪儿。<br>
+解法：<br>
+加，然后模。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/659_Round%20%23346(Div.%202)/659A.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/659/problem/B" target="_blank">659B-Qualifying Contest</a></h2>
+<p>题意：<br>
+若干个region中，每个region选出2个成绩最好的队员。问每个region的方案是否唯一。<br>
+解法：<br>
+region方案是否唯一其实看得就是第2名和第3名是不是相同。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/659_Round%20%23346(Div.%202)/659B.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/659/problem/C" target="_blank">659C-Tanya and Toys</a></h2>
+<p>题意：<br>
+有K元钱，买i号玩具需要花i元，给出已有的玩具，问最多可以有多少种玩具。<br>
+解法：<br>
+水水的贪心，尽量小就是了。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/659_Round%20%23346(Div.%202)/659C.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/659/problem/D" target="_blank">659D-Bicycle Race</a></h2>
+<p>题意：<br>
+用有向边围成一个封闭多边形，问有几个有向边指向多边形内部。<br>
+解法：<br>
+计算几何唉，好激动~<br>
+我的做法比较投机，就是将边(x1,y1)-&gt;(x2,y2)按期方向延伸一个单位，也就是(x2,y2)-&gt;(x2+dx,y2+dy)，看一下这个边在其垂直的负方向上存在于几个多边形的边上，其实和验证点在几何图形内部还是外部是一个道理(做射线，与图形交奇数个点，则在内部，否则在外部)。不过复杂度刚好是O(N^2)唉，虽然借助线段树显然可以把复杂度做到O(NlogN)。没看题解，不知道官方是怎么做的。<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/659_Round%20%23346(Div.%202)/659D.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/659/problem/E" target="_blank">659E-New Reform</a></h2>
+<p>题意：<br>
+N个点M条边，要求将每条边变成一个有向边，求最终最少有几个点没有入度。<br>
+解法：<br>
+这种题往聚类上想总是错不了= =。<br>
+想想一棵树的话，变有向边，无论怎么变肯定都是有且仅有根没有入度，如果在树上随便加一条边，那就会构成一个环，以环内的任何一点为根，均可实现所有的点都有入度。所以问题就变成了求连通块，如果连通块中只能构成树，那么答案+1。并查集搞定。  <br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/659_Round%20%23346(Div.%202)/659E.cpp" target="_blank">code</a>  
+</p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/659/problem/F" target="_blank">659F-Polycarp and Hay</a></h2>
+<p>题意：<br>
+要求将原矩阵中的数减小，使至少一个位置不变，非零数都相同且所在格子连通，所有数的和为K。<br>
+解法：<br>
+所有的条件就把出题人的意图表达的很清楚了，其实就是找到一个格子，让这个格子的数<code>val</code>不变(<code>K mod val = 0</code>)，然后只要这个格子存在一个连通块中的所有格子的原始值均大于等于<code>val</code>，且格子数大于等于<code>K/val</code>即可。  如果原始矩阵规模较小的话完全可以暴力做，但显然出题人是不会把暴力的题目放在F的。<br>
+考虑我们要求的连通块的要求是“所有格子的原始值均大于等于<code>val</code>”，于是可以想到将所有格子按值从大到小排序，逐个加入与周围四个方向的满足值大于等于<code>val</code>的要求的格子求并查集，这样只要加入处理完某个格子(i,j)之后发现这个格子所在的并查集的格子总数满足大于等于<code>K/val</code>，就代表找到了一个可行解，此时应输出YES。时间复杂度只是O(N<em>M</em>log(N*M))。<br>
+但这个时候这个格子(i,j)所在的并查集并不一定是答案中非零的区域，因为其格子数可能大于<code>K/val</code>，此时为了构造出一种答案可以以(i,j)为起点进行dfs或bfs找<code>K/val</code>个连通点即可。<br>
+显然此题的代码工程较大，而且各种细节及其容易WA，博主当时WA到第98个点上生无可恋...<br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/659_Round%20%23346(Div.%202)/659F.cpp" target="_blank">code</a> </p>
+</li>
+<li>
+<h2><a href="http://codeforces.com/contest/659/problem/G" target="_blank">659G-Fence Divercity</a></h2>
+<p>题意：<br>
+题目扯的很麻烦，其实就是说保留最后一行的情况下，从顶部去掉一个连通块，去掉的部分必须是每个stack的顶部，问有多少种去法。<br>
+解法：<br>
+显然dp。让我们先不考虑数据范围，想最暴力的做法——设dp[i][j]表示前i堆都合法的情况下第i堆去掉顶后高度为j的时候有多少种方法，则一般情况<code>dp[i][j] = sigma(dp[i-1][k]),其中0&lt;j&lt;h[i] &amp;&amp; 0&lt;k&lt;min(h[i-1],h[i])</code>，特例也好分析，这里不再赘述。<br>
+但是上述dp暴力写起来的话无疑是O(NH)的，所以就要考虑有什么特点。于是规范地画一画就很容易得到下图：<br>
+<img src="https://zhyack.github.io/pics/CF346G.png" alt="CF659G"><br>
+其实画的很明白了，<code>h[i-1]==h[i]</code>的情况可以算是任何一种情况的特例，整个dp[i]其实也就最多分为4段，<code>dp[i][0]=0，dp[i][1~h[i-1]-1]=v1, dp[i][h[i-1]~h[i]-1]=v2, dp[h[i]]=ans[i-1]，而h[i-1]&gt;h[i]时认为h[i-1]=h[i]就可以将两种情况归为一种</code>，所以每一次dp只需要记下来v1,v2即可，其他都不用记录，dp复杂度是线性的O(N)。说到这儿主要难度在于计算dp[i]时候的v1,v2时要涉及dp[i-1]的v1和v2，容易乱掉，这个仔细画一画就明白了。<br>
+最终的\(ans_{N}\)即为答案，初始化见代码自行思考吧。    <br>
+  <a href="https://github.com/zhyack/Codeforces/blob/master/659_Round%20%23346(Div.%202)/659G.cpp" target="_blank">code</a></p></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="../javascripts/emojify.min.js"></script>
+    <script src="../javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
