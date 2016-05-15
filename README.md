@@ -53,3 +53,5 @@
 ##Refer To
 * 2015.11.23 >> [使用Github Pages定制个人主页经验](https://zhyack.github.io/posts/2015_11_23_How-To-Build-Your-Blog-On-Github-Pages.html)
 * 2015.12.07 >> [Markdown 学习笔记](https://zhyack.github.io/posts/2015_12_07_Markdown-Note.html)
+* 2016.02.03 >> [在静态博客中添加Emoji表情组](https://zhyack.github.io/posts/2016_02_03-Add-Emojis-To-Your-Blog.html)
+* 2016.03.08 >> [MathJax 公式编辑学习笔记](https://zhyack.github.io/posts/2016_03_08-Print-Formula-With-MathJax.html)
