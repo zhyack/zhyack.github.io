@@ -1,0 +1,166 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Windows下Theano环境搭建</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Windows下Theano环境搭建</h1>
+<ul>
+<li>系统： Windows 8/10 (64位)</li>
+<li>Python： Anaconda2-4.0.0-Windows-x86_64 (python 2.7.10)</li>
+<li>CUDA： Cuda_7.5.18</li>
+<li>VS：VS2013</li>
+</ul>
+<p>Theano也算是深度学习主流工具之一了吧，其优势主要在于使用简单——普通的python语法，CPU/GPU无脑切换。在不过分苛求运行速度的情况下，Theano是不错的选择。不过其环境搭建也如同各种工具一样，到处都是坑。  
+</p>
+<ul>
+<li>
+<h2>准备工作</h2>
+<ul>
+<li>如果想尽可能简单地进行，<strong>建议</strong>在一切开始前卸载系统中所有python和MinGW g++，特别注意从环境变量中除去它们，然后重启。不过，不是必要的。</li>
+<li>下载<a href="https://www.continuum.io/downloads" target="_blank">Anaconda</a>，<a href="https://developer.nvidia.com/cuda-downloads" target="_blank">CUDA</a>，<a href="https://www.visualstudio.com/" target="_blank">VS</a>。</li>
+<li>准备测试用的代码，比如<a href="http://deeplearning.net/tutorial/" target="_blank">这里</a>随便一个模型的代码。</li>
+</ul>
+</li>
+<li>
+<h2>安装Anaconda</h2>
+<ul>
+<li>傻瓜式安装之后，打开cmd，输入<code>conda install mingw libpython</code>，等待...然后输入<code>pip install theano</code>，再等待...</li>
+<li>把Anaconda相关的路径添加到环境变量<code>path</code>中<pre><code>C:\Anaconda\MinGW\x86_64-w64-mingw32\include;
+C:\Anaconda\MinGW\x86_64-w64-mingw32\lib;
+C:\Anaconda\MinGW\bin;
+C:\Anaconda;
+C:\Anaconda\Scripts;</code></pre></li>
+<li>然后重开个cmd，输入<code>python</code>，应该会出来Anaconda Python的命令行界面，然后输入<code>import theano;</code>，应该不会提示有什么错误。如果提示各种错误，看看错误日志很快就能发现问题的，一般都会提示哪里遇到了什么东西找不到的错误，对应检查一下环境变量。如果有其他版本的MinGW或python，也有可能导致错误。</li>
+<li>这时尝试运行代码，比如cmd中<code>python lstm.py</code>，大概是会报错的 :smirk_cat: 。</li>
+<li>在用户目录下（比如<code>C:\Users\zhy\</code>）新建一个文本文件，命名为<code>.theanorc.txt</code>，然后如下编辑保存，再次在cmd中运行，应当是可以用cpu跑起来theano了<pre><code>[global] 
+openmp = False 
+device = cpu 
+floatX = float32 
+allow_input_downcast=True 
+[blas] 
+ldflags= 
+[gcc] 
+cxxflags=-IC:\Anaconda\MinGW\x86_64-w64-mingw32\include</code></pre></li>
+</ul>
+</li>
+<li>
+<h2>安装CUDA</h2>
+<ul>
+<li>傻瓜式安装的说...</li>
+<li>环境变量应当是自动配置好的，以防万一，还是检查一下：<pre><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin;
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\libnvvp;</code></pre></li>
+</ul>
+</li>
+<li>
+<h2>安装VS2013</h2>
+<ul>
+<li>无脑装...</li>
+<li>如果只是为了搭theano环境的话把c++相关的内容装上即可，其他臃肿的东西可不选。装VS完全就是为了编译器。</li>
+</ul>
+</li>
+<li>
+<h2>GPU运行Theano</h2>
+<ul>
+<li>很简单，改下配置文件<code>.theanorc.txt</code>即可:<pre><code>[global] 
+openmp = False 
+device = gpu 
+floatX = float32 
+allow_input_downcast=True 
+[blas] 
+ldflags= 
+[gcc] 
+cxxflags=-IC:\Anaconda\MinGW\x86_64-w64-mingw32\include
+[nvcc] 
+flags = -LC:\Anaconda\libs --cl-version=2013
+compiler_bindir = C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\amd64 
+fastmath = True </code></pre></li>
+<li>改变的主要是[nvcc]的选项，如果用的是VS2012的话就对应修改<code>-version</code>和<code>compiler_bindir</code>的对应部分就行。网上也有各种版本的配置文件，经常出问题的地方也都是VS编译器的路径没指对（不知道他们是怎么搭好环境的 :speak_no_evil: ）。</li>
+</ul>
+</li>
+<li>
+<h2>摆脱控制台操作</h2>
+<p>博主个人喜欢Eclipse的编辑器，没错——是编辑器。而Eclipse又是个什么都能跑的IDE，所以个人推荐Eclipse。如果上面步骤进行的都很顺利，那用Eclipse跑Theano也很容易配置。</p>
+<ul>
+<li>Eclipse装PyDev，略。</li>
+<li>配置PyDev的Python Interpreter，指向Anaconda根目录的python。</li>
+<li>建个工程，放进去测试代码，运行一下... :smirk_cat: </li>
+<li>经实验，Eclipse的环境变量应当是系统启动时随系统环境变量更新，而刚才配置的环境变量还没有应用的Eclipse中，所以——重启一下，再试一次。 :neutral_face:</li></ul></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
