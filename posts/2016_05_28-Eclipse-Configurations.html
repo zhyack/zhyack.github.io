@@ -1,0 +1,167 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Eclipse各种环境的搭建</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Eclipse各种环境的搭建</h1>
+<p>虽然现在搭这些环境已经是驾熟就轻了，但各种插件的网址也是记不清，每次都要查一遍，所以写个小结记录下。对于初学者来说也会有所裨益吧。  
+</p>
+<blockquote>
+<p>默认Windows系统，虽然Eclipse跨平台，但由于系统环境不同，在Linux系统上也会稍有一些区别，在介绍时会尽量顾及。<br>
+ 虽然官网上提供供各种开发用的Eclipse版本（其实也就是装好各种插件的），但毕竟很多时候我们要使用多种语言，总不能桌面上摆三个快捷方式——Eclipse_JAVA，Eclipse_C++，Eclipse_Python吧。</p>
+</blockquote>
+<ul>
+<li>
+<h2>JAVA</h2>
+<ul>
+<li>Java当然是默认就有的，<a href="http://www.eclipse.org/downloads/" target="_blank">官网</a>上即可下载，认字的自己选择了，不认字的直接点<a href="http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/mars/2/eclipse-java-mars-2-win32-x86_64.zip" target="_blank">这个</a>吧。  
+</li>
+<li>如果装好还运行不了Java程序，你需要装JDK和JRE...一般来说，下载<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">JDK</a>安装即可，安装完之后如果还不能运行，那应该是系统环境变量没有自动配置，添加类似如下环境变量：</li>
+</ul>
+<pre><code>新增JAVA_HOME=C:\Program Files\Java\jdk1.8.0_91
+新增JRE_HOME=C:\Program Files\Java\jre1.8.0_91
+CLASSPATH中添加C:\Program Files\Java\jdk1.8.0_91\lib 和 C:\Program Files\Java\jre1.8.0_91\lib
+path中添加C:\Program Files\Java\jdk1.8.0_91\bin
+</code></pre>
+<ul>
+<li>重开Eclipse，JAVA可以运行了。</li>
+</ul>
+</li>
+<li>
+<h2>C/C++</h2>
+<ul>
+<li>
+<h3>安装CDT</h3>
+<ul>
+<li><a href="http://www.eclipse.org/cdt/downloads.php" target="_blank">官网</a>中有安装文件下载，找到对应版本的仓库url，比如Mars.2版本的( http://download.eclipse.org/tools/cdt/releases/8.8.1)。</li>
+<li>打开Eclipse，Help-&gt;Install New Software-&gt;Add-&gt;Name:cdt , Location: http://download.eclipse.org/tools/cdt/releases/8.8.1, 然后选cdt基础包，一路next即可。</li>
+<li>现在应当是可以建C++工程了，但并无卵用，不能运行，因为你的系统中还没有C++的编译环境——g++。</li>
+</ul>
+</li>
+<li>
+<h3>安装g++</h3>
+<ul>
+<li><a href="https://sourceforge.net/projects/mingw/files/Installer/" target="_blank">官网</a>，下载mingw-get-setup.exe，运行选择需要的东西，比如base包，g++包，gcc包等，傻瓜式安装即可。</li>
+<li>安装完之后记得检查系统变量path中是否存在<code>C:\MinGW\bin</code>类似物，没有就添上。</li>
+<li>重启Eclipse新建工程尝试下能否运行C++程序，不能的话就重启下电脑，更新下环境变量。</li>
+<li>GDB已经装好了的说...	</li>
+</ul>
+</li>
+<li>
+<h3>linux版本</h3>
+<ul>
+<li>linux稍有不同，g++是可以直接<code>apt-get install</code>的，但需要在Eclipse-&gt;Window-&gt;Preferences-&gt;C/C++-&gt;New C\C++ Project Wizard 中设置ToolChains为默认MinGW GCC，然后重启生效。 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Python</h2>
+<ul>
+<li>
+<h3>安装Pydev</h3>
+<ul>
+<li><a href="https://sourceforge.net/projects/pydev/files/pydev/" target="_blank">官网</a>有各种版本，不过还是推荐使用url(pydev - http://pydev.org/updates)类似cdt的安装方式进行安装。</li>
+<li>装完当然是不能运行python的...</li>
+</ul>
+</li>
+<li>
+<h3>安装python</h3>
+<ul>
+<li><a href="https://www.python.org/downloads/" target="_blank">官网</a>，无脑装...</li>
+<li>这个还真不用配环境变量，但是需要下面步骤。</li>
+</ul>
+</li>
+<li>
+<h3>配置python</h3>
+<ul>
+<li>Eclipse-&gt;Window-&gt;Preferences-&gt;Pydev-&gt;Interpreters-&gt;Python Interpreters-&gt;New，找到python.exe的位置，选中加入，Apply，搞定。</li>
+<li>可以跑python了。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>其他</h2>
+<ul>
+<li>更为复杂的环境搭建，举个例子，<a href="https://zhyack.github.io/posts/2016_05_26-Configurate-Theano-On-Windows.html" target="_blank">Theano</a>。</li>
+<li>但其实搭这些环境都是一回事儿了，插件安装+软件依赖+环境变量。</li></ul></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
