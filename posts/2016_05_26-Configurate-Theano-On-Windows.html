@@ -124,6 +124,19 @@ fastmath = True </code></pre></li>
 </ul>
 </li>
 <li>
+<h2>安装cuDnn</h2>
+<ul>
+<li>这个东西跑LSTM并没有看出优势。。但CNN应该应当是会效果很好。</li>
+<li><a href="https://developer.nvidia.com/cudnn" target="_blank">官网</a>下载cnDnn的库，其实也就是一个压缩包，三个文件。对应文件解压到之前CUDA安装的文件夹相应位置中就可以了。</li>
+<li>
+然后改下配置文件<code>.theanorc.txt</code>（尾部添加），就可以自由控制是否使用cuDnn了，使用的时候就是True，不用就是False。:
+<pre><code>[dnn]
+enabled = True
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
 <h2>摆脱控制台操作</h2>
 <p>博主个人喜欢Eclipse的编辑器，没错——是编辑器。而Eclipse又是个什么都能跑的IDE，所以个人推荐Eclipse。如果上面步骤进行的都很顺利，那用Eclipse跑Theano也很容易配置。</p>
 <ul>

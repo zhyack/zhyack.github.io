@@ -50,6 +50,14 @@ Theano也算是深度学习主流工具之一了吧，其优势主要在于使�
 	compiler\_bindir = C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\amd64 
 	fastmath = True </code></pre>
 	* 改变的主要是[nvcc]的选项，如果用的是VS2012的话就对应修改`-version`和`compiler_bindir`的对应部分就行。网上也有各种版本的配置文件，经常出问题的地方也都是VS编译器的路径没指对（不知道他们是怎么搭好环境的 :speak\_no\_evil: ）。
+
+* ##安装cuDnn
+	* 这个东西跑LSTM并没有看出优势。。但CNN应该应当是会效果很好。
+	* [官网](https://developer.nvidia.com/cudnn)下载cnDnn的库，其实也就是一个压缩包，三个文件。对应文件解压到之前CUDA安装的文件夹相应位置中就可以了。
+	* 然后改下配置文件`.theanorc.txt`（尾部添加），就可以自由控制是否使用cuDnn了，使用的时候就是True，不用就是False。:
+		<pre><code>[dnn]
+enabled = True
+</code></pre>
 	
 * ##摆脱控制台操作  
 博主个人喜欢Eclipse的编辑器，没错——是编辑器。而Eclipse又是个什么都能跑的IDE，所以个人推荐Eclipse。如果上面步骤进行的都很顺利，那用Eclipse跑Theano也很容易配置。
