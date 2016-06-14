@@ -44,7 +44,7 @@
 
 *   ##测试和提交
 	* 在git控制台中 `git add .` 之后，使用`git status` 查看具体都add了哪些文件，如不满意，可使用 `git reset HEAD` 对 `add` 进行回退。
-	* 测试合适之后就可以`git commit -m '...'`了。撤销`commit`可以用`git log`查看日志，然后选择之前的版本号`commit_id`用`git reset --hard commit_id `进行回滚。
+	* 测试合适之后就可以`git commit -m '...'`了。撤销`commit`可以用`git log`查看日志，然后选择之前的版本号`commit_id`用`git reset commit_id `进行回滚。
 
 *  ##本地备份和远程备份
 	* 上述做法只是本地使用git进行了版本控制，如果本地不小心删掉某个工程，便可使用版本号进行恢复。
