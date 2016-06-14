@@ -1,0 +1,160 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|.gitignore的使用</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>.gitignore的使用</h1>
+<p>博主最近又手贱把本地的Eclipse Workspace删个精光，遗失了一些重要代码，又要耗费宝贵的娱乐时间去补窟窿。悔恨之余，决定用git把所有的代码都管理起来，不至于失去了才后悔莫及。<br>
+于是问题来了——创建工程以及运行代码时生成的各种工程文件，编译文件，可执行文件，以及中途使用的一些数据文件，对我们而言并没有什么保存价值，琐碎的文件放在git里也会大大拖慢git的速度。我们想要的是保留指定后缀名的文件(如<code>.cpp</code>/<code>.java</code>)，使用<code>.gitignore</code>文件进行配置即可解决。  
+</p>
+<ul>
+<li>
+<h2>.gitignore文件</h2>
+<ul>
+<li>一般放在仓库根目录下进行全局设置，名为<code>.gitignore</code>，使用文本编辑器编辑即可。</li>
+<li>
+每行为一条设置，分为三种：
+<ul>
+<li>以<code>#</code>开头——注释：如<code>#This is a comment</code>，一条注释而已。</li>
+<li>以<code>!</code>开头——保留：如<code>!.gitignore</code>，表示保留对根目录下.gitignore文件的管理。</li>
+<li>其他——忽略：如<code>.gitignore</code>，表示忽略根目录下.gitignore文件。</li>
+</ul>
+</li>
+<li>非注释部分使用的是<strong>glob</strong>模式匹配。</li>
+</ul>
+</li>
+<li>
+<h2>glob模式匹配</h2>
+<ul>
+<li>
+与正则表达式相似，但及其简化，以至于部分功能难以实现。
+<ul>
+<li><code>*</code>，表示0个或多个任意字符。</li>
+<li><code>?</code>，表示1个任意字符。</li>
+<li><code>[]</code>，与正则表达式的中括号类似，表示括号中的字符选其一。</li>
+<li>其他字符， 表示对应字符。</li>
+</ul>
+</li>
+<li>glob通配符在很多地方都有使用，如果之前没有了解可以回想一下。</li>
+</ul>
+</li>
+<li>
+<h2>Example</h2>
+<ul>
+<li>将Eclipse的workspace做成git仓库，添加规则，即可实现仅保留对应源代码文件(<code>.cpp</code>/<code>.java</code>/<code>.py</code>等等)以及想保留的其他文件(放在每个二级目录的<code>data/</code>中)。</li>
+</ul>
+<pre><code>#block all
+*.*
+#C/C++
+!*.cpp
+!*.c
+!*.cc
+#Java
+!*.java
+#Python
+!*.py
+#MarkDown
+!*.md
+#Web
+!*.html
+!*.htm
+!*.css
+!*.js
+!*.php
+#Data
+!*/data/*
+#Git
+!.gitignore
+</code></pre>
+</li>
+<li>
+<h2>测试和提交</h2>
+<ul>
+<li>在git控制台中 <code>git add .</code> 之后，使用<code>git status</code> 查看具体都add了哪些文件，如不满意，可使用 <code>git reset HEAD</code> 对 <code>add</code> 进行回退。</li>
+<li>测试合适之后就可以<code>git commit -m '...'</code>了。撤销<code>commit</code>可以用<code>git log</code>查看日志，然后选择之前的版本号<code>commit_id</code>用<code>git reset --hard commit_id</code>进行回滚。</li>
+</ul>
+</li>
+<li>
+<h2>本地备份和远程备份</h2>
+<ul>
+<li>上述做法只是本地使用git进行了版本控制，如果本地不小心删掉某个工程，便可食用版本号进行恢复。</li>
+<li>但如果手贱删的是整个仓库 :joy_cat: ...所以最好还是在网络上也做一个备份，比如Github的私有仓库，或者免费的Bitbucket私有仓库。只需要每次<code>commit</code>之后<code>push</code>一下就好了。</li></ul></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
