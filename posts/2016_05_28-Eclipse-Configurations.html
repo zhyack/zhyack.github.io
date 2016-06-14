@@ -131,7 +131,14 @@ path中添加C:\Program Files\Java\jdk1.8.0_91\bin
 <h2>其他</h2>
 <ul>
 <li>更为复杂的环境搭建，举个例子，<a href="https://zhyack.github.io/posts/2016_05_26-Configurate-Theano-On-Windows.html" target="_blank">Theano</a>。</li>
-<li>但其实搭这些环境都是一回事儿了，插件安装+软件依赖+环境变量。</li></ul></li></ul>
+<li>但其实搭这些环境都是一回事儿了，插件安装+软件依赖+环境变量。</li>
+</ul>
+</li>
+<li>
+<h2>Note</h2>
+<ul>
+<li>编码问题：经常处理中文数据的话，用Eclipse难免遇到各种乱码，根本原因是Eclipse的Editor和Console全都是默认<code>GBK</code>编码的，而中文一般是<code>UTF-8</code>。<br>
+解决方法：只改变Editor的话，可以把Edit→ Set Encoding改为<code>UTF-8</code>；更彻底一点的做法是改变整个workspace的编码——Windows → Preferences→ General→ Workspace→ Text file encoding 改为<code>UTF-8</code>；以防万一，再检查下Run→ Run Configurations→ Common→ Encoding，这里应该也是<code>UTF-8</code>。</li></ul></li></ul>
       </section>
       <!-- InstanceEndEditable -->
 	  <section>
