@@ -1,0 +1,124 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|利用计划任务提交本地仓库到Github</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>利用计划任务提交本地仓库到Github</h1>
+<p>妈妈再也不用担心我丢进度了~  
+</p>
+<ul>
+<li>你是否期望一键push到Github？</li>
+<li>你是否期望定时push到Github？</li>
+</ul>
+<p>往下看吧...</p>
+<ul>
+<li>
+<h2>利用bat一键push</h2>
+<ul>
+<li>现学现卖——<code>start 程序名</code> 类似地就相当于开了个cmd窗口，然后执行<code>程序名</code>。所以，我们只要把git的路径(比如<code>D:\Program Files\Git\bin</code>)添加到系统环境变量<code>path</code>中使得cmd可以找到<code>git.exe</code>就行了。然后在某个地方创建一个bat文件，添加如下内容：<pre><code>start /wait git add .
+start /wait git commit -m "autoUpd"
+start /wait git push origin master</code></pre>
+其中<code>/wait</code>是要等这个程序执行完才执行下一句。  
+</li>
+<li>
+如上就有一个问题了——如果当初你<code>git clone</code>这个要提交的仓库时用的是https://，那就会提示你输入用户名和密码，这**就尴尬了。为了方便，我们要将此仓库设置为经ssh提交：
+<ul>
+<li>不想重新clone的话就改下仓库根目录下<code>.git/config</code>文件如下位置<pre><code>[remote "origin"]
+url = git@github.com:USERNAME/REPONAME.git  </code></pre>
+替换一下你自己的USERNAME和REPONAME吧。</li>
+<li>然后根据<a href="https://help.github.com/articles/generating-an-ssh-key/" target="_blank">官网</a>的步骤生成ssh key以及设置。<br>
+<strong>注意：</strong>不要受其蛊惑而设置<code>passphrase</code>，我们一切为了方便，<code>passphrase</code>设为<strong>空</strong>，否则你又该受到每次都要 输入<code>passphrase</code>的困扰。</li>
+</ul>
+</li>
+<li>在cmd中或直接运行.bat文件试试，应该可以自动push了吧。</li>
+</ul>
+</li>
+<li>
+<h2>利用计划任务定时push</h2>
+<ul>
+<li>Windows计划任务，傻瓜式操作，按自己需求添加即可，不会就去问度娘吧。</li>
+<li>需要一提的是：Windows计划任务打开的cmd默认目录是C:/System32/，这儿又没有仓库...于是需要简单修改一下bat文件，使其cmd可以进入指定仓库的目录，比如：<pre><code>cd C:\Users\xxx\yyy\REPONAME\
+start /wait git add .
+start /wait git commit -m "autoUpd"
+start /wait git push origin master
+pause</code></pre>
+pause一下你就可以观察提交记录了。嗯，就是这样。</li></ul></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	    </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
