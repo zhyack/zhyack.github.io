@@ -39,9 +39,57 @@ pps: 之前数据没有处理完善，发现由于京东服务器端更新数据
 <td>1.4%</td>
 </tr>
 <tr>
+<td><a href="http://item.jd.com/992362.html">992362</a></td>
+<td>166820</td>
+<td>5870</td>
+<td>3.5%</td>
+</tr>
+<tr>
+<td><a href="http://item.jd.com/392573.html">392573</a></td>
+<td>146260</td>
+<td>3135</td>
+<td>2.1%</td>
+</tr>
+<tr>
+<td><a href="http://item.jd.com/592896.html">592896</a></td>
+<td>85160</td>
+<td>3140</td>
+<td>3.7%</td>
+</tr>
+<tr>
+<td><a href="http://item.jd.com/133117.html">133117</a></td>
+<td>76290</td>
+<td>3147</td>
+<td>4.1%</td>
+</tr>
+<tr>
+<td><a href="http://item.jd.com/326551.html">326551</a></td>
+<td>73960</td>
+<td>3143</td>
+<td>4.2%</td>
+</tr>
+<tr>
+<td><a href="http://item.jd.com/981261.html">981261</a></td>
+<td>43900</td>
+<td>3040</td>
+<td>6.9%</td>
+</tr>
+<tr>
+<td><a href="http://item.jd.com/711881.html">711881</a></td>
+<td>40470</td>
+<td>3125</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td><a href="http://item.jd.com/293263.html">293263</a></td>
+<td>39020</td>
+<td>3166</td>
+<td>8.1%</td>
+</tr>
+<tr>
 <td>总体:</td>
-<td>522516</td>
-<td>27134</td>
-<td>5.2%</td>
+<td>1194396</td>
+<td>54900</td>
+<td>4.6%</td>
 </tr>
 </table>
