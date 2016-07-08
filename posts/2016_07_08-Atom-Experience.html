@@ -1,0 +1,115 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Atom 试用体验</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Atom 试用体验</h1>
+<p>偶尔浮出水面冒个泡...</p>
+<p><a href="https://atom.io/" target="_blank">官网</a></p>
+<p>嗯，Sublime 既视感... <br>
+好吧，其实我穷得根本用不起Sublime，跟风一波。  
+</p>
+<p>作为开源的<strong>编辑器</strong>，感觉界面已经是很好了，比起win原装的记事本、笔记本，常见的编辑器notepad++、vim，IDE内置编辑器——Eclipse、VS内置，甚至是不是编辑器的编辑器emacs，都好看了一大截的说。<br>
+但毕竟有一利必有一弊，比起记事本，notepad++这种运行起来要更废资源，毕竟要加载不少插件；比起vim，emacs这种又少了很多功能，并不能离开鼠标；而比起Eclipse，VS这些又没有代码提示，运行功能（其实是废话，人家只是个编辑器）。。。  
+</p>
+<p>支持高亮的语言很多，而且插件还挺多，自动补全基本上也够用；支持多窗口(面板)，可以随意切分；支持Git状态实时显示；傻瓜安装好时基本功能就都有了，门槛够低。<br>
+说说明显的缺点，预装的插件有很反人类的，比如whitespace，竟然自动把行尾空格去掉了，让我md文件情何以堪；同样是md预览，效果和markdownpad差了好多，基本不能用；很多其他插件应该也都有类似问题，功能不够完善，还处于发展中，不够成型；使用内置工具安装插件慢到死，安装需要VS编译器支持（要不是不知道什么时候装了个VS2013，我连插件都装不好？），然后高能一波手动安装插件时遇到的最大问题：</p><pre><code>apm install的时候出现以下错误：
+gyp WARN install got an error, rolling back install
+</code></pre>翻墙都没能解决，最后发现是编译器指定的有问题，默认的VS编译器是vs2012，我电脑上是2013，命令行中使用如下命令修改：<pre><code>apm config set msvs_version 2013</code></pre>
+然后重新<code>apm install</code>，所有插件都很顺利地安装了。。。  
+<p></p>
+<p>简单总结一下：  
+</p>
+<ul>
+<li>好看。</li>
+<li>作为编辑器插件够用。</li>
+<li>耗电一般，比IDE省电，比弱鸡记事本耗电。</li>
+<li>大文件能力，略逊于notepad++，略而已。</li>
+<li>门槛低。</li>
+</ul>
+<p>比较适合我目前的需求——笔记本不插电源时尽可能延长coding时间而又不失coding体验，尽可能提升装X技巧而又在强迫症等顽疾的容忍范围内。</p>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	  </section>
+
+      <section>
+          <font size="-1" color="#BAD5F5">© 个人原创，未经允许，不得转载！</font>
+          <p class="pl-ent">Copyright © 2015-2016 <a href="https://github.com/zhyack">zhyack</a>. All Rights Reserved.<br></br>
+</p>
+      </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
