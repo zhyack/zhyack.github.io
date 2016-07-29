@@ -1,0 +1,144 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|简单便宜的VPS搭建体验</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>简单便宜的VPS搭建体验</h1>
+<ul>
+<li>平台： DigitalOcean</li>
+<li>系统： Ubuntu16.04</li>
+<li>配置： 512MB RAM，20GB SSD，1TB流量，支持ipv6</li>
+<li>收费： $5/月，实际按$0.007/小时，随时更换服务器，合理方便</li>
+<li>用途： VPN，个人网站等...</li>
+<li>本文适合人群： 懂点英文想科学上网或建站而又嫌麻烦/贵的高校学生</li>
+</ul>
+<h2>优惠</h2>
+<ul>
+<li><a href="https://education.github.com/" target="_blank">Github Educational Pack</a>，学生特惠，凭高校邮箱申请，如果被拒可以直接发邮件或者在<a href="https://education.github.com/contact" target="_blank">这里</a>合理申诉，说理中肯且表达出急切的心情即可。前几年还是$100的优惠，现在只有$50了，不过也很不错了，够几乎免费用1年了（长时间不用的时候可以备份后删机器，之后不扣费）。  
+</li>
+<li>就算不是学生也是可以蹭些优惠的，比如通过<a href="https://m.do.co/c/7016e14563dd" target="_blank">邀请链接</a>注册，可以获得$10的优惠，两个月免费，就算初始激活交$5，那也是三个月用￥30左右，还是比市面上的VPS和VPN便宜的多的。而且，这个其实多注册几个账号也可以的吧，只要注册时机器，邮箱，使用的paypal等不同即可避嫌，对于可以获得一个好用的server来说，麻烦一点点还是很值得的。</li>
+</ul>
+<h2>激活</h2>
+<ul>
+<li><a href="https://m.do.co/c/7016e14563dd" target="_blank">官网</a>先摆上，注册登录会提示使用信用卡或paypal激活。</li>
+<li>信用卡：这个基本不适合天朝人民，穷人表示根本没见过VISA、Mastercard云云。鉴于激活比较困难大都是学生，推荐用paypal激活。另外绑定信用卡貌似解绑比较费劲，不如paypal来的灵活。</li>
+<li>paypal：<strong>你需要一张62开头的开通了网银的银联信用卡/借记卡</strong>，一般高校学生都是学校发的借记卡。随便去<a href="https://www.paypal.com/" target="_blank">官网</a>注册个号，然后添加你的卡。 在DigitalOcean上选择paypal支付$5激活，然后顺着交费就可以了。（博主在这里遇到些麻烦，主要是paypal有点抽风，有时候可以顺利到网上银行交费界面，有时候就弹出错误，如果出错就过几个小时重新试一下，但要注意——62开头、开通网银、信用卡/借记卡）</li>
+<li>激活之后在<a href="https://cloud.digitalocean.com/settings/billing" target="_blank">Billing界面</a>添加Promo Code，也就是之前Github Educational Pack中包含的优惠码，即可直接在账户上多出优惠的钱了。（注意优惠的钱是有时限的，大概两年？博主之前一个$100的优惠过期了，心好痛。。。）</li>
+</ul>
+<h2>服务器</h2>
+<ul>
+<li>DigitalOcean上叫Droplets，在<a href="https://cloud.digitalocean.com/droplets/new?size=2gb" target="_blank">creat界面</a>可以看到各种系统、各种配置的、甚至各种预配置的环境的，根据所需选择，一般$5/mo的方案是够用的。</li>
+<li>至于节点，不建议听网上那些San Francisco党，博主测试下网通最快的大概是New York 2/3这两个节点。推荐根据自己的网络在<a href="http://speedtest-sfo1.digitalocean.com/" target="_blank">这里</a>测速，选择比较快且稳定的节点。</li>
+<li>ipv6根据选择勾选，其他都不用勾选。</li>
+<li>确认后DO会帮你创建一台服务器初始环境，账号root，ip和密码都会发送到你的邮箱。使用putty类似的东西都可以登陆，首次登陆会让你先改密码，改完就看下面。</li>
+</ul>
+<h2>科学上网</h2>
+<ul>
+<li>此处是Ubuntu系统搭建shadowsocks的笔记，其他需求自行谷歌。</li>
+<li>
+<p>过程很简单！！！只需利用pip直接安装shadowsocks，所以就是安装pip，安装shadowsocks，启动，完事儿。</p><pre><code>apt-get install python-pip
+	y
+pip install shadowsocks</code></pre><p></p>
+</li>
+<li>
+<p>然后就可以用<code>ssserver -p _PNO -k _KEY -m rc4-md5 -d start</code>，启动了，其中<code>_PNO</code>指的是端口号，比如<code>8000</code>；<code>_KEY</code>指的是密码，自行设置。关闭服务就是把<code>start</code>改成<code>stop</code>。</p>
+</li>
+<li>
+为了方便还可以这样:<pre><code>sudo vim /etc/bashrc
+添加：
+	alias sss="ssserver -p 8000 -k XXXXXX -m rc4-md5 -d start"
+	alias sse="ssserver -p 8000 -k XXXXXX -m rc4-md5 -d stop"
+source /etc/bashrc</code></pre>然后就可以在terminal用sss，sse来开关了。
+</li>
+<li>在本地使用shadowsocks客户端，<a href="https://shadowsocks.org/en/index.html" target="_blank">官网链接</a>。打开后对应填入你的服务器ip，端口号，密码等信息，然后启用系统代理，可以科学上网了。</li>
+<li>本人体验——速度不算飞快，但可以满足需求。直观一点的话——youtube上720P无压力，1080P偶尔卡。IPv6网站可以访问，但是速度较慢，而且pt下载没有速度，暂未解决，考虑用服务器中转。目前毫无优化，如尝试优化后效果不错就回来补上笔记。</li>
+</ul>
+<h2>建站</h2>
+<ul>
+<li><code>apt-get install apache2</code>，<code>cd /var/www/html/</code></li>
+<li>好了，别打脸，其实就是你能想到的都可以在服务器上试，注意配置限制。</li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	  </section>
+
+      <section>
+          <font size="-1" color="#BAD5F5">© 个人原创，未经允许，不得转载！</font>
+          <p class="pl-ent">Copyright © 2015-2016 <a href="https://github.com/zhyack">zhyack</a>. All Rights Reserved.<br></br>
+</p>
+      </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
