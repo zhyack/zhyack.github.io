@@ -1,0 +1,195 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Atom轻便型环境配置</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>Atom轻便型环境配置</h1>
+<p>最近把Atom进行了初步配置，感觉不错，记录一下。</p>
+<ul>
+<li>
+<h3>Settings</h3>
+<ul>
+<li>
+<code>Ctrl+,</code>进入总体设置。
+<ul>
+<li><code>Core</code>中勾上<code>Aoto Hide Menu Bar</code>，去掉<code>Remove Empty Pane</code></li>
+<li><code>Editor</code>中<code>Font Size = 14</code>，勾选<code>Soft Wrap</code>和<code>Soft Wrap At Preffered Line Length</code>，<code>Tab Length = 4</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h3>Packages</h3>
+这才是重点...  
+
+<ul>
+<li>
+autocomplete系列
+<ul>
+<li>autocomplete-java，autocomplete-python，autocomplete-json，language-matla，autocomplete-clang，linter-clang，clang-format，etc.</li>
+<li>不用调整设置，直接装上就好了。</li>
+</ul>
+</li>
+<li>
+工具系列
+<ul>
+<li>expose——无须调整，<code>Alt-Shift-E</code> 实现窗口选择。</li>
+<li>hyperclick——无须调整，按住<code>Ctrl</code>点击变量函数名就可以查到定义处，必装...</li>
+<li>
+platformio-ide-terminal——按<code>Ctrl+</code>` 调出底部PowerShell，内置控制台，必备...
+<ul>
+<li>设置中，去掉<code>Run Inserted Text</code>， <code>Default Panel Height = 150px</code>，<code>Font Size = 12px</code>， <code>Theme</code>选<code>dracula</code></li>
+<li><code>Custome Texts</code>自己填啦，填好后在config文件夹(<code>C:/User/XXX/.atom/</code>)中<code>/packages/platformio-ide-terminal/keymaps/platformio-ide-terminal.cson</code>中<code>'.platform-linux atom-workspace, .platform-win32 atom-workspace':</code>下加入几行设置<pre><code>'ctrl-shift-1': 'platformio-ide-terminal:insert-custom-text-1'
+'ctrl-shift-2': 'platformio-ide-terminal:insert-custom-text-2'
+'ctrl-shift-3': 'platformio-ide-terminal:insert-custom-text-3'
+'ctrl-shift-4': 'platformio-ide-terminal:insert-custom-text-4'
+'ctrl-shift-5': 'platformio-ide-terminal:insert-custom-text-5'
+'ctrl-shift-6': 'platformio-ide-terminal:insert-custom-text-6'
+'ctrl-shift-7': 'platformio-ide-terminal:insert-custom-text-7'
+'ctrl-shift-8': 'platformio-ide-terminal:insert-custom-text-8'</code></pre>然后在<code>/packages/platformio-ide-terminal/menus/platformio-ide-terminal.cson</code>中靠近结尾的地方添加以下设置，具体位置应该一看就明白了<pre><code>{
+  'label': 'Insert pre-1'
+  'command': 'platformio-ide-terminal:insert-custom-text-1'
+}
+{
+  'label': 'Insert pre-2'
+  'command': 'platformio-ide-terminal:insert-custom-text-2'
+}
+{
+  'label': 'Insert pre-3'
+  'command': 'platformio-ide-terminal:insert-custom-text-3'
+}
+{
+  'label': 'Insert pre-4'
+  'command': 'platformio-ide-terminal:insert-custom-text-4'
+}
+{
+  'label': 'Insert pre-5'
+  'command': 'platformio-ide-terminal:insert-custom-text-5'
+}
+{
+  'label': 'Insert pre-6'
+  'command': 'platformio-ide-terminal:insert-custom-text-6'
+}
+{
+  'label': 'Insert pre-7'
+  'command': 'platformio-ide-terminal:insert-custom-text-7'
+}
+{
+  'label': 'Insert pre-8'
+  'command': 'platformio-ide-terminal:insert-custom-text-8'
+}</code></pre></li>
+<li>每次重新设置插入文字之后都要重启才能继续使用快捷插入；这个功能还是相当有用处的，编译，运行什么的都可以快速搞定了。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+预览系列
+<ul>
+<li>markdown-preview-plus——在md文件中按<code>Ctrl+Shift+M</code>可以调出预览窗口，画风比较朴实，功能并不完全，常用md记简单笔记的推荐安装。</li>
+<li>
+atom-webbrowser——内置浏览器，其实对于企图用编辑器搞定一切问题的人们来说这是迫切需要的，然而本人表示已卸载，真的是不好用，不好用，不好用。。。
+<ul>
+<li>执意要用的，记得在config文件夹中<code>styles.less</code>中添加以下设置<pre><code>atom-webview { height:100%; }</code></pre>这样才能全屏啊。。。</li>
+<li>不管地址栏里填什么都是打开默认的<code>github.com</code>，无语了，每次还都要开新窗口，完全不受控制，希望以后的版本能好好改下BUG吧。。。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+装X系列
+<ul>
+<li>activate-power-mode——点到Install里第一个就是它了，为什么这么火自己试下就清楚了。。。</li>
+</ul>
+</li>
+<li>其他(未完待续)</li>
+</ul>
+</li>
+</ul>
+<p>经过简单配置，基本可以轻松使用Atom替换IDE了，容易上手，很节能，而且<code>F11</code>+<code>Alt</code>之后全屏界面挺不错的。<br>
+不过Atom的各种奇葩的问题也是常有的，毕竟是组合体，遇到异常情况一定要先试试重装package以及重启Atom。。。</p>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	  </section>
+
+      <section>
+          <font size="-1" color="#BAD5F5">© 个人原创，未经允许，不得转载！</font>
+          <p class="pl-ent">Copyright © 2015-2016 <a href="https://github.com/zhyack">zhyack</a>. All Rights Reserved.<br></br>
+</p>
+      </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
