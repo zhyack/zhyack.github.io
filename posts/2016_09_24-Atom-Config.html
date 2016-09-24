@@ -154,6 +154,17 @@ atom-webbrowser——内置浏览器，其实对于企图用编辑器搞定一�
 </ul>
 <p>经过简单配置，基本可以轻松使用Atom替换IDE了，容易上手，很节能，而且<code>F11</code>+<code>Alt</code>之后全屏界面挺不错的。<br>
 不过Atom的各种奇葩的问题也是常有的，毕竟是组合体，遇到异常情况一定要先试试重装package以及重启Atom。。。</p>
+<ul>
+<li>
+<h3>Bug收集与应对</h3>
+<ul>
+<li>
+用了一段时间后发现，Atom自动升级后，并非直接替换原版本，而是直接下了一个新版本的文件夹放在那里，注册表中version改成新版本，但<strong>路径没改！！！</strong>真是醉了。<br>
+具体表现为文件夹右键<code>open with atom</code> 失败，快捷方式失败，自定义的打开方式失败(如我的rainmeter)；而且它还会暂时保存上个版本的文件，结果就是某些快捷方式虽然能打开，但是各种问题。。。所以升级后打不开也算是正常了。应对方案如下：
+<ul>
+<li>首选明确其主体文件路径，一般是<code>C:\Users\XXX\AppData\Local\atom</code>，AppData是隐藏文件夹，你懂的。。 其中会有不同的版本以<code>app-1.xx.x</code>文件夹命名，里面有对应的exe文件。</li>
+<li><code>Win+R</code>+<code>regedit</code>打开注册表， 直接<code>Ctrl+F</code>搜索'atom'，注意搜索框只勾选<code>项</code>和<code>全字匹配</code>，然后搜到哪儿改到哪儿，就是改路径，看到路径就改成新版本的，就算搜到的项没有路径展开后子项也一定会有路径的，改改改。。。</li>
+<li>现在应该可以正常使用了，- - .</li></ul></li></ul></li></ul>
       </section>
       <!-- InstanceEndEditable -->
 	  <section>
