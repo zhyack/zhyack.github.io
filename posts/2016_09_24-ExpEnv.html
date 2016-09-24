@@ -1,0 +1,134 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|实验室的网</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+    <h1>实验室的网</h1>
+<p>推荐给实验室的同学们，虽然他们这几年都不一定会知道这个博客...  
+</p>
+<ul>
+<li>
+<h3>折腾目的</h3>
+<p>实验室的有线网和无线网实在是太慢了，翻墙查资料什么的都成问题，但<code>XXU Wireless</code>还是挺快的，大概能有<code>30+M</code>的带宽；然而问题是，<code>XXU Wireless</code>又不通内网，如果连上<code>XXU Wireless</code>，打印，连服务器等都会成问题。所以昨天折腾一天解决了Windows上的用网问题。</p>
+</li>
+<li>
+<h3>准备工具</h3>
+<ul>
+<li>无线网卡，大概￥50左右吧，可以用N年。。。</li>
+<li>网线。。。  
+</li>
+</ul>
+</li>
+<li>
+<h3>具体操作</h3>
+<ul>
+<li>连好网线和无线网卡，连接<code>XXU Wireless</code>。<br>
+这个时候应该是默认使用有线连接，你需要禁用有线连接才能登陆无线的网关，然后再把有线启用才可以两个网卡同时工作。<br>
+此时的情况应该是ipv4全部走的有线流量，ipv6全部走的无线流量；所以是ipv6飞快，ipv4呵呵。 <br>
+当然，如果到这一步你就满足了，可以通过临时禁用有线来享受飞快的ipv4和ipv6，临时启用有线享受内网特权。然而，这种需要大量手动操作的东西，强迫症表示不能忍。</li>
+<li>
+其实解决这个问题也挺简单，就是通过改路由表。
+<ul>
+<li>打开一个cmd，<code>route print</code>显示当前路由表，其中分为ipv4和v6，每个表又分为动态路由表和静态路由表，其中静态只可手动改变，动态随网络状况改变。</li>
+<li>以下操作需要管理员权限的cmd。</li>
+<li><code>route delete $ip (mask $mask $gate)</code>可以删除对应网段对应的路由表。</li>
+<li><code>route add $ip mask $mask $gate</code>可以在动态路由表中添加路由项，重启后失效，加上-p可以加入静态路由表。</li>
+<li>具体过程是删除有线对应的ip段为0.0.0.0的路由项(route delete 0.0.0.0)，此时有线彻底挂掉；<br>
+然后添加有线对应内网ip段(route -p add 172.31.0.0 mask 255.255.0.0 172.31.201.1)，此时内网上线；<br>
+如果第一步时不小心删掉了无线对应的全网段路由，还要再添加无线的路由项(route add 0.0.0.0 mask 0.0.0.0 10.1.88.1)；<br>
+ip，gate等要视情况而定，如果是实验室的应该都懂吧。<br>
+重启会导致动态路由表删除的表项恢复，所以需要开机执行如下命令，写到bat脚本里，创建带有管理员权限的快捷方式，一劳永逸，还可以顺便加上打开网关的命令，同样是双击嘛~（强迫症表示舒服多了，但还是有待改进...）<pre><code>route delete 0.0.0.0
+route -p add 172.31.0.0 mask 255.255.0.0 172.31.201.1
+route add 0.0.0.0 mask 0.0.0.0 10.1.88.1</code></pre></li>
+<li>此时的网络应该是随便连服务器，随便打印，随便上网，ipv4,ipv6都飞快，在实验室还是可以玩的起来的说(雾- -).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Linux上网的问题还没能解决，一方面Linux对无线网卡的兼容比Windows麻烦，另外Linux用的不多，似乎也没有刚性需求...有想法——Windows开http代理供linux走流量，理论上通过内网这么玩应当是可以的，有待验证...</p>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	  </section>
+
+      <section>
+          <font size="-1" color="#BAD5F5">© 个人原创，未经允许，不得转载！</font>
+          <p class="pl-ent">Copyright © 2015-2016 <a href="https://github.com/zhyack">zhyack</a>. All Rights Reserved.<br></br>
+</p>
+      </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
