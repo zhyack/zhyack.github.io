@@ -1,0 +1,137 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|在Ubuntu环境下配置TensorFlow</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1>在Ubuntu环境下配置TensorFlow</h1>
+
+<ul>
+<li>系统: Ubuntu 16.04(64bit)</li>
+<li>Python: 2.7.12(Anaconda2)</li>
+<li><p>TensorFlow: 0.10.0(CPU)</p></li>
+<li><p>准备工作</p>
+
+<ul>
+<li>下载安装Anaconda，<a href="https://www.continuum.io/downloads" target="_blank">官网</a>，下载到本地使用命令<code>bash xxx.sh</code>安装。</li>
+<li>下载TensorFlow，<a href="https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl" target="_blank">Ubuntu/Linux 64-bit, CPU only, Python 2.7</a>，<a href="https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl" target="_blank">Ubuntu/Linux 64-bit, GPU enabled Python 2.7</a>，目前只实践了CPU版本的安装，GPU版本应该大致相同，只是要配置CUDA；故本文只谈CPU版本。</li>
+</ul></li>
+<li><p>安装步骤</p>
+
+<ul>
+<li>Anaconda的安装就略过吧，无脑装，只是注意最后一条提醒你加环境变量时记得输入<code>yes</code>，没有输入的就自行添加到.bashrc里吧。然后安装完要<code>source ~/.bashrc</code>，才能使Anaconda即时生效。</li>
+<li>输入conda试试，不是无效的命令即表示Anaconda装好了。</li>
+<li>第一条命令<code>conda create -n tensorflow python=2.7</code>，然后conda就开始给安装各种依赖的包了。这里可能出的问题全都是网络问题，网太差的就放弃吧...</li>
+<li>漫长(or短暂)的等待之后...</li>
+<li>第二条命令<code>source activate tensorflow</code> ，这句话其实是改变了环境变量，进入到所谓的tensorflow的环境变量配置中，其实也就是加上了tensorflow的路径而已。但是这样就可以通过<code>activate</code>和<code>deactivate</code>来控制是使用正常的python，还是tensorflow版的。所以退出tensorflow环境的命令就是<code>source deactivate tensorflow</code>。</li>
+<li><strong>在tensorflow的环境中</strong>，使用<code>pip install $DIR/tensorflow-0.10.0-cp27-none-linux_x86_64.whl</code>，其中<code>$DIR</code>就是你存放这个文件的路径啦。接着就是第二轮考验网速的时候。</li>
+<li>漫长(or短暂)的等待之后...</li>
+<li>装好了。。。</li>
+<li>进入python试一下吧，<code>import tensorflow</code>，没有错误提示就是成功了。</li>
+<li>此时在tensorflow环境中使用<code>conda list</code>可以看到刚才所有安装成功的包。退出tensorflow环境再试试？就没有刚才的包了。。所以只有在tensorflow环境内才可以用。</li>
+</ul></li>
+<li><p>其他问题</p>
+
+<ul>
+<li>如果想卸载tensorflow怎么弄？
+<ul>
+<li><strong>在tensorflow环境中</strong>， <code>pip uninstall tensorflow</code>，如果提示你本来就没有tensorflow，那可能是各种原因tensorflow不在环境变量里，关掉terminal重开，重新<code>activate</code>，然后卸载。</li>
+</ul></li>
+<li>如果想更新tensorflow怎么办？
+<ul>
+<li>先卸载，再安装。按以上方法卸载旧版本，然后关掉terminal重开，使其重新加载环境变量，然后安装新版本。</li>
+</ul></li>
+<li>tensorflow在哪儿？
+<ul>
+<li>~/anaconda2/envs/tensorflow</li>
+<li>对应github上的库 ~/anaconda2/envs/tensorflow/lib/python2.7/site-packages/tensorflow</li>
+</ul></li>
+<li>...</li>
+</ul></li>
+</ul>
+
+<p>总体来说跟安装Theano差不多，Anaconda真是个省事儿的好东西呀...</p>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	  </section>
+
+      <section>
+          <font size="-1" color="#BAD5F5">© 个人原创，未经允许，不得转载！</font>
+          <p class="pl-ent">Copyright © 2015-2016 <a href="https://github.com/zhyack">zhyack</a>. All Rights Reserved.<br></br>
+</p>
+      </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
