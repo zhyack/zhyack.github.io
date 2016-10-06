@@ -169,6 +169,7 @@ header {
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
+  padding-top:50px;
 }
 
 header ul {
@@ -234,6 +235,10 @@ section {
   width:550px;
   float:right;
   padding-bottom:50px;
+  background:rgba(24,25,27,0.85);
+  padding-left:20px;
+  padding-right:50px;
+  padding-top:20px;
 }
 
 small {
