@@ -49,52 +49,34 @@
       </header>
       <!-- InstanceBeginEditable name="EditArea" -->
       <section>
-<h1>在Ubuntu环境下配置TensorFlow</h1>
-
+<h1 id="-ubuntu-tensorflow">在Ubuntu环境下配置TensorFlow</h1>
 <ul>
-<li>系统: Ubuntu 16.04(64bit)</li>
-<li>Python: 2.7.12(Anaconda2)</li>
-<li><p>TensorFlow: 0.10.0(CPU)</p></li>
-<li><p>准备工作</p>
-
+<li>系统: Ubuntu 16.04(64bit)</li><li>Python: 2.7.12(Anaconda2)</li><li><p>TensorFlow: 0.10.0(CPU &amp; GPU)</p>
+</li><li><p>准备工作</p>
 <ul>
-<li>下载安装Anaconda，<a href="https://www.continuum.io/downloads" target="_blank">官网</a>，下载到本地使用命令<code>bash xxx.sh</code>安装。</li>
-<li>下载TensorFlow，<a href="https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl" target="_blank">Ubuntu/Linux 64-bit, CPU only, Python 2.7</a>，<a href="https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl" target="_blank">Ubuntu/Linux 64-bit, GPU enabled Python 2.7</a>，目前只实践了CPU版本的安装，GPU版本应该大致相同，只是要配置CUDA；故本文只谈CPU版本。</li>
-</ul></li>
-<li><p>安装步骤</p>
-
+<li>下载安装Anaconda，<a href="https://www.continuum.io/downloads" target="_blank">官网</a>，下载到本地使用命令<code>bash xxx.sh</code>安装。</li><li>下载TensorFlow，<a href="https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl" target="_blank">Ubuntu/Linux 64-bit, CPU only, Python 2.7</a>，目前只实践了CPU版本的安装，GPU版本应该大致相同，只是要配置CUDA；故本文只谈CPU版本。</li></ul>
+</li><li>安装步骤<ul>
+<li>Anaconda的安装就略过吧，无脑装，只是注意最后一条提醒你加环境变量时记得输入<code>yes</code>，没有输入的就自行添加到.bashrc里吧。然后安装完要<code>source ~/.bashrc</code>，才能使Anaconda即时生效。</li><li>输入conda试试，不是无效的命令即表示Anaconda装好了。</li><li>第一条命令<code>conda create -n tensorflow python=2.7</code>，然后conda就开始给安装各种依赖的包了。这里可能出的问题全都是网络问题，网太差的就放弃吧...</li><li>漫长(or短暂)的等待之后...</li><li>第二条命令<code>source activate tensorflow</code> ，这句话其实是改变了环境变量，进入到所谓的tensorflow的环境变量配置中，其实也就是加上了tensorflow的路径而已。但是这样就可以通过<code>activate</code>和<code>deactivate</code>来控制是使用正常的python，还是tensorflow版的。所以退出tensorflow环境的命令就是<code>source deactivate tensorflow</code>。</li><li><strong>在tensorflow的环境中</strong>，使用<code>pip install $DIR/tensorflow-0.10.0-cp27-none-linux_x86_64.whl</code>，其中<code>$DIR</code>就是你存放这个文件的路径啦。接着就是第二轮考验网速的时候。</li><li>漫长(or短暂)的等待之后...</li><li>装好了。。。</li><li>进入python试一下吧，<code>import tensorflow</code>，没有错误提示就是成功了。</li><li>此时在tensorflow环境中使用<code>conda list</code>可以看到刚才所有安装成功的包。退出tensorflow环境再试试？就没有刚才的包了。。所以只有在tensorflow环境内才可以用。</li></ul>
+</li></ul>
+<hr>
+<h2 id="2016-10-21-">2016.10.21更新</h2>
 <ul>
-<li>Anaconda的安装就略过吧，无脑装，只是注意最后一条提醒你加环境变量时记得输入<code>yes</code>，没有输入的就自行添加到.bashrc里吧。然后安装完要<code>source ~/.bashrc</code>，才能使Anaconda即时生效。</li>
-<li>输入conda试试，不是无效的命令即表示Anaconda装好了。</li>
-<li>第一条命令<code>conda create -n tensorflow python=2.7</code>，然后conda就开始给安装各种依赖的包了。这里可能出的问题全都是网络问题，网太差的就放弃吧...</li>
-<li>漫长(or短暂)的等待之后...</li>
-<li>第二条命令<code>source activate tensorflow</code> ，这句话其实是改变了环境变量，进入到所谓的tensorflow的环境变量配置中，其实也就是加上了tensorflow的路径而已。但是这样就可以通过<code>activate</code>和<code>deactivate</code>来控制是使用正常的python，还是tensorflow版的。所以退出tensorflow环境的命令就是<code>source deactivate tensorflow</code>。</li>
-<li><strong>在tensorflow的环境中</strong>，使用<code>pip install $DIR/tensorflow-0.10.0-cp27-none-linux_x86_64.whl</code>，其中<code>$DIR</code>就是你存放这个文件的路径啦。接着就是第二轮考验网速的时候。</li>
-<li>漫长(or短暂)的等待之后...</li>
-<li>装好了。。。</li>
-<li>进入python试一下吧，<code>import tensorflow</code>，没有错误提示就是成功了。</li>
-<li>此时在tensorflow环境中使用<code>conda list</code>可以看到刚才所有安装成功的包。退出tensorflow环境再试试？就没有刚才的包了。。所以只有在tensorflow环境内才可以用。</li>
-</ul></li>
-<li><p>其他问题</p>
-
+<li>TensorFlow: 0.10.0(GPU)</li><li>准备工作： 同上，还是先下载安装文件<a href="https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl" target="_blank">Ubuntu/Linux 64-bit, GPU enabled Python 2.7</a></li><li>安装步骤： 同上... <ul>
+<li>之前没有提到pip install 时候官网提示最好加上参数<code>--ignore-installed --upgrade</code>也就是整个命令为<code>pip install --ignore-installed --upgrade $DIR/tensorflow-0.10.0-cp27-none-linux_x86_64</code>。 但在我的安装过程中不加这个也没出什么问题，所以按需添加吧。</li><li><code>source activate tensorflow</code>这条命令本质是将<code>export PATH="~/anaconda2/envs/tensorflow/bin:$PATH"</code>添加到环境变量中，如果配置好tensorflow就是要一直用的话可以直接在<code>.bashrc</code>中添加这个，然后就可以默认使用TF了。</li></ul>
+</li><li>补充： <ul>
+<li>GPU版本的TF-0.10.0需要CUDA7.5的支持，所以没有装CUDA的老老实实去安装</li><li>至于cudnn v5， 我似乎没有装也运行了，也是按需安装吧</li><li>上面两个安装都很简单，不多赘述</li><li>配置好CUDA和cudnn之后，在.bashrc中添加环境变量<code>export PATH="$CUDA_PATH/bin:$PATH"</code>，<code>export LD_LIBRARY_PATH="$CUDA_PATH/lib64:$LD_LIBRARAY_PATH"</code>，其中$CUDA_PATH根据自己安装的CUDA目录替换</li><li>还有一点很重要，如果机器上有多块GPU，TF是<strong>默认占用所有显存</strong>的，也就是说你其他GPU上的程序会受到影响，所以一般会指定TF使用的GPU，在.bashrc中添加<code>export CUDA_VISIBLE_DEVICES=$NUM</code>，其中$NUM为本机对应GPU的编号</li><li>不要忘了<code>source ~/.bashrc</code></li></ul>
+</li></ul>
+<hr>
 <ul>
-<li>如果想卸载tensorflow怎么弄？
-<ul>
-<li><strong>在tensorflow环境中</strong>， <code>pip uninstall tensorflow</code>，如果提示你本来就没有tensorflow，那可能是各种原因tensorflow不在环境变量里，关掉terminal重开，重新<code>activate</code>，然后卸载。</li>
-</ul></li>
-<li>如果想更新tensorflow怎么办？
-<ul>
-<li>先卸载，再安装。按以上方法卸载旧版本，然后关掉terminal重开，使其重新加载环境变量，然后安装新版本。</li>
-</ul></li>
-<li>tensorflow在哪儿？
-<ul>
-<li>~/anaconda2/envs/tensorflow</li>
-<li>对应github上的库 ~/anaconda2/envs/tensorflow/lib/python2.7/site-packages/tensorflow</li>
-</ul></li>
-<li>...</li>
-</ul></li>
-</ul>
-
+<li>其他问题<ul>
+<li>如果想卸载tensorflow怎么弄？<ul>
+<li><strong>在tensorflow环境中</strong>， <code>pip uninstall tensorflow</code>，如果提示你本来就没有tensorflow，那可能是各种原因tensorflow不在环境变量里，关掉terminal重开，重新<code>activate</code>，然后卸载。</li></ul>
+</li><li>如果想更新tensorflow怎么办？<ul>
+<li>先卸载，再安装。按以上方法卸载旧版本，然后关掉terminal重开，使其重新加载环境变量，然后安装新版本。</li></ul>
+</li><li>tensorflow在哪儿？<ul>
+<li>~/anaconda2/envs/tensorflow</li><li>对应github上的库 ~/anaconda2/envs/tensorflow/lib/python2.7/site-packages/tensorflow</li></ul>
+</li><li>...</li></ul>
+</li></ul>
 <p>总体来说跟安装Theano差不多，Anaconda真是个省事儿的好东西呀...</p>
       </section>
       <!-- InstanceEndEditable -->
