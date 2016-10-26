@@ -1,0 +1,113 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|Atom中使用PowerShell</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1 id="atom-powershell">Atom中使用PowerShell</h1>
+<p>工欲善其事，必先利其器...</p>
+<h2 id="-">安装</h2>
+<ul>
+<li>借助插件<code>platformio-ide-terminal</code>，在之前的<a href="https://zhyack.github.io/posts/2016_09_24-Atom-Config.html" target="_blank">Atom配置</a>中已经详细介绍了，此插件默认使用的是Windows自带的PowerShell。</li></ul>
+<h2 id="-">使用</h2>
+<ul>
+<li>用<code>platformio-ide-terminal</code>基本两个命令就够用了<ul>
+<li><strong>Ctrl+`</strong>——打开和隐藏terminal</li><li><strong>Atl+Shift+X</strong>——关闭terminal</li></ul>
+</li><li>要使PowerShell用起来更方便，简单暴力的两大利器<ul>
+<li><strong>Set-Alias</strong><ul>
+<li>Alias和linux的alias功能基本一样，但问题在于其只能基于已有功能重新命名短名，而不能产生新的功能。</li><li><code>Set-Alias $name $command</code>——设置alias</li><li><code>del alias:$name</code> ——删除相应的alias</li><li>Alias的功能在Function中均可实现，故不多赘述</li></ul>
+</li><li><strong>Function</strong><ul>
+<li>定义自己的函数 ，形式如此——<code>function $FUNC_NAME ($A1,$A2,...$AN[="default value of $AN"]){codes, one command per line}</code><ul>
+<li>整体和C/C++的函数形式比较像</li><li>$FUNC_NAME——方法名称，之后再powershell输入名称即可调用函数。</li><li>$A1...$AN——“内部参数”， 可以指定默认值， 使用的时候需要带<code>-</code>来指定参数，如<code>git commit -m "..."</code>中的<code>-m</code>即是指定内部参数<code>$m</code>的值为后面的字符串。在函数体内用<code>$A1</code>的形式调用参数。</li><li>args——“外部参数”，是调用函数是临时跟在函数名后的参数，如<code>sum 12 34</code>中的<code>12 34</code>就可以在<code>sum</code>的函数体中使用<code>$args[0]</code>和<code>$args[1]</code>调用。</li><li>函数体部分，以换行分隔指令，具体怎么写可以随意发挥；相当于$FUNC_NAME这个函数包裹了整个代码段的各种命令，所有的命令均会各自执行且输出。</li></ul>
+</li><li>如果代码段只有一行推荐整体写为一行。</li><li>function可以直接在terminal中输入执行，但仅限当前回话有效，关闭后即失效。</li></ul>
+</li><li>使<code>Set-Alias</code>和<code>Function</code>永久生效<ul>
+<li>方案一——直接去改PowerShell的全局配置，从权限、安全、方便的角度考虑，都是及其不推荐的，也不做介绍。</li><li>方案二——修改用户配置<ul>
+<li>默认的用户配置路径是<code>$home/Documents/WindowsPowerShell/</code>。其中<code>$home</code>是你的用户文件夹<code>.../users/XXX/</code></li><li>在<code>$home/Documents/WindowsPowerShell/</code>下建一个名为<code>Modules</code>的文件夹，然后在这个文件夹中放入你自己的<code>module</code>。</li><li>所谓<code>module</code>是你自己定义的函数、变量、配置等的集合，就如同python中的<code>import</code>的包，你的<code>module</code>中包含了你需要的各种东西。当然目前也不需要用到很多，暂时认为一个<code>module</code>是一个内有各种function的文件夹即可。</li><li>此时在<code>$home/Documents/WindowsPowerShell/Modules/mymodule/</code>下建文件，命名为<code>mymodule.psm1</code>(mymodule是你的module名字，自行替换)，在这个文件中写上你所有实现的函数。比如<pre><code>function gpush($b="master",$m="auto_push"){<br>  git checkout $b<br>  git add .<br>  git status<br>  git commit -m $m<br>  git push origin $b<br>}</code></pre></li><li>保存好后可以开一次PowerShell试试，这个时候应该是没有任何效果的。但如果使用命令<code>Import-Module mymodule</code>，就可以将mymodule加入到当前会话的配置，这个时候使用gpush就可以一口气push了~ 但是关闭后重新打开，就又不行了。</li><li>所以我们需要设置PowerShell每次打开时自动加载我们的mymodule——在<code>$home/Documents/WindowsPowerShell/</code>下新建文件<code>profile.ps1</code>，写入<pre><code>Import-Module mymodule<br>Import-Module Microsoft.PowerShell.Management<br>Get-Module</code></pre>重新打开PowerShell，<code>Get-Module</code>让PowerShell一打开就显示出加载好的Modules，自定义命令玩起来~</li><li>之后添加自定义命令只需更新<code>mymodule.psm1</code>然后重启PowerShell即可。</li></ul>
+</li><li>如果提示没有权限运行脚本，可以使用命令<code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code>来改变当前用户的权限。</li></ul></li></ul></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	  </section>
+
+      <section>
+          <font size="-1" color="#BAD5F5">© 个人原创，未经允许，不得转载！</font>
+        <p class="pl-ent">Copyright © 2015-2016 <a href="https://github.com/zhyack">zhyack</a>. All Rights Reserved.</p>
+        <font size="-1" color="#FF00FF">如对文章有任何疑问，请移步<a href = "https://zhyack.github.io/Q&A.html">问题聚集区</a>一览~</font>
+        <p class="pl-ent"><br>
+            </br>
+          </p>
+      </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
