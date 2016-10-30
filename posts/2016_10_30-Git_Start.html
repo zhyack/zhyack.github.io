@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2016_10_30-Git_Start</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-regular/Noto-Sans-regular.eot');
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-regular/Noto-Sans-regular.eot?#iefix') format('embedded-opentype'),
+       local('Noto Sans'),
+       local('Noto-Sans-regular'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-regular/Noto-Sans-regular.woff2') format('woff2'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-regular/Noto-Sans-regular.woff') format('woff'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-regular/Noto-Sans-regular.ttf') format('truetype'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-regular/Noto-Sans-regular.svg#NotoSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-700/Noto-Sans-700.eot');
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-700/Noto-Sans-700.eot?#iefix') format('embedded-opentype'),
+       local('Noto Sans Bold'),
+       local('Noto-Sans-700'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700/Noto-Sans-700.woff2') format('woff2'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700/Noto-Sans-700.woff') format('woff'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700/Noto-Sans-700.ttf') format('truetype'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700/Noto-Sans-700.svg#NotoSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  font-style: italic;
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-italic/Noto-Sans-italic.eot');
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-italic/Noto-Sans-italic.eot?#iefix') format('embedded-opentype'),
+       local('Noto Sans Italic'),
+       local('Noto-Sans-italic'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-italic/Noto-Sans-italic.woff2') format('woff2'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-italic/Noto-Sans-italic.woff') format('woff'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-italic/Noto-Sans-italic.ttf') format('truetype'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-italic/Noto-Sans-italic.svg#NotoSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 700;
+  font-style: italic;
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-700italic/Noto-Sans-700italic.eot');
+  src: url('https://zhyack.github.io/fonts/Noto-Sans-700italic/Noto-Sans-700italic.eot?#iefix') format('embedded-opentype'),
+       local('Noto Sans Bold Italic'),
+       local('Noto-Sans-700italic'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700italic/Noto-Sans-700italic.woff2') format('woff2'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700italic/Noto-Sans-700italic.woff') format('woff'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700italic/Noto-Sans-700italic.ttf') format('truetype'),
+       url('https://zhyack.github.io/fonts/Noto-Sans-700italic/Noto-Sans-700italic.svg#NotoSans') format('svg');
+}
+
+body {
+  background-image:url(https://zhyack.github.io/pics/six-md.jpg);
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+   background-size:100%;
+  background-color: #fff;
+
+  padding:50px;
+  font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:#ffffff;
+  font-weight:400;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  color:#222;
+  margin:0 0 20px;
+}
+
+p, ul, ol, table, pre, dl {
+  margin:0 0 20px;
+}
+
+h1, h2, h3 {
+  line-height:1.1;
+}
+
+h1 {
+  font-size:28px;
+  color:#afafaf;
+}
+
+h2 {
+  color:#afafaf;
+}
+
+h3, h4, h5, h6 {
+  color:#8f8f8f;
+}
+
+a {
+  color:#39c;
+  text-decoration:none;
+}
+
+a:hover {
+	color: #069;
+	font-weight: 400;
+}
+
+a small {
+  font-size:11px;
+  color:#777;
+  margin-top:-0.3em;
+  display:block;
+}
+
+a:hover small {
+  color:#777;
+}
+.wrapper {
+  width:860px;
+  margin:0 auto;
+}
+
+blockquote {
+  border-left:1px solid #e5e5e5;
+  margin:0;
+  padding:0 0 0 20px;
+  font-style:italic;
+}
+
+code, pre {
+  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
+  color:#68F406;
+  font-size:12px;
+}
+
+pre {
+  padding:8px 15px;
+  border-radius:5px;
+  border:1px solid #e5e5e5;
+  overflow-x: auto;
+}
+
+table {
+	width: 100%;
+	font-weight: 400;
+	font-size: 20px;
+}
+
+th, td {
+  text-align:center;
+  padding:5px 10px;
+  border-bottom:1px solid #e5e5e5;
+}
+
+dt {
+  color:#444;
+  font-weight:700;
+}
+
+th {
+  color:#444;
+}
+
+img {
+  max-width:100%;
+}
+
+header {
+  width:225px;
+  float:left;
+  position:fixed;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+header ul {
+  list-style:none;
+  height:40px;
+  padding:0;
+  background: #f4f4f4;
+  border-radius:5px;
+  border:1px solid #e0e0e0;
+  width:270px;
+}
+
+header li {
+  width:89px;
+  float:left;
+  border-right:1px solid #e0e0e0;
+  height:40px;
+}
+
+header li:first-child a {
+  border-radius:5px 0 0 5px;
+}
+
+header li:last-child a {
+  border-radius:0 5px 5px 0;
+}
+
+header ul a {
+  line-height:1;
+  font-size:11px;
+  color:#999;
+  display:block;
+  text-align:center;
+  padding-top:6px;
+  height:34px;
+}
+
+header ul a:hover {
+  color:#999;
+}
+
+header ul a:active {
+  background-color:#f0f0f0;
+}
+
+strong {
+  color:#F5F500;
+  font-weight:700;
+}
+
+header ul li + li + li {
+  border-right:none;
+  width:89px;
+}
+
+header ul a strong {
+  font-size:14px;
+  display:block;
+  color:#F5F500;
+}
+
+section {
+  width:550px;
+  float:right;
+  padding-bottom:50px;
+}
+
+small {
+  font-size:11px;
+}
+
+hr {
+  border:0;
+  background:#e5e5e5;
+  height:1px;
+  margin:0 0 20px;
+}
+
+footer {
+  width:270px;
+  float:left;
+  position:fixed;
+  bottom:30px;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+.wrapper section p {
+}
+
+
+@media print, screen and (max-width: 960px) {
+
+  div.wrapper {
+    width:auto;
+    margin:0;
+  }
+
+  header, section, footer {
+    float:none;
+    position:static;
+    width:auto;
+  }
+
+  header {
+    padding-right:320px;
+  }
+
+  section {
+    border:1px solid #e5e5e5;
+    border-width:1px 0;
+    padding:20px 0;
+    margin:0 0 20px;
+  }
+
+  header a small {
+    display:inline;
+  }
+
+  header ul {
+    position:absolute;
+    right:50px;
+    top:52px;
+  }
+}
+
+@media print, screen and (max-width: 720px) {
+  body {
+    word-wrap:break-word;
+  }
+
+  header {
+    padding:0;
+  }
+
+  header ul, header p.view {
+    position:static;
+  }
+
+  pre, code {
+	word-wrap: normal;
+	color: #68F406;
+  }
+}
+
+@media print, screen and (max-width: 480px) {
+  body {
+    padding:15px;
+  }
+
+  header ul {
+    width:99%;
+  }
+
+  header li, header ul li + li + li {
+    width:33%;
+  }
+}
+
+@media print {
+  body {
+    padding:0.4in;
+    font-size:12pt;
+    color:#444;
+  }
+}
+
+.topiccenter{
+	font-family:"Noto Sans";
+	color: #8000ff;
+	font-size: 26px;
+	text-align: center;
+	font-weight:700;
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="shortcut icon" href="https://zhyack.github.io/pics/favicon.ico"/>
+	<link rel="bookmark" href="https://zhyack.github.io/pics/favicon.ico"/>
+    <link rel="stylesheet" href="https://zhyack.github.io/stylesheets/github-light.css">
+
+	
+    <script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+
+</head>
+</head>
+<body>
+<h1 id="-git-">简单的Git起步指南</h1>
+<ul>
+<li><h2 id="-git-">何为Git？</h2>
+<p><a href="https://git-scm.com/">Git</a>是一种一般用于管理代码的版本控制系统，与之处于同一level上的还有svn，cvs等。它既可以在本地使用，又可以通过网络服务器进行远程管理，常见的远程服务供应商有github和bitbucket等。<br>当然对于刚起步者来说，也可以简单地将git看作这么一个东西：<br><img src="../pics/git-01.png" alt="git"><br>这个隐藏文件夹一般都会是你整个repo（仓库——表示一整个项目，本地会存储在对应项目名的文件夹下）中最占空间的，但要知道它包含着你以往所有commit过的版本信息，只要这个文件夹完整，你的历史commit过的各个版本永远都不会丢。</p>
+</li><li><h2 id="-github-">为什么使用Github？</h2>
+<p>原因很简单——永远不要把鸡蛋放在一个篮子里。放在本地的git仓库随时都面临着各种可能导致数据丢失的危险，一旦关键的<code>.git</code>数据丢失，以往的版本都将一去不复返，更何况一般丢数据都是整个项目一起挂掉的。  </p>
+<ul>
+<li>如果使用U盘/硬盘/云盘进行数据备份，那会面临着备份繁琐，容易忘记备份时间、版本，以及系统提示你对于同名文件是替换还是跳过的窘境，当然还有一种更囧的场景——你将文件A改名为文件B，备份时系统也没提示你是否替换或跳过，结果你的备份里就莫名多了一个垃圾文件... 使用git可以很大程度上解决以上问题。git会根据你当前的版本信息<code>&lt;HEAD&gt;</code>，以及你当前本地文件信息，判断出你到底做出了哪些改动；通过将改动<code>add</code>到<code>&lt;HEAD&gt;</code>中，就会更新到你的新版本信息中，然后通过<code>commit</code>即可生成新的版本，这整个过程是增量式的，不会说改动后还存在任何垃圾，而且所有的改动只需正常在本地添加、删除、修改文件即可。当然，git也并不是万能的，在<code>merge</code>两个版本时它也会面临着不可能完美解决的问题——两个版本的文件保留哪个？但git会产生<code>diff</code>信息，以便于手工选择保留的部分。</li><li>作为git的网络服务供应商，<a href="https://github.com">github</a>可谓是最大的开源代码共享平台，其开源项目之多，以及完美的<code>fork</code>机制，漂亮实用的界面，还有<code>gist</code>等功能，无疑是开源项目搭载平台的首选。但其免费功能中不包括私有仓库，也就是说你的所有代码都是公开的。如果有私有仓库的需求，推荐<a href="https://bitbucket.org">bitbucket</a>，对于个人或者小团体的私有项目可以充分满足需求，而且有国内的cdn，访问速度比github快。当然，两个网站都支持搭建个人主页，可参见<a href="https://zhyack.github.io/posts/2015_11_23_How-To-Build-Your-Blog-On-Github-Pages.html">我的博客</a>搭建笔记。  </li></ul>
+</li></ul>
+<blockquote>
+<p>以下部分都以github平台为例。</p>
+</blockquote>
+<ul>
+<li><h2 id="git-">git安装&amp;配置</h2>
+<a href="https://git-scm.com/downloads">git下载</a><br>国内下载可能会慢的出奇，迅雷也许可以快点...<ul>
+<li>下载完成后无脑安装，配置都默认就可以，提示安装git-bash时推荐安装。</li><li>安装完成后打开git-bash即可使用git的各种命令了。</li><li>为了在Windows的cmd和powershell方便地用git命令，将git路径<code>C:\Program Files\Git\cmd</code>添加到环境变量中去。</li><li>首次使用git时可能会提示输入用户名和邮箱，好好填写（认真脸.jpg）：<pre><code>git config --global user.name &quot;username&quot;
+git config --global user.email &quot;email&quot;
+</code></pre></li></ul>
+</li><li><h2 id="-">新建仓库</h2>
+<p>github右上角<br><img src="../pics/git-02.png" alt="new repo"><br><img src="../pics/git-03.png" alt="new repo"><br>然后导入到本地即可编辑</p>
+</li><li><h2 id="-">导入仓库</h2>
+<p>github和bitbucket的仓库中都会提供https链接和ssh链接以供导入<br><img src="../pics/git-04.png" alt="https"><br><img src="../pics/git-05.png" alt="ssh"><br>区别在于https无须任何设置，但任何远程操作需要提供账号密码作为凭据； ssh需要在本地生产ssh-key，这样你的机器拥有唯一的key可以免账号密码验证直接与远程交互。入门推荐https。<br>本地git-bash或cmd中在合适位置使用类似<strong>git clone</strong> <code>https://github.com/zhyack/test.git</code>的命令从github上获取仓库内容，链接换成自己的。<br><img src="../pics/git-06.png" alt="git clone"><br><img src="../pics/git-07.png" alt="empty repo"><br>这样远程的仓库就拿到本地了。</p>
+</li><li><h2 id="-">当前版本信息</h2>
+</li></ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
