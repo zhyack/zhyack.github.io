@@ -1,0 +1,111 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script type="text/javascript">
+		var targetProtocol = "https:";
+		if (window.location.protocol != "file:" && window.location.protocol != targetProtocol)
+		window.location.href = targetProtocol +
+		window.location.href.substring(window.location.protocol.length);
+	</script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>zhy's blog|内网穿透——ngrok的搭建与使用</title>
+    <!-- InstanceEndEditable -->
+    <link rel="shortcut icon" href="../pics/favicon.ico"/>
+	<link rel="bookmark" href="../pics/favicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+	<script src='https://des-payfor.github.io/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- InstanceBeginEditable name="head" -->
+  <!-- InstanceEndEditable -->
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 align="center"><a href="https://zhyack.github.io/" target="_self">Zhy's Blog~</a></h1>
+        <p align="center"><a href="https://zhyack.github.io/"><img src = "../pics/Profile.jpg" width="225" height="225"></a></p>
+
+
+        <p class="view" align="center"><a href="https://github.com/zhyack">View My GitHub Profile</a></p>
+        <div>
+        <table width=100% border="0">
+          <tbody>
+            <tr>
+              <td height="150">
+              <a href="../archive.html"><div class="topiccenter">Archive</div></a>
+              <a href="../categories.html"><div class="topiccenter">Categories</div></a>
+              <a href="../about.html"><div class="topiccenter">About</div></a>
+              <div class="topiccenter"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256825058'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256825058%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+              </td>  
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </header>
+      <!-- InstanceBeginEditable name="EditArea" -->
+      <section>
+<h1 id="-ngrok-">内网穿透——ngrok的搭建与使用</h1>
+<h2 id="-">内网穿透</h2>
+<p>一言以蔽之，你在家连上公司的对外服务器再二级跳到你的服务器上时，是否想过，如果内网的服务器可以直达呢？</p>
+<h2 id="-">使用说明</h2>
+<ul>
+<li>官网：<a href="https://github.com/inconshreveable/ngrok" target="_blank">Github:ngrok</a></li><li>需要准备的资源：ngrok服务器A（Linux/?Mac?），内网服务器B（Linux/Windows/?Mac?），自己的客户端C（任意系统）。(穷人用不起Mac，有需要自行谷歌/实验)</li><li>必要条件：B ping A，C ping A 可通</li><li>参考资料：<a href="https://imququ.com/post/self-hosted-ngrokd.html" target="_blank">blog:imququ</a>，<a href="https://github.com/inconshreveable/ngrok/blob/master/docs/SELFHOSTING.md" target="_blank">官方文档</a>，<a href="https://www.digitalocean.com/community/tutorials/how-to-install-go-1-6-on-ubuntu-14-04" target="_blank">Go1.6安装指南</a></li></ul>
+<h2 id="-ngrok-">配置ngrok服务器及使用</h2>
+<p>配置服务器为非必需步骤，懒人直接看最后的客户端部分。<br>本人环境： ubuntu 14.04<br>参考<a href="https://imququ.com/post/self-hosted-ngrokd.html" target="_blank">blog:imququ</a>的方法安装，注意和以下步骤中的不同点。</p>
+<ul>
+<li>安装必要工具：<code>sudo apt-get install build-essential mercurial git</code><ul>
+<li>这里的golang是1.2版的，会导致编译客户端时报错<pre># github.com/gorilla/websocket<br>src/github.com/gorilla/websocke... undefined: sync.Pool<br>make: <em>*</em> [client] Error 2</pre>所以要装1.3以上的go（使用命令<code>go version</code>可查看版本，报错的话说明机器上没有装go，可以直接跳到安装高版本go的环节）<ul>
+<li>先卸载本机的go，<code>apt-get remove golang-xxx</code>，<code>xxx</code>可以tab出来，全删。</li><li>按照DO的<a href="https://www.digitalocean.com/community/tutorials/how-to-install-go-1-6-on-ubuntu-14-04" target="_blank">教程</a>走安装go1.6。<pre>sudo curl -O <a href="https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz" target="_blank">https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz</a><br>sudo tar -xvf go1.6.linux-amd64.tar.gz<br>sudo mv go /usr/local<br>sudo vim ~/.profile 添加 export PATH=$PATH:/usr/local/go/bin<br>source ~/.profile</pre></li></ul>
+</li><li>clone一份官方源码 <code>git clone https://github.com/inconshreveable/ngrok.git ngrok</code></li><li>制作证书<pre>NGROK_DOMAIN="A的域名或ip"<br>openssl genrsa -out base.key 2048<br>openssl req -new -x509 -nodes -key base.key -days 10000 -subj "/CN=$NGROK_DOMAIN" -out base.pem<br>openssl genrsa -out server.key 2048<br>openssl req -new -key server.key -subj "/CN=$NGROK_DOMAIN" -out server.csr<br>openssl x509 -req -in server.csr -CA base.pem -CAkey base.key -CAcreateserial -days 10000 -out server.crt<br>cp base.pem assets/client/tls/ngrokroot.crt</pre></li><li>编译 <code>sudo make release-server release-client</code><ul>
+<li>如果在安装1.3以上版本的go之前就编译过一次，这里仍然是会报错的，需要先<code>make clean</code>一下，然后重新编译</li><li>编译之后在<code>ngrok/bin/</code>下会出现两个文件ngrokd是服务器端（A）运行的文件，ngrok是客户端（B）运行的文件，不过这里的ngrok文件只能运行在linux系统上；mac系统再执行一遍编译<code>sudo GOOS=darwin GOARCH=amd64 make release-client</code>就会出来<code>ngrok/bin/darwin_amd64</code>的目录这里就是mac的客户端；windows编译命令<code>GOOS=windows GOARCH=amd64 make release-client</code>，会出来一个<code>ngrok/bin/windows_amd64</code>的目录，里面的exe就是windows下的客户端。（32位的把上面各种命令中的64改成386）</li></ul>
+</li><li>服务器端运行：<code>sudo ./bin/ngrokd -tlsKey=server.key -tlsCrt=server.crt -domain="A的域名或ip" -httpAddr=":8081" -httpsAddr=":8082"</code><ul>
+<li>最好开个screen运行</li></ul>
+</li><li>客户端运行：<ul>
+<li>用别人的服务器（比如<a href="http://www.qydev.com" target="_blank">qydev.com</a>，顺便感谢一下公益服务）的话就直接把别人服务器的域名或ip当作上文中的A即可，但客户端需要A的主人提供给你，否则是没有授权的。</li><li>添加配置文件，文本内容<pre>server_addr:A的域名或ip :4443<br>trust_host_root_certs: false</pre></li><li>web端口：<code>./ngrok -config=上述文件路径 -proto=http 80</code></li><li>ssh端口：<code>./ngrok -config=上述文件路径 -proto=tcp 22</code></li><li>远程连接：<code>./ngrok -config=上述文件路径 -proto=tcp 3389</code></li><li>运行后显示在服务器端分配的端口， 比如<code>xxx.com:33821</code>， 那C就可以用A的域名或ip+分配的端口来连接B了。</li><li>同样最好开个screen运行</li></ul></li></ul></li></ul>
+      </section>
+      <!-- InstanceEndEditable -->
+	  <section>
+	    <div id="disqus_thread"></div>
+	    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+		
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//zhyack.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+	    <noscript>
+	      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+	      </noscript>
+	  </section>
+
+      <section>
+          <font size="-1" color="#BAD5F5">© 个人原创，未经允许，不得转载！</font>
+        <p class="pl-ent">Copyright © 2015-2016 <a href="https://github.com/zhyack">zhyack</a>. All Rights Reserved.</p>
+        <font size="-1" color="#FF00FF">如对文章有任何疑问，请移步<a href = "https://zhyack.github.io/Q&A.html">问题聚集区</a>一览~</font>
+        <p class="pl-ent"><br>
+            </br>
+          </p>
+      </section>
+    </div>
+    <script src="https://des-payfor.github.io/javascripts/emojify.min.js"></script>
+    <script src="https://des-payfor.github.io/javascripts/emojify.run.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+</body>
+<!-- InstanceEnd --></html>
