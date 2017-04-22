@@ -11,15 +11,16 @@
 ## 安装（官方翻译版）
 * 打开电脑的设置->更新和安全->针对开发人员->使用开发人员功能->开发人员模式; 如果安装功能失败的自行去系统服务里启动Windows Update
 * 在搜索框里搜“Turn Windows features on or off”，然后选择“启动或关闭Windows功能”，勾选“适用于Linux的Windows子系统（beta）”
-* 在搜索框里搜“Powershell”，右键管理员模式启动“Powershell”，运行命令“Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux”
+* 在搜索框里搜“Powershell”，右键管理员模式启动“Powershell”，运行命令`Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
 * 重启
 * 随便开一个cmd，输入bash，按提示完成创建账户操作
 * 安装完成，以后在命令行输入bash即可进入Linux
 
 ## 补充
-* PowerShell不能启动bash：可能的权限问题——“Set-ExecutionPolicy RemoteSigned -Scope CurrentUser”来更改执行脚本的权限。
+* Ubuntu的文件系统在`C:\Users\XXX\AppData\Local\Lxss\`中，是隐藏文件，只能通过路径访问。
+* PowerShell不能启动bash：可能的权限问题——`Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`来更改执行脚本的权限。
 * Atom中的PowerShell不能启动bash：原因在于bash.exe在系统文件夹中，Atom根本看不到bash.exe——把bash.exe随便copy到一个没权限的但却在环境变量path里的位置，即时见效。
-* 设置图形界面——export DISPLAY=:0
+* 设置图形界面——`export DISPLAY=:0`
 
 
 ## 没什么意思的后记
